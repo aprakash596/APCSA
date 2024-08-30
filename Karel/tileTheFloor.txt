@@ -1,0 +1,25 @@
+/*
+F1 = moveForward();
+F2 = turnLeft();
+F3 = turnAround();
+F4 = turnRight();
+F5 = pickBeeper();
+F6 = dropBeeper();
+*/
+
+void tileTheFloor()
+{
+    while(! onBeeper())
+    {
+        dropBeeper();
+        if(frontIsClear() && (! beeperAhead()))
+        {
+            moveForward();
+        }
+        else
+        {
+            turnLeft();
+            moveForward();
+        }
+    }
+}
