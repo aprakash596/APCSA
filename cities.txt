@@ -1,0 +1,1112 @@
+33.58 85.85 anniston , al
+32.67 85.44 auburn , al
+33.57 86.75 birmingham , al
+32.90 87.25 centreville , al
+31.32 85.45 dothan , al
+31.28 85.72 fort rucker , al
+33.97 86.09 gadsden , al
+34.65 86.77 huntsville , al
+32.38 86.37 maxwell afb , al
+30.68 88.25 mobile , al
+30.63 88.07 mobile aeros , al
+32.30 86.40 montgomery , al
+34.75 87.62 muscle shoal , al
+32.34 86.99 selma , al
+31.87 86.02 troy , al
+33.23 87.62 tuscaloosa , al
+32.17 110.88 davis-m afb , az
+33.68 112.08 deer valley , az
+31.45 109.60 douglas , az
+33.47 111.73 falcon fld , az
+35.13 111.67 flagstaff , az
+31.60 110.35 fort huachuc , az
+33.55 113.17 gila bend , az
+33.42 112.38 goodyear , az
+35.95 112.15 grand canyon , az
+35.27 113.95 kingman , az
+33.53 112.38 luke , az
+36.93 111.45 page , az
+34.23 111.33 payson , az
+33.43 112.02 phoenix , az
+34.65 112.43 prescott , az
+32.82 109.68 safford awrs , az
+33.62 111.92 scottsdale , az
+34.27 110.00 show low , az
+34.27 110.00 show low , az
+32.12 110.93 tucson , az
+33.30 111.67 williams afb , az
+35.02 110.73 winslow , az
+33.10 115.00 yuma , az
+32.65 114.62 yuma mcas , az
+32.85 114.40 yuma prv gd , az
+35.97 89.95 blytheville , ar
+33.52 92.40 camden , ar
+33.22 92.80 el dorado , ar
+36.00 94.17 fayetteville , ar
+35.33 94.37 ft smith , ar
+36.27 93.15 harrison , ar
+34.48 93.10 hot springs , ar
+35.83 90.65 jonesboro , ar
+35.22 92.38 little rock , ar
+34.92 92.15 little rock , ar
+34.83 92.25 little rock , ar
+34.17 91.93 pine bluff , ar
+36.18 94.13 springdale , ar
+33.45 94.00 texarkana , ar
+36.13 90.93 walnut ridge , ar
+37.78 122.32 alameda nas , ca
+41.48 120.53 alturas , ca
+40.98 124.10 arcata , ca
+35.43 119.05 bakersfield , ca
+39.13 121.45 beale afb , ca
+33.93 116.95 beaumont , ca
+35.28 116.62 bicycle lk , ca
+34.27 116.68 big bear apt , ca
+37.60 118.60 bishop , ca
+39.28 120.70 blue canyon , ca
+33.62 114.72 blythe , ca
+34.20 118.37 burbank , ca
+33.30 117.35 camp pendlet , ca
+32.62 116.47 campo , ca
+33.13 117.28 carlsbad , ca
+37.38 120.57 castle afb , ca
+39.78 121.85 chico , ca
+35.68 117.68 china lake , ca
+33.97 117.63 chino , ca
+37.98 122.05 concord , ca
+41.78 124.23 crescent cty , ca
+34.87 116.78 daggett , ca
+34.90 117.88 edwards afb , ca
+32.82 115.68 el centro , ca
+34.08 118.03 el monte , ca
+33.67 117.73 el toro , ca
+41.33 124.28 eureka , ca
+36.00 121.32 fort hunter , ca
+36.68 121.77 fort ord , ca
+36.77 119.72 fresno , ca
+33.87 117.97 fullerton , ca
+34.58 117.38 george afb , ca
+33.92 118.33 hawthorne , ca
+37.65 122.12 hayward , ca
+32.83 115.57 imperial , ca
+32.57 117.12 imperial bch , ca
+34.10 117.78 la verne , ca
+38.90 120.00 lake tahoe , ca
+34.73 118.22 lancaster , ca
+36.33 119.95 lemoore nas , ca
+37.70 121.82 livermore , ca
+33.82 118.15 long beach , ca
+33.78 118.05 los alamitos , ca
+33.93 118.40 los angeles , ca
+37.63 118.92 mammoth lks , ca
+33.88 117.27 march afb , ca
+39.10 121.57 marysville , ca
+38.57 121.30 mather afb , ca
+38.67 121.40 mcclellan , ca
+37.28 120.52 merced , ca
+32.87 117.15 miramar nas , ca
+37.63 120.95 modesto , ca
+37.42 122.05 moffet nas , ca
+35.05 118.15 mojave , ca
+41.73 122.53 montague , ca
+36.58 121.85 monterey , ca
+41.32 122.32 mount shasta , ca
+34.23 118.07 mount wilson , ca
+38.22 122.28 napa , ca
+34.77 114.62 needles , ca
+32.70 117.20 north is , ca
+34.10 117.23 norton afb , ca
+37.73 122.22 oakland , ca
+34.05 117.62 ontario , ca
+34.05 117.62 ontario intl , ca
+34.20 119.20 oxnard , ca
+33.83 116.50 palm springs , ca
+35.05 118.13 palmdale , ca
+37.47 122.12 palo alto , ca
+35.67 120.63 paso robles , ca
+37.83 122.83 pillaro pt , ca
+34.12 119.12 point mugu , ca
+39.58 124.22 pt arena , ca
+34.95 121.12 pt arguello , ca
+35.67 121.28 pt piedras , ca
+36.12 121.47 pt piedras , ca
+40.15 122.25 red bluff , ca
+40.50 122.30 redding , ca
+33.95 117.45 riverside , ca
+38.52 121.50 sacramento , ca
+38.70 121.60 sacramento , ca
+36.67 121.60 salinas , ca
+37.52 122.25 san carlos , ca
+33.42 117.62 san clemente , ca
+33.02 118.58 san clemente , ca
+32.82 117.13 san diego , ca
+32.73 117.17 san diego , ca
+32.57 116.98 san diego , ca
+32.57 116.98 san diego , ca
+32.82 116.97 san diego , ca
+37.75 122.68 san francisco , ca
+37.62 122.38 san francisco , ca
+37.37 121.92 san jose , ca
+37.33 121.82 san jose/rei , ca
+35.23 120.65 san luis obi , ca
+33.38 117.58 san mateo , ca
+34.03 120.40 san miguel , ca
+33.25 119.45 san nic isl , ca
+34.75 118.73 sandburg , ca
+33.67 117.88 santa ana , ca
+34.43 119.83 santa barbara , ca
+34.90 120.45 santa maria , ca
+34.02 118.45 santa monica , ca
+38.52 122.82 santa rosa , ca
+40.03 124.07 shelter cove , ca
+41.78 122.47 siskiyou , ca
+37.90 121.25 stockton , ca
+35.33 117.10 superior val , ca
+40.63 120.95 susanville , ca
+33.63 116.17 thermal , ca
+33.80 118.33 torrance , ca
+38.27 121.93 travis afb , ca
+39.32 120.13 truckee-tahoe , ca
+33.70 117.83 tustin mcas , ca
+34.28 116.15 twenty9 palm , ca
+39.13 123.20 ukiah , ca
+34.22 118.48 van nuys , ca
+35.20 120.95 vandenberg , ca
+35.20 120.95 vandenberg , ca
+36.32 119.40 visalia , ca
+39.52 105.35 air force a , co
+40.17 103.22 akron , co
+37.45 105.87 alamosa , co
+39.22 106.87 aspen , co
+39.90 105.12 brmfield/jef , co
+39.72 104.75 buckley , co
+38.82 104.72 colo sprgs , co
+37.30 108.63 cortez , co
+40.50 107.53 craig-moffat , co
+39.75 104.87 denver , co
+37.15 107.75 durango , co
+39.65 106.92 eagle , co
+39.57 104.83 englewood , co
+38.68 104.77 fort carson , co
+39.57 105.50 fraser , co
+40.45 105.02 ft col/lovel , co
+40.58 105.08 fort collins , co
+39.12 108.53 grand jct , co
+40.43 104.63 greeley-wld , co
+38.55 106.93 gunnison , co
+38.55 106.92 gunnison , co
+38.05 103.52 la junta , co
+38.12 102.60 lamar , co
+39.25 106.30 leadville , co
+39.18 103.70 limon , co
+38.50 107.88 montrose , co
+38.50 107.88 montrose , co
+38.28 104.52 pueblo , co
+39.53 107.80 rifle , co
+38.53 106.05 salida , co
+40.48 106.82 steamboat sp , co
+37.25 104.33 trinidad , co
+40.00 105.87 winter park , co
+41.17 73.13 bridgeport , ct
+41.37 73.48 danbury , ct
+41.33 72.05 groton , ct
+41.73 72.65 hartford , ct
+41.22 72.67 new haven , ct
+41.27 72.88 new haven , ct
+41.27 72.90 new haven , ct
+41.30 72.08 new london , ct
+41.93 72.68 windsor loc , ct
+39.13 75.47 dover , de
+39.67 75.60 wilmington , de
+38.95 77.46 washington/dulles , dc
+38.85 77.04 washington/natl , dc
+29.73 85.03 apalachicola , fl
+29.12 81.57 astor nas , fl
+28.08 81.55 avon park g , fl
+28.47 80.55 cape canaveral , fl
+30.22 81.88 cecil , fl
+30.78 86.52 crestview , fl
+29.62 83.10 cross city , fl
+29.18 81.05 daytona bch , fl
+30.65 86.52 duke fld , fl
+30.48 86.53 eglin afb , fl
+27.60 82.77 egmont key , fl
+26.13 80.13 fort lauderd , fl
+26.58 81.87 fort myers , fl
+26.07 80.15 fort lauderdale , fl
+26.65 81.87 ft myers , fl
+29.68 82.27 gainesville , fl
+25.48 80.38 homestead , fl
+30.43 86.68 hurlburt fld , fl
+30.33 81.52 jacksonville , fl
+30.50 81.70 jacksonville , fl
+30.23 81.68 jacksonville , fl
+24.55 81.75 key west , fl
+24.57 81.68 key west nas , fl
+28.03 81.95 lakeland , fl
+27.85 82.52 macdill afb , fl
+30.84 85.18 marianna , fl
+30.40 81.42 mayport nas , fl
+28.10 80.63 melbourne , fl
+25.82 80.28 miami , fl
+25.82 80.28 miami intl , fl
+25.92 80.28 miami/opa , fl
+25.65 80.43 miami/tamiami , fl
+26.13 81.80 naples , fl
+28.62 80.68 nasa shuttle , fl
+28.43 81.32 orlando , fl
+28.55 81.33 orlando , fl
+30.20 85.68 panama city , fl
+28.23 80.60 patrick afb , fl
+30.35 87.32 pensacola , fl
+30.47 87.20 pensacola , fl
+27.97 82.60 ruskin , fl
+27.92 82.68 st petersburg , fl
+28.78 81.25 sanford , fl
+27.40 82.55 sarasota , fl
+30.38 84.37 tallahassee , fl
+27.97 82.53 tampa , fl
+27.97 82.53 tampa intl , fl
+28.52 80.80 titusville , fl
+30.07 85.58 tyndall afb , fl
+27.65 80.42 vero beach , fl
+26.68 80.12 w palm beach , fl
+30.72 87.02 whiting fld , fl
+31.53 84.18 albany , ga
+31.53 82.52 alma , ga
+33.95 83.32 athens , ga
+33.65 84.42 atlanta , ga
+33.65 84.42 atlanta , ga
+33.88 84.30 atlanta/dklb , ga
+33.78 84.52 atlanta/fltn , ga
+33.37 81.97 augusta , ga
+33.37 81.97 augusta/bush , ga
+31.15 81.38 brunswick , ga
+32.52 84.93 columbus , ga
+33.92 84.52 dobbins afb , ga
+34.53 84.87 dobbins afb , ga
+32.33 85.00 fort benning , ga
+31.88 81.57 ft stewart , ga
+32.02 81.15 hunter aaf , ga
+33.01 85.07 la grange , ga
+32.70 83.65 macon/lewis , ga
+30.97 83.20 moody afb , ga
+32.63 83.60 robins afb , ga
+34.35 85.17 rome/russell , ga
+32.13 81.20 savannah , ga
+32.13 81.20 savannah mun , ga
+30.78 83.28 valdosta , ga
+31.25 82.40 waycross , ga
+43.57 116.22 boise , id
+42.53 113.77 burley , id
+44.52 114.22 challis , id
+47.77 116.82 coeur d'alene , id
+45.82 115.43 elk city , id
+43.00 115.17 gooding , id
+45.92 116.13 grangeville , id
+43.52 112.07 idaho falls , id
+46.38 117.02 lewiston , id
+42.17 112.32 malad city , id
+42.30 113.37 malta , id
+44.88 116.10 mccall , id
+43.05 115.87 mountn home , id
+47.47 115.80 mullan , id
+42.92 112.60 pocatello , id
+45.18 113.90 salmon , id
+45.17 114.47 salmon , id
+42.65 111.58 soda springs , id
+43.50 114.30 sun valley , id
+42.48 114.48 twin falls , id
+38.88 90.05 alton , il
+41.77 88.32 aurora , il
+38.57 90.15 bistate park , il
+40.48 88.93 bloomington , il
+41.16 89.60 bradford , il
+37.07 89.22 cairo , il
+37.78 89.25 carbondale , il
+38.51 89.09 centralia , il
+40.03 88.28 champaign/urbana , il
+41.90 87.65 chicago , il
+41.87 87.62 chicago/meigs , il
+41.78 87.75 chicago/midway , il
+41.98 87.90 chicago/o'hare , il
+40.20 87.60 danville , il
+41.93 88.72 dekalb , il
+39.83 88.87 decatur , il
+41.92 88.25 du page , il
+40.93 90.43 galesburg , il
+42.08 87.82 glenview nas , il
+41.07 87.85 kankakee , il
+40.52 90.66 macomb , il
+37.75 89.00 marion , il
+41.37 88.68 marseilles , il
+39.48 88.28 mattoon , il
+41.45 90.52 moline/quad , il
+38.32 88.86 mount vernon , il
+40.67 89.68 peoria , il
+39.93 91.20 quincy , il
+42.20 89.10 rockford , il
+38.63 88.96 salem , il
+38.55 89.85 scott afb , il
+39.85 89.67 springfield , il
+41.74 89.67 sterling , il
+39.53 89.33 taylorville , il
+38.99 89.17 vandalia , il
+39.38 86.50 bakalar af , in
+39.13 86.62 bloomington , in
+41.72 86.00 elkhart , in
+38.05 87.53 evansville , in
+41.00 85.20 fort wayne , in
+41.62 87.42 gary , in
+40.65 86.15 grissom afb , in
+39.73 86.27 indianapolis , in
+40.23 85.38 muncie , in
+41.70 86.32 south bend , in
+39.45 87.30 terre haute , in
+40.42 86.93 w lafayette , in
+40.78 91.12 burlington , ia
+41.88 91.70 cedar rapids , ia
+41.53 93.65 des moines , ia
+42.40 90.70 dubuque , ia
+43.40 94.75 estherville , ia
+42.55 94.18 fort dodge , ia
+40.62 93.93 lamoni , ia
+43.15 93.33 mason city , ia
+41.10 92.45 ottumwa , ia
+42.40 96.38 sioux city , ia
+43.17 95.15 spencer , ia
+42.55 92.40 waterloo mun , ia
+37.67 95.48 chanute , ks
+37.75 97.22 col. j jabar , ks
+39.55 97.65 concordia , ks
+37.77 99.97 dodge city , ks
+37.00 101.88 elkhart , ks
+38.33 96.20 emporia , ks
+39.37 94.92 ft leavnwrth , ks
+39.05 96.77 ft riley , ks
+37.93 100.72 garden city , ks
+39.37 101.70 goodland , ks
+38.85 99.27 hays , ks
+39.38 99.83 hill city , ks
+38.07 97.87 hutchinson , ks
+38.82 94.88 johnson cnty , ks
+39.32 94.72 kansas city , ks
+37.05 100.97 liberal , ks
+39.15 96.67 manhatten , ks
+37.62 97.27 mcconnell af , ks
+37.30 98.58 medicine ldg , ks
+38.85 94.90 olathe , ks
+38.87 98.82 russell , ks
+38.80 97.65 salina , ks
+39.07 95.62 topeka , ks
+38.95 95.67 topeka/forbe , ks
+37.65 97.43 wichita , ks
+36.97 86.43 bowling gren , ky
+36.67 87.50 ft campbell , ky
+37.90 85.97 ft knox , ky
+37.60 83.32 jackson , ky
+38.05 85.00 lexington , ky
+37.08 84.07 london , ky
+38.23 85.67 louisville , ky
+38.18 85.73 louisville , ky
+37.75 87.17 owensboro , ky
+37.07 88.77 paducah , ky
+37.48 82.52 pikeville , ky
+31.38 92.30 alexandria , la
+32.50 93.67 barksdale , la
+30.53 91.15 baton rouge , la
+29.55 89.67 boothville , la
+29.78 93.30 cameron heli , la
+31.22 92.95 claiborne r , la
+31.33 92.55 england afb , la
+28.47 91.78 eugene is. , la
+31.05 93.20 fort polk , la
+29.18 90.07 grand isle , la
+28.22 93.75 high is , la
+28.13 94.40 high island , la
+29.57 90.65 houma , la
+29.73 92.12 intercoastal , la
+30.20 92.00 lafayette , la
+30.12 93.22 lake charles , la
+29.70 91.10 lk palourde , la
+28.78 89.05 missippi can , la
+32.52 92.05 monroe , la
+29.70 91.20 morgan city , la
+30.03 91.88 new iberia , la
+29.98 90.25 new orleans , la
+29.83 90.02 new orleans , la
+30.03 90.03 new orleans , la
+28.30 91.98 s marsh isl , la
+32.52 93.75 shreveport , la
+32.47 93.82 shreveport , la
+30.35 89.82 slidel , la
+44.32 69.80 augusta , me
+44.80 68.82 bangor , me
+44.45 68.37 bar harbor , me
+43.88 69.93 brunswick , me
+46.87 68.02 caribou mun , me
+45.45 69.55 greenville , me
+45.78 69.63 greenville , me
+46.13 67.78 houlton , me
+46.95 67.88 loring afb , me
+43.65 70.32 portland , me
+46.68 68.05 presque isle , me
+44.07 69.12 rockland , me
+44.88 70.88 rumford , me
+38.82 76.87 andrews afb , md
+39.18 76.67 baltimore , md
+39.18 76.67 baltimore , md
+39.33 76.42 baltimore , md
+39.08 76.77 fort meade , md
+39.70 77.72 hagerstown , md
+38.55 75.13 ocean city , md
+38.28 76.40 patuxent , md
+39.47 76.17 phillips , md
+38.33 75.50 salisbury , md
+42.47 71.28 bedford , ma
+42.58 70.92 beverly , ma
+42.37 71.03 boston , ma
+41.78 70.50 cape cod can , ma
+41.67 69.97 chatham , ma
+42.57 71.60 fort devens , ma
+41.67 70.28 hyannis , ma
+42.72 71.12 lawrence , ma
+41.40 70.62 marthas vine , ma
+41.25 70.07 nantucket , ma
+41.68 70.97 new bedford , ma
+42.18 71.18 norwood , ma
+41.65 70.52 otis angb , ma
+42.26 73.18 pittsfield , ma
+42.15 70.93 s weymouth , ma
+42.17 72.72 westfield , ma
+42.20 72.53 westover , ma
+42.27 71.87 worcester , ma
+45.07 83.57 alpena , mi
+42.22 83.75 ann arbor , mi
+42.30 85.23 battle creek , mi
+42.13 86.43 benton harbor , mi
+46.25 84.47 chippewa , mi
+43.07 85.95 coopersville , mi
+47.47 87.85 copper harb , mi
+42.42 83.02 detroit , mi
+42.23 83.33 detroit , mi
+45.73 87.08 escanaba , mi
+42.97 83.75 flint , mi
+42.97 83.75 flint/bishop , mi
+42.88 85.52 grand rapids , mi
+47.17 88.50 hancock , mi
+43.83 82.53 harbor beach , mi
+44.37 84.68 houghton lake , mi
+45.82 88.12 iron mtn , mi
+46.53 90.13 ironwood , mi
+42.27 84.47 jackson , mi
+42.23 85.55 kalamazoo , mi
+42.77 84.60 lansing , mi
+44.27 86.25 manistee , mi
+46.88 87.95 marquette , mi
+45.12 87.63 menominee , mi
+43.17 86.25 muskegon , mi
+45.57 84.80 pellston , mi
+42.67 83.42 pontiac , mi
+43.53 84.08 saginaw , mi
+46.47 84.37 sault ste m , mi
+46.35 87.40 sawyer afb , mi
+42.62 82.83 selfridge , mi
+45.92 85.92 seul choix , mi
+44.73 85.58 traverse cty , mi
+44.45 83.40 wurtsmith , mi
+42.23 83.53 ypsilanti , mi
+43.68 93.37 albert lea , mn
+45.87 95.38 alexandria , mn
+47.50 94.93 bemidji muni , mn
+46.40 94.13 brainerd-crw , mn
+46.82 95.88 detroit laks , mn
+46.83 92.18 duluth , mn
+47.90 91.82 ely , mn
+43.65 94.42 fairmont , mn
+46.30 96.07 fergus falls , mn
+47.22 93.52 grand rapids , mn
+47.38 92.85 hibbing , mn
+48.57 93.38 intl falls , mn
+45.13 94.52 litchfield , mn
+44.22 93.92 mankato , mn
+44.45 95.82 marshall arpt , mn
+44.83 93.47 minneapolis , mn
+45.07 93.38 minneapolis , mn
+44.88 93.22 minneapolis , mn
+46.90 95.07 park rapids , mn
+46.60 94.32 pequot lake , mn
+44.55 95.08 redwood falls , mn
+43.92 92.50 rochester , mn
+44.93 93.05 saint paul , mn
+45.55 94.07 st cloud , mn
+48.07 96.18 thief river , mn
+47.58 90.83 tofte , mn
+48.93 95.35 warroad , mn
+43.65 95.58 worthington , mn
+33.65 88.45 columbus afb , ms
+33.45 88.58 golden trian , ms
+33.48 90.98 greenville , ms
+33.50 90.08 greenwood , ms
+30.40 89.07 gulfport , ms
+31.47 89.33 hattiesburg , ms
+32.32 90.08 jackson , ms
+30.42 88.92 keesler afb , ms
+31.67 89.17 laurel , ms
+31.18 90.47 mccomb , ms
+32.55 88.57 meridian nas , ms
+32.33 88.75 meridian/key , ms
+31.62 91.25 natchez , ms
+34.39 89.54 oxford , ms
+34.27 88.77 tupelo , ms
+38.82 92.22 columbia , mo
+37.23 89.58 cp girardeau , mo
+37.75 92.13 ft leonard , mo
+38.60 92.17 jefferson city , mo
+37.17 94.50 joplin , mo
+39.12 94.60 kansas city , mo
+40.10 92.55 kirksville , mo
+37.33 94.35 monett , mo
+35.66 95.36 muskogee , mo
+36.77 90.47 poplar bluff , mo
+38.85 94.55 richards-geb , mo
+40.25 93.72 spickard , mo
+37.23 93.38 springfield , mo
+40.28 95.53 st joseph , mo
+38.75 90.37 st louis , mo
+38.65 90.63 stlouis/spirit , mo
+38.13 91.77 vichy/rolla , mo
+37.22 92.42 west plains , mo
+36.88 91.90 west plains , mo
+38.73 93.55 whiteman afb , mo
+45.80 108.53 billings , mt
+45.78 111.15 bozeman , mt
+45.67 105.67 broadus , mt
+45.95 112.50 butte , mt
+48.60 112.37 cut bank , mt
+45.25 112.55 dillon , mt
+46.67 113.15 drummond , mt
+48.22 106.62 glasgow , mt
+47.13 104.80 glendive , mt
+47.48 111.37 great falls , mt
+46.43 109.83 harlowton , mt
+48.55 109.77 havre , mt
+46.60 112.00 helena , mt
+47.33 106.93 jordan , mt
+48.30 114.27 kalispell , mt
+47.05 109.45 lewiston , mt
+45.70 110.43 livingston , mt
+47.50 111.18 malmstrom , mt
+46.43 105.87 miles city , mt
+46.92 114.08 missoula , mt
+44.57 112.32 monida , mt
+47.72 104.18 sidney , mt
+47.60 115.37 thompson fal , mt
+44.65 111.10 w yellowston , mt
+44.68 111.12 w yellowston , mt
+48.10 105.58 wolf point , mt
+42.58 99.98 ainsworth , ne
+42.05 102.80 alliance , ne
+40.32 96.75 beatrice , ne
+41.43 99.65 broken bow , ne
+41.78 99.15 burwell , ne
+42.83 103.08 chadron , ne
+41.45 97.35 columbus , ne
+40.87 100.00 cozad , ne
+40.07 95.58 falls city , ne
+40.97 98.32 grand island , ne
+40.60 98.43 hastings , ne
+40.33 101.39 imperial , ne
+40.53 101.63 imperial , ne
+40.73 99.00 kearney , ne
+40.85 96.75 lincoln , ne
+40.85 96.75 lincoln muni , ne
+40.22 100.58 mccook , ne
+42.05 101.05 mullen , ne
+41.98 97.43 norfolk , ne
+41.37 96.02 omaha , ne
+41.37 96.02 north omaha , ne
+41.13 100.68 north platte , ne
+42.47 98.68 o'neill , ne
+41.12 95.92 offutt afb , ne
+41.30 95.90 omaha/eppley , ne
+41.62 98.95 ord/sharp , ne
+41.87 103.60 scottsbluff , ne
+41.10 102.98 sidney muni , ne
+42.87 100.55 valentine , ne
+39.83 117.13 austin , nv
+39.50 117.08 austin , nv
+40.62 116.87 battle mtn , nv
+37.62 114.52 caliente , nv
+40.83 115.78 elko , nv
+39.28 114.85 ely/yelland , nv
+39.50 115.97 eureka , nv
+39.42 118.70 fallon nas , nv
+38.55 118.63 hawthorne , nv
+36.53 115.57 ind sprng rn , nv
+36.57 115.67 ind sprng rn , nv
+36.08 115.17 las vegas , nv
+40.10 118.92 lovelock , nv
+36.62 116.02 mercury , nv
+36.23 115.03 nellis afb , nv
+42.58 116.17 owyhee , nv
+39.50 119.78 reno , nv
+38.07 117.08 tonopah , nv
+41.33 116.25 wildhorse , nv
+40.90 117.80 winnemucca , nv
+37.58 116.08 yucca flat , nv
+44.58 71.18 berlin , nh
+43.20 71.50 concord , nh
+42.80 72.00 jaffrey , nh
+42.90 72.27 keene , nh
+43.57 71.43 laconia , nh
+43.63 72.30 lebanon , nh
+42.93 71.43 manchester , nh
+44.27 71.30 mt washingtn , nh
+42.78 71.52 nashua , nh
+43.08 70.82 pease afb , nh
+44.00 71.38 wolfeboro , nh
+39.45 74.57 atlantic cty , nj
+40.28 74.28 barnegat ls , nj
+40.87 74.28 fairfield , nj
+40.03 74.35 lakehurst , nj
+40.02 74.60 mcguire afb , nj
+39.37 75.07 millville , nj
+40.80 74.42 morristown , nj
+40.70 74.17 newark , nj
+40.70 74.17 newark intl , nj
+40.85 74.05 teterboro , nj
+40.28 74.82 trenton , nj
+35.05 106.60 albuquerque , nm
+34.38 103.32 cannon , nm
+32.33 104.27 carlsbad , nm
+36.45 103.15 clayton arpt , nm
+34.10 105.68 corona , nm
+36.02 106.95 cuba awrs , nm
+32.25 107.70 deming , nm
+36.75 108.23 farmington , nm
+35.52 108.78 gallup/clark , nm
+35.17 107.90 grants , nm
+32.68 103.20 hobbs , nm
+32.85 106.10 holloman afb , nm
+32.30 106.77 las cruces , nm
+35.65 105.15 las vegas , nm
+35.88 106.28 los alamos , nm
+34.98 106.05 moriarity , nm
+32.90 106.40 northrup str , nm
+36.74 104.50 raton , nm
+33.30 104.53 roswell , nm
+35.62 106.08 santa fe , nm
+32.63 108.17 silver city , nm
+34.07 106.90 socorro , nm
+36.42 105.57 taos , nm
+33.23 107.27 truth or con , nm
+35.18 103.60 tucumcari , nm
+32.63 106.40 white sands , nm
+42.75 73.80 albany , ny
+40.75 74.37 ambrose , ny
+42.22 75.98 binghamton , ny
+42.93 78.73 buffalo , ny
+42.97 78.20 dansville , ny
+42.17 76.90 elmira , ny
+40.73 73.43 farmingdale , ny
+44.05 75.73 fort drum , ny
+43.35 73.62 glens falls , ny
+43.23 75.40 griffiss afb , ny
+40.78 73.10 islip , ny
+42.48 76.47 ithaca , ny
+42.15 79.25 jamestown , ny
+44.93 74.85 massena , ny
+41.70 74.80 monticello , ny
+40.77 73.98 new york , ny
+40.65 73.78 new york/jfk , ny
+40.77 73.90 new york/lga , ny
+41.50 74.10 newburgh , ny
+43.10 78.95 niagara fall , ny
+44.68 75.40 ogdensburg , ny
+42.87 75.12 oneonta , ny
+44.65 73.47 plattsburgh , ny
+41.63 73.88 poughkeepsie , ny
+43.12 77.67 rochester , ny
+43.12 77.67 rochester , ny
+44.38 74.20 saranac lk , ny
+42.85 73.93 schenectady , ny
+43.12 76.12 syracuse , ny
+43.15 75.38 utica , ny
+44.00 76.02 watertown , ny
+40.85 72.63 westhampton , ny
+41.07 73.72 white plains , ny
+35.43 82.55 asheville , nc
+35.27 75.55 cape hattera , nc
+35.22 80.93 charlotte , nc
+34.90 76.88 cherry point , nc
+36.13 76.50 dare co gr , nc
+35.25 75.50 diamond sho , nc
+36.27 76.18 elizabeth , nc
+35.00 78.88 fayetteville , nc
+35.13 78.93 fort bragg , nc
+36.08 79.95 greensboro , nc
+35.75 81.38 hickory , nc
+35.90 82.82 hot springs , nc
+34.82 77.62 jacksonville , nc
+35.32 77.63 kinston , nc
+35.03 79.50 mackall aaf , nc
+35.92 75.68 manteo arpt , nc
+35.08 77.05 new bern , nc
+34.70 77.43 new river , nc
+35.17 79.02 pope afb , nc
+35.87 78.78 raleigh , nc
+35.87 78.78 raleigh-durh , nc
+35.85 77.88 rocky mt , nc
+35.33 77.97 seymour-john , nc
+35.24 79.39 southern pin , nc
+34.27 77.92 wilmington , nc
+36.13 80.23 winston-salem , nc
+46.77 100.75 bismarck , nd
+48.12 98.90 devil's lake , nd
+48.10 98.87 devil's lake , nd
+46.78 102.80 dickenson , nd
+46.90 96.80 fargo , nd
+47.95 97.18 grand forks , nd
+47.97 97.40 grand forks , nd
+46.92 98.68 jamestown , nd
+46.10 97.15 lidgerwood , nd
+48.42 101.35 minot afb , nd
+48.27 101.28 minot intl , nd
+47.75 101.83 roseglen , nd
+48.18 103.63 williston , nd
+39.21 82.23 athens/albany , oh
+40.92 81.43 canton , oh
+39.05 84.67 cincinnati , oh
+39.10 84.43 cincinnati , oh
+41.52 81.68 cleveland , oh
+41.57 81.48 cleveland , oh
+41.42 81.87 cleveland , oh
+40.00 82.88 columbus , oh
+40.08 83.07 columbus osu , oh
+39.90 84.20 dayton , oh
+41.02 83.67 findlay , oh
+40.82 82.52 mansfield , oh
+39.82 82.93 rickenbacker , oh
+41.60 83.80 toledo , oh
+41.63 81.40 willoughby , oh
+39.83 84.05 wright-pat afb , oh
+41.27 80.67 youngstown , oh
+39.95 81.90 zanesville , oh
+34.67 99.27 altus afb , ok
+34.30 97.02 ardmore , ok
+36.75 96.00 bartlesville , ok
+35.35 99.20 clinton , ok
+36.38 97.80 enid , ok
+34.65 98.40 fort sill , ok
+36.30 99.77 gage , ok
+35.00 99.05 hobart , ok
+34.57 98.42 lawton , ok
+34.88 95.78 mcalester , ok
+35.23 97.47 norman , ok
+35.40 97.60 oklahoma city , ok
+35.53 97.65 oklahoma cty , ok
+34.68 94.62 page , ok
+36.73 97.10 ponca city , ok
+36.16 97.09 stillwater , ok
+35.42 97.38 tinker afb , ok
+36.20 95.90 tulsa , ok
+36.33 97.92 vance afb , ok
+46.15 123.88 astoria , or
+45.25 122.75 aurora , or
+44.83 117.82 baker , or
+42.08 124.47 brookings , or
+43.60 118.95 burns arpt , or
+43.38 124.95 cape blanco , or
+45.68 121.88 cascade , or
+44.50 123.28 corvallis , or
+44.12 123.22 eugene , or
+45.53 122.95 hillsboro , or
+42.15 121.73 klamath fall , or
+45.28 118.00 la grande , or
+42.18 120.35 lake view , or
+45.50 118.40 meacham , or
+42.37 122.87 medford , or
+44.63 124.05 newport , or
+43.42 124.25 north bend , or
+44.02 117.02 ontario , or
+45.68 118.85 pendleton , or
+45.60 122.60 portland , or
+44.27 121.15 redmond , or
+43.23 123.37 roseburg , or
+44.92 123.00 salem , or
+42.62 123.37 sexton , or
+45.62 121.15 the dalles , or
+45.55 122.40 troutdale , or
+40.65 75.43 allentown , pa
+40.30 78.32 altoona , pa
+40.75 80.33 beaver falls , pa
+40.27 79.09 blairsville , pa
+41.80 78.63 bradford , pa
+41.18 78.90 dubois , pa
+42.08 80.18 erie , pa
+41.38 79.87 franklin , pa
+40.22 76.85 harrisburg , pa
+40.37 77.42 harrisburg , pa
+40.32 78.83 johnstown , pa
+40.13 76.30 lancaster , pa
+40.28 79.40 latrobe , pa
+40.20 76.77 middletown , pa
+40.43 76.57 muir , pa
+40.08 75.02 nth philadel , pa
+39.88 75.25 philadelphia , pa
+41.47 78.13 philipsburg , pa
+40.35 79.93 pittsburgh , pa
+40.50 80.22 pittsburgh , pa
+40.38 75.97 reading , pa
+39.73 77.43 site r , pa
+40.85 77.83 state colleg , pa
+41.33 75.73 wilkes-barre , pa
+41.25 76.92 williamsport , pa
+40.20 75.15 willow grove , pa
+41.17 71.58 block island , ri
+41.60 71.42 nth kingston , ri
+41.73 71.43 providence , ri
+41.36 71.25 quonset pt nas , ri
+34.50 82.72 anderson , sc
+32.48 80.72 beaufort mca , sc
+32.90 80.03 charleston , sc
+33.95 81.12 columbia , sc
+34.18 79.72 florence , sc
+34.85 82.35 greenville , sc
+34.90 82.22 greenville , sc
+33.92 80.80 mcentire , sc
+33.68 78.93 myrtle beach , sc
+33.82 78.72 nth myrtle b , sc
+33.97 80.47 shaw afb , sc
+34.92 81.96 spartanburg , sc
+45.45 98.43 aberdeen , sd
+44.30 96.80 brookings , sd
+43.80 99.32 chamberlain , sd
+43.75 99.32 chamberlain , sd
+43.77 103.60 custer , sd
+44.15 103.10 ellsworth af , sd
+44.38 98.22 huron , sd
+45.93 102.17 lemmon , sd
+43.77 98.03 mitchell , sd
+45.53 100.43 mobridge , sd
+44.05 101.60 philip , sd
+44.05 101.60 philip , sd
+44.38 100.28 pierre , sd
+44.05 103.07 rapid city , sd
+45.16 103.32 redig , sd
+43.58 96.73 sioux falls , sd
+44.92 97.15 watertown , sd
+42.92 97.38 yankton , sd
+36.48 82.40 bristol , tn
+35.03 85.20 chattanooga , tn
+36.62 87.42 clarksville , tn
+35.95 85.08 crossville , tn
+36.02 89.40 dyersburg , tn
+35.60 88.92 jackson , tn
+35.82 83.98 knoxville , tn
+35.05 90.00 memphis , tn
+35.05 90.00 memphis intl , tn
+35.35 89.87 memphis nas , tn
+35.15 85.51 monteagle , tn
+36.12 86.68 nashville , tn
+36.00 86.50 smyrna , tn
+32.42 99.68 abilene , tx
+27.73 98.03 alice , tx
+35.23 101.70 amarillo , tx
+30.30 97.70 austin , tx
+30.20 97.68 bergstrom af , tx
+32.39 101.48 big sky , tx
+32.30 101.45 big spring , tx
+25.90 97.43 brownsville , tx
+31.79 98.96 brownwood , tx
+32.78 97.43 carswell afb , tx
+28.37 97.67 chase nas , tx
+34.43 100.28 childress , tx
+30.58 96.37 college stn , tx
+27.77 97.50 corpus christi , tx
+27.70 97.28 corpus chrst , tx
+28.45 99.22 cotulla , tx
+30.07 95.55 d.w. hooks , tx
+36.02 102.55 dalhart , tx
+32.73 96.97 dallas , tx
+32.73 96.97 dallas nas , tx
+32.97 96.83 dallas/addis , tx
+32.90 97.03 dallas/fw , tx
+32.85 96.85 dallas/love , tx
+32.68 96.87 dallas/redbr , tx
+29.37 100.92 del rio , tx
+32.43 99.85 dyess afb , tx
+31.80 106.40 el paso , tx
+29.62 95.17 ellington af , tx
+32.82 97.35 fort worth , tx
+31.15 97.72 ft hood aaf , tx
+29.27 94.87 galveston , tx
+31.07 97.83 gray afb , tx
+33.07 96.07 greenville , tx
+31.83 104.80 guadalupe ps , tx
+26.23 97.67 harlingen , tx
+29.35 99.17 hondo , tx
+29.97 95.35 houston , tx
+29.65 95.28 houston/hobby , tx
+30.50 99.77 junction , tx
+29.38 98.58 kelly afb , tx
+29.98 99.08 kerrville , tx
+31.08 97.68 killeen , tx
+27.50 97.82 kingsville , tx
+27.53 99.47 laredo , tx
+27.53 99.47 laredo intl , tx
+29.37 100.78 laughlin afb , tx
+32.38 94.72 longview , tx
+33.65 101.82 lubbock , tx
+31.23 94.75 lufkin , tx
+30.37 104.02 marfa , tx
+26.18 98.23 mcallen , tx
+31.95 102.18 midland , tx
+32.78 98.07 mineral wlls , tx
+28.72 96.25 palacios , tx
+33.63 95.45 paris/cox , tx
+34.17 101.71 plainview , tx
+30.58 94.02 port arthur , tx
+29.53 98.28 randolph afb , tx
+33.60 102.05 reese afb , tx
+28.08 97.03 rockport , tx
+31.37 100.50 san angelo , tx
+29.53 98.47 san antonio , tx
+29.33 98.47 san antonio , tx
+30.17 102.42 sanderson , tx
+33.72 96.67 sherman-deni , tx
+28.03 95.87 south brazos , tx
+32.22 98.18 stephenville , tx
+31.15 97.42 temple , tx
+32.37 95.40 tyler/pounds , tx
+28.85 96.92 victoria , tx
+31.62 97.22 waco , tx
+31.62 97.22 waco-madison , tx
+33.98 98.50 wichita flls , tx
+31.78 103.20 wink , tx
+38.03 109.78 blanding , ut
+37.50 110.70 bullfrog mar , ut
+37.70 113.10 cedar city , ut
+39.33 112.58 delta , ut
+40.20 112.93 dugway prvgr , ut
+41.05 113.07 eagle range , ut
+39.00 110.15 green river , ut
+38.37 110.72 hanksville , ut
+41.12 111.97 hill afb , ut
+41.78 111.85 logan , ut
+38.72 113.03 milford , ut
+38.77 109.75 moab , ut
+41.18 112.02 ogden , ut
+39.62 110.75 price/carbon , ut
+40.22 111.72 provo , ut
+40.50 110.63 roosevelt , ut
+37.08 113.60 saint george , ut
+40.78 111.97 salt lake city , ut
+40.17 112.20 tooele , ut
+40.45 109.52 vernal , ut
+41.22 114.05 wendover , ut
+44.47 73.15 burlington , vt
+44.20 72.57 montpelier , vt
+45.55 72.33 newport , vt
+43.53 73.95 rutland , vt
+44.42 72.02 st johnsbury , vt
+42.88 72.88 wilmington , vt
+38.13 78.45 charlottesvi , va
+37.50 76.20 chesapeake , va
+36.57 79.33 danville , va
+38.72 77.18 fort belvoir , va
+37.13 76.62 fort eustis , va
+37.95 79.82 hot springs , va
+37.08 76.37 langley afb , va
+37.33 79.20 lynchburg , va
+37.13 76.50 newport news , va
+36.93 76.28 norfolk , va
+36.93 76.28 norfolk nas , va
+36.90 76.20 norfolk rgnl , va
+36.82 76.03 oceana nas , va
+38.50 77.30 quantico mca , va
+37.50 77.33 richmond , va
+37.32 79.97 roanoke muni , va
+38.27 78.85 staunton , va
+36.95 78.98 volens , va
+37.85 75.48 wallops sta , va
+48.80 122.53 bellingham , wa
+47.48 122.77 bremerton , wa
+48.50 122.33 burlington , wa
+48.88 118.47 colville , wa
+47.32 119.52 ephrata , wa
+47.92 122.28 everet/paine , wa
+47.62 117.65 fairchild , wa
+47.08 122.58 fort lewis , wa
+46.57 119.60 hanford , wa
+46.97 123.97 hoquiam , wa
+47.15 122.48 mcchord afb , wa
+47.20 119.32 moses lake , wa
+48.25 122.68 oak harbor , wa
+46.97 122.90 olympia , wa
+48.42 119.53 omak , wa
+46.27 119.12 pasco , wa
+48.12 123.50 port angeles , wa
+48.22 123.67 port angeles , wa
+46.75 117.12 pullman , wa
+47.95 124.55 quillayute , wa
+47.50 122.22 renton , wa
+47.45 122.30 seattle , wa
+47.53 122.30 seattle/boeing , wa
+47.25 123.15 shelton , wa
+47.63 117.53 spokane , wa
+47.67 117.33 spokane , wa
+47.28 121.33 stampede pas , wa
+47.27 122.58 tacoma , wa
+46.48 122.80 toledo , wa
+46.10 118.28 walla walla , wa
+47.40 120.20 wenatchee , wa
+48.35 122.65 whidbey is , wa
+46.57 120.53 yakima , wa
+37.78 81.12 beckley , wv
+37.30 81.22 bluefield , wv
+38.37 81.60 charleston , wv
+39.28 80.23 clarksburg , wv
+38.88 79.85 elkins , wv
+38.37 82.55 huntington , wv
+37.87 80.40 lewisburg , wv
+39.40 77.98 martinsburg , wv
+39.65 79.92 morgantown , wv
+39.35 81.43 parkersburg , wv
+40.18 80.65 wheeling , wv
+37.46 80.20 white sulph , wv
+44.25 88.52 appleton , wi
+44.87 91.48 eau claire , wi
+44.48 88.13 green bay , wi
+42.62 89.03 janesville , wi
+43.87 91.25 la crosse , wi
+43.20 90.18 lone rock , wi
+43.13 89.33 madison , wi
+44.13 87.67 manitowac , wi
+42.95 87.90 milwaukee , wi
+43.12 88.05 milwaukee , wi
+44.78 89.67 mosinee , wi
+44.22 88.53 neenah , wi
+44.00 88.57 oshkosh , wi
+45.63 89.45 rhinelander , wi
+45.48 91.72 rice lake , wi
+43.93 90.27 volk fld , wi
+44.92 89.62 wausau , wi
+42.57 110.10 big piney , wy
+42.92 106.47 casper , wy
+41.15 104.82 cheyenne , wy
+44.52 109.02 cody , wy
+42.75 105.38 douglas , wy
+41.33 111.00 evanston , wy
+44.35 105.53 gillette , wy
+43.60 110.73 jackson , wy
+42.82 108.73 lander , wy
+41.32 105.68 laramie , wy
+44.35 104.81 moorcroft , wy
+41.80 107.20 rawlins , wy
+43.05 108.45 riverton , wy
+41.60 109.07 rock springs , wy
+44.77 106.97 sheridan , wy
+43.97 107.97 worland , wy
+44.55 110.42 yellowstone , wy
