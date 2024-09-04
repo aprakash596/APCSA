@@ -1,0 +1,275 @@
+1 new york , ny 8391881
+2 los angeles , ca 3831868
+3 chicago , il 2851268
+4 houston , tx 2257926
+5 phoenix , az 1593659
+6 philadelphia , pa 1547297
+7 san antonio , tx 1373668
+8 san diego , ca 1306300
+9 dallas , tx 1299542
+10 san jose , ca 964695
+11 detroit , mi 910921
+12 san francisco , ca 815358
+13 jacksonville , fl 813518
+14 indianapolis , in 807584
+15 austin , tx 786386
+16 columbus , oh 769332
+17 fort worth , tx 727577
+18 charlotte , nc 709441
+19 memphis , tn 676640
+20 boston , ma 645169
+21 baltimore , md 637418
+22 el paso , tx 620456
+23 seattle , wa 616627
+24 denver , co 610345
+25 nashville , tn 605473
+26 milwaukee , wi 605013
+28 las vegas , nv 567641
+29 louisville , ky 566503
+30 portland , or 566143
+31 oklahoma city , ok 560333
+32 tucson , az 543910
+33 atlanta , ga 540922
+34 albuquerque , nm 529219
+35 kansas city , mo 482299
+36 fresno , ca 479918
+37 mesa , az 467157
+38 sacramento , ca 466676
+39 long beach , ca 462604
+40 omaha , ne 454731
+41 virginia beach , va 433575
+42 miami , fl 433136
+43 cleveland , oh 431369
+44 oakland , ca 409189
+45 raleigh , nc 405612
+46 colorado springs , co 399827
+47 tulsa , ok 389625
+48 minneapolis , mn 385378
+49 arlington , tx 380085
+50 honolulu , hi 374658
+51 wichita , ks 372186
+52 st louis , mo 356587
+53 new orleans , la 354850
+54 tampa , fl 343890
+55 santa ana , ca 340338
+56 anaheim , ca 337896
+57 cincinnati , oh 333012
+58 bakersfield , ca 324463
+59 aurora , co 323348
+60 toledo , oh 316179
+61 pittsburgh , pa 311647
+62 riverside , ca 297841
+63 lexington , ky 296545
+64 stockton , ca 287578
+65 corpus christi , tx 287439
+66 anchorage , ak 286174
+67 saint paul , mn 281253
+68 newark , nj 278154
+69 plano , tx 273613
+70 buffalo , ny 270240
+71 henderson , nv 256445
+72 fort wayne , in 255890
+73 greensboro , nc 255124
+74 lincoln , ne 254001
+75 glendale , az 253209
+76 chandler , az 249535
+77 st petersburg , fl 244324
+78 jersey city , nj 242503
+79 scottsdale , az 237844
+80 orlando , fl 235860
+81 madison , wi 235419
+82 norfolk , va 233333
+83 birmingham , al 230131
+84 winston-salem , nc 229828
+85 durham , nc 229171
+86 laredo , tx 226124
+87 lubbock , tx 225859
+88 baton rouge , la 225388
+89 las vegas , nv 224387
+90 chula vista , ca 223739
+91 chesapeake , va 222455
+92 gilbert , az 222075
+93 garland , tx 222013
+94 reno , nv 219636
+95 hialeah , fl 218896
+96 arlington , va 217483
+97 irvine , ca 209716
+98 rochester , ny 207294
+99 akron , oh 207209
+100 boise , id 205707
+101 irving , tx 205541
+102 fremont , ca 205517
+103 richmond , va 204451
+104 spokane , wa 203268
+105 modesto , ca 202743
+106 montgomery , al 202124
+107 yonkers , ny 201066
+108 des moines , ia 200538
+109 tacoma , wa 199638
+110 shreveport , la 199244
+111 san bernardino , ca 198411
+112 fayetteville , nc 198071
+113 glendale , ca 196882
+114 augusta , ga 194343
+115 grand rapids , mi 193710
+116 huntington beach , ca 193366
+117 mobile , al 193205
+118 newport news , va 193172
+119 little rock , ar 191933
+120 moreno valley , ca 191754
+121 columbus , ga 190414
+122 amarillo , tx 189392
+123 fontana , ca 188013
+124 oxnard , ca 187535
+125 knoxville , tn 185100
+126 fort lauderdale , fl 184892
+127 salt lake city , ut 183102
+128 worcester , ma 182882
+129 huntsville , al 179652
+130 tempe , az 178519
+131 brownsville , tx 176859
+132 jackson , ms 175021
+133 overland park , ks 174907
+134 aurora , il 172950
+135 oceanside , ca 172901
+136 tallahassee , fl 172574
+137 providence , ri 171909
+138 rancho cucamonga , ca 171809
+139 ontario , ca 171603
+140 chattanooga , tn 171350
+141 santa clarita , ca 169174
+142 garden grove , ca 166332
+143 vancouver , wa 165742
+144 grand prairie , tx 163351
+145 peoria , az 163226
+146 sioux falls , sd 158008
+147 springfield , mo 157630
+148 santa rosa , ca 157468
+149 rockford , il 157280
+150 springfield , ma 155580
+151 salem , or 155469
+152 port st lucie , fl 154410
+153 cape coral , fl 154202
+154 dayton , oh 153843
+155 eugene , or 153272
+156 pomona , ca 152367
+157 corona , ca 151027
+158 alexandria , va 150006
+159 joliet , il 147648
+160 pembroke pines , fl 146600
+161 paterson , nj 145835
+162 pasadena , tx 145789
+163 lancaster , ca 145776
+164 hayward , ca 144291
+165 salinas , ca 144278
+166 hampton , va 144236
+167 palmdale , ca 143985
+168 pasadena , ca 143667
+169 naperville , il 143661
+170 kansas city , ks 143209
+171 hollywood , fl 142622
+172 lakewood , co 141937
+173 torrance , ca 140317
+174 escondido , ca 140170
+175 fort collins , co 138733
+176 syracuse , ny 138560
+177 bridgeport , ct 137298
+178 orange , ca 136990
+179 cary , nc 136637
+180 elk grove , ca 135285
+181 savannah , ga 134699
+182 sunnyvale , ca 133963
+183 warren , mi 133873
+184 mesquite , tx 133509
+185 fullerton , ca 132620
+186 mcallen , tx 132225
+187 columbia , sc 129333
+188 carrollton , tx 129209
+189 cedar rapids , ia 127764
+190 mckinney , tx 127672
+191 sterling heights , mi 127176
+192 bellevue , wa 126626
+193 coral springs , fl 126518
+194 waco , tx 126222
+195 elizabeth , nj 125285
+196 west valley city , ut 125096
+197 clarksville , tn 124565
+198 topeka , ks 124331
+199 hartford , ct 124060
+200 thousand oaks , ca 123520
+201 new haven , ct 123330
+202 denton , tx 122830
+203 concord , ca 126752
+204 visalia , ca 122111
+205 olathe , ks 121962
+206 el monte , ca 121447
+207 independence , mo 121180
+208 stamford , ct 121026
+209 simi valley , ca 120921
+210 provo , ut 119775
+211 killeen , tx 119512
+212 springfield , il 118033
+213 thornton , co 117628
+214 abilene , tx 117180
+215 gainesville , fl 116616
+216 evansville , in 116584
+217 roseville , ca 115677
+218 charleston , sc 115638
+219 peoria , il 115520
+220 athens , ga 114983
+221 lafayette , la 114915
+222 vallejo , ca 114622
+223 lansing , mi 113802
+224 ann arbor , mi 112920
+225 inglewood , ca 112241
+226 santa clara , ca 111997
+227 flint , mi 111475
+228 victorville , ca 110921
+229 costa mesa , ca 110419
+230 beaumont , tx 110110
+231 miami gardens , fl 109332
+232 manchester , nh 109279
+233 westminster , co 109180
+234 miramar , fl 109176
+235 norman , ok 109062
+236 cambridge , ma 108771
+237 midland , tx 108668
+238 arvada , co 108208
+239 allentown , pa 107815
+240 elgin , il 107519
+241 waterbury , ct 107143
+242 downey , ca 107117
+243 clearwater , fl 106081
+244 billings , mt 105845
+245 west covina , ca 105464
+246 round rock , tx 105424
+247 murfreesboro , tn 105209
+248 lewisville , tx 105170
+249 west jordan , ut 104968
+250 pueblo , co 104877
+251 ventura , ca 104423
+252 lowell , ma 104390
+253 south bend , in 104215
+254 fairfield , ca 103586
+255 erie , pa 103571
+256 rochester , mn 103486
+257 high point , nc 103368
+258 richardson , tx 103201
+259 richmond , ca 103165
+260 burbank , ca 103121
+261 berkeley , ca 102804
+262 pompano beach , fl 102609
+263 norwalk , ca 102508
+264 frisco , tx 102413
+265 columbia , mo 102324
+266 gresham , or 102295
+267 daly city , ca 102165
+268 green bay , wi 101412
+269 wilmington , nc 101350
+270 davenport , ia 101335
+271 wichita falls , tx 101314
+272 antioch , ca 101181
+273 palm bay , fl 100999
+274 odessa , tx 100810
+275 centennial , co 100557
+276 boulder , co 100160
