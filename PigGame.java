@@ -46,16 +46,67 @@ public class PigGame {
 		int yourTotal = 0;
 		Dice dc = new Dice();
 		int computerTotal = 0;
-		
-		while(! gameOver)
-		{
-			System.out.println("**** USER Turn ****\n");
-			yourTotal = turn(yourTotal, dc);
-			
-			System.out.println("**** COMPUTER Turn ****\n");
-			computerTotal = computerTurn(computerTotal, dc);
 
-			gameOver = true;
+		char playOrStat = Prompt.getChar("Play game or statistics (p or s)");
+		
+		if(playOrStat == 'p')
+		{
+			while(! gameOver)
+			{
+				System.out.println("**** USER Turn ****\n");
+				yourTotal = turn(yourTotal, dc);
+				
+				System.out.println("**** COMPUTER Turn ****\n");
+				computerTotal = computerTurn(computerTotal, dc);
+				
+				if(yourTotal >= 100)
+				{
+					System.out.println("Your total score: " + yourTotal + "\n");
+					System.out.println("Congratulations!!! YOU WON!!\n");
+					System.out.println("Thanks for playing the Pig Game!!!");
+				}
+
+				gameOver = true;
+			}
+		}
+		else if (playOrStat == 's');
+		{
+			int turnCount = Prompt.getInt("Number of turns", 1000, 1000000);
+			int count0 = 0;
+			int count20 = 0;
+			int count21 = 0;
+			int count22 = 0;
+			int count23 = 0;
+			int count24 = 0;
+			int count25 = 0;
+			for(int i = 0; i < turnCount; i++)
+			{
+				int oneTurnCount = computerStats(dc);
+				if(oneTurnCount == 0)
+					count0++;
+				if(oneTurnCount == 20)
+					count20++;
+				if(oneTurnCount == 21)
+					count21++;
+				if(oneTurnCount == 22)
+					count22++;
+				if(oneTurnCount == 23)
+					count23++;
+				if(oneTurnCount == 24)
+					count24++;
+				if(oneTurnCount == 25)
+					count25++;
+			}
+			System.out.println("\tEstimated");
+			System.out.println("Score\tProbability");
+			System.out.printf(" 0\t%.5f\n", (count0/turnCount));
+			System.out.printf("20\t%.5f\n", (count20/turnCount));
+			System.out.printf("21\t%.5f\n", (count21/turnCount));
+			System.out.printf("22\t%.5f\n", (count22/turnCount));
+			System.out.printf("23\t%.5f\n", (count23/turnCount));
+			System.out.printf("24\t%.5f\n", (count24/turnCount));
+			System.out.printf("25\t%.5f\n", (count25/turnCount));
+			
 		}
 	}
 	private int turn(int totalScore, Dice dc)
@@ -126,7 +177,7 @@ public class PigGame {
 					hold = true;
 				}
 			}
-			else if(compTurnScore >= 20)
+			else if(compTurnScore >= 20 || (compTurnScore + compTotal) >= 100)
 			{
 				System.out.println("Computer will HOLD");
 				compTotal += compTurnScore;
@@ -135,5 +186,30 @@ public class PigGame {
 			System.out.printf("Computer's total score:%2d%s", compTotal, "\n");
 		}
 		return compTotal;
+	}
+	public int computerStats(Dice dc)
+	{
+		int compTurnScore = 0;
+		
+		boolean hold = false;
+		
+		while(! hold)
+		{
+			if(compTurnScore < 20)
+			{
+				int rollValue = dc.roll();
+
+				if(rollValue != 1)
+					compTurnScore += dc.getValue();
+				else
+				{
+					compTurnScore = 0;
+					hold = true;
+				}
+			}
+			else if(compTurnScore >= 20)
+				hold = true;
+		}
+		return compTurnScore;
 	}
 }
