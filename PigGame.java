@@ -9,8 +9,12 @@
  *	@author Aarav Prakash	
  *	@since 	September 13, 2024
  */
-public class PigGame {
-	
+public class PigGame 
+{
+	/**
+	 *  The main method is used to call the methods to print the introduction
+	 * 	and run the rest of the program.
+	 */
 	public static void main(String[]args)
 	{
 		PigGame pg = new PigGame();
@@ -39,7 +43,10 @@ public class PigGame {
 							+ "turn goes to other player");
 		System.out.println("\n");
 	}
-	
+	/**
+	 * 	Sets up the PigGame and checks if user will play or look at 
+	 * 	statistics.
+	 */
 	private void runner()
 	{
 		boolean gameOver = false;
@@ -53,10 +60,10 @@ public class PigGame {
 		{
 			while(! gameOver)
 			{
-				System.out.println("**** USER Turn ****\n");
+				//System.out.println("**** USER Turn ****\n");
 				yourTotal = turn(yourTotal, dc);
 				
-				System.out.println("**** COMPUTER Turn ****\n");
+				//System.out.println("**** COMPUTER Turn ****\n");
 				computerTotal = computerTurn(computerTotal, dc);
 				
 				if(yourTotal >= 100)
@@ -71,14 +78,20 @@ public class PigGame {
 		}
 		else if (playOrStat == 's');
 		{
+			System.out.println("\nRun statistical analysis - \"Hold at 20\"\n");
+			
 			int turnCount = Prompt.getInt("Number of turns", 1000, 1000000);
-			int count0 = 0;
-			int count20 = 0;
-			int count21 = 0;
-			int count22 = 0;
-			int count23 = 0;
-			int count24 = 0;
-			int count25 = 0;
+			
+			
+			double count0 = 0;
+			double count20 = 0;
+			double count21 = 0;
+			double count22 = 0;
+			double count23 = 0;
+			double count24 = 0;
+			double count25 = 0;
+			
+			
 			for(int i = 0; i < turnCount; i++)
 			{
 				int oneTurnCount = computerStats(dc);
@@ -97,25 +110,30 @@ public class PigGame {
 				if(oneTurnCount == 25)
 					count25++;
 			}
-			System.out.println("\tEstimated");
-			System.out.println("Score\tProbability");
-			System.out.printf(" 0\t%.5f\n", (count0/turnCount));
-			System.out.printf("20\t%.5f\n", (count20/turnCount));
-			System.out.printf("21\t%.5f\n", (count21/turnCount));
-			System.out.printf("22\t%.5f\n", (count22/turnCount));
-			System.out.printf("23\t%.5f\n", (count23/turnCount));
-			System.out.printf("24\t%.5f\n", (count24/turnCount));
-			System.out.printf("25\t%.5f\n", (count25/turnCount));
-			
+			System.out.println("\nScore\tEstimated Probability");
+			System.out.printf("0 \t%.5f\n", (count0/((double)turnCount)));
+			System.out.printf("20\t%.5f\n", (count20/((double)turnCount)));
+			System.out.printf("21\t%.5f\n", (count21/((double)turnCount)));
+			System.out.printf("22\t%.5f\n", (count22/((double)turnCount)));
+			System.out.printf("23\t%.5f\n", (count23/((double)turnCount)));
+			System.out.printf("24\t%.5f\n", (count24/((double)turnCount)));
+			System.out.printf("25\t%.5f\n\n", (count25/((double)turnCount)));
 		}
 	}
+	/**
+	 * 	Does one turn for the user, which means that it runs until the 
+	 * 	user holds or rolls a 1.
+	 * 	@param  totalScore		total score of the player before the turn
+	 * 	@param 	dc				holds an instance of the Dice class
+	 * 	@return					returns new total score of the user after a turn
+	 */
 	private int turn(int totalScore, Dice dc)
 	{
 		boolean hold = false;
 		int turnScore = 0;
 
-		System.out.printf("Your turn score:%6d%s", turnScore, "\n");
-		System.out.printf("Your total score:%5d%s", totalScore, "\n");
+		System.out.printf("Your turn score:   %d%s", turnScore, "\n");
+		System.out.printf("Your total score:  %d%s", totalScore, "\n");
 
 		while(! hold)
 		{
@@ -130,7 +148,7 @@ public class PigGame {
 				if(rollValue != 1)
 				{
 					turnScore += dc.getValue();
-					System.out.printf("\nYour turn score:%6d%s", turnScore, "\n");
+					System.out.printf("\nYour turn score:  %d%s", turnScore, "\n");
 				}
 				else
 				{
@@ -144,16 +162,23 @@ public class PigGame {
 				totalScore += turnScore;
 				hold = true;
 			}
-			System.out.printf("Your total score:%5d%s", totalScore, "\n");
+			System.out.printf("Your total score:  %d%s", totalScore, "\n");
 		}
 		return totalScore;
 	}
+	/**
+	 * 	Runs a turn for the computer, in which the computer holds when
+	 * 	their turn score reaches 20 or their total score reaches 100
+	 * 	@param compTotal		the computer's total score before the turn
+	 * 	@param dc				holds an instance of the Dice class
+	 * 	@return 				the computer's total score after the turn
+	 */
 	private int computerTurn(int compTotal, Dice dc)
 	{
 		int compTurnScore = 0;
 
-		System.out.printf("Computer's turn score:%3d%s", compTurnScore, "\n");
-		System.out.printf("Computer's total score:%2d%s", compTotal, "\n");
+		System.out.printf("Computer's turn score:   %d%s", compTurnScore, "\n");
+		System.out.printf("Computer's total score:  %d%s", compTotal, "\n");
 		
 		boolean hold = false;
 		while(! hold)
@@ -187,6 +212,13 @@ public class PigGame {
 		}
 		return compTotal;
 	}
+	/**
+	 * 	Runs a turn in calculating the statistics for the user. It is similar
+	 * 	to the method computerTurn(int compTotal, Dice dc) but it does
+	 * 	not print anything and returns the turn score instead of the total.
+	 * 	@param dc				holds an instance of the Dice class
+	 * 	@return 				the computer's turn score
+	 */
 	public int computerStats(Dice dc)
 	{
 		int compTurnScore = 0;
