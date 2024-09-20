@@ -45,7 +45,7 @@ public class PigGame
 	}
 	/**
 	 * 	Sets up the PigGame and checks if user will play or look at 
-	 * 	statistics.
+	 * 	statistics. Also calculates the probablities in statistics.
 	 */
 	private void runner()
 	{
@@ -55,28 +55,32 @@ public class PigGame
 		int computerTotal = 0;
 
 		char playOrStat = Prompt.getChar("Play game or statistics (p or s)");
+		System.out.println("");
 		
 		if(playOrStat == 'p')
 		{
 			while(! gameOver)
 			{
-				//System.out.println("**** USER Turn ****\n");
 				yourTotal = turn(yourTotal, dc);
 				
-				//System.out.println("**** COMPUTER Turn ****\n");
-				computerTotal = computerTurn(computerTotal, dc);
+				if(yourTotal < 100)
+					computerTotal = computerTurn(computerTotal, dc);
 				
 				if(yourTotal >= 100)
 				{
 					System.out.println("Your total score: " + yourTotal + "\n");
 					System.out.println("Congratulations!!! YOU WON!!\n");
-					System.out.println("Thanks for playing the Pig Game!!!");
+					gameOver = true;
 				}
-
-				gameOver = true;
+				else if(computerTotal >= 100)
+				{
+					System.out.println("Too bad. COMPUTER WON.\n");
+					gameOver = true;
+				}
 			}
+			System.out.println("Thanks for playing the Pig Game!!!\n");
 		}
-		else if (playOrStat == 's');
+		else if (playOrStat == 's')
 		{
 			System.out.println("\nRun statistical analysis - \"Hold at 20\"\n");
 			
@@ -152,17 +156,17 @@ public class PigGame
 				}
 				else
 				{
-					System.out.println("You LOSE your turn");
+					System.out.println("\nYou LOSE your turn");
 					hold = true;
 				}
 			}
 			else if(move == 'h')
 			{
-				System.out.println("You HOLD");
+				System.out.println("\nYou HOLD");
 				totalScore += turnScore;
 				hold = true;
 			}
-			System.out.printf("Your total score:  %d%s", totalScore, "\n");
+			System.out.printf("Your total score:  %d%s", totalScore, "\n\n");
 		}
 		return totalScore;
 	}
@@ -177,13 +181,14 @@ public class PigGame
 	{
 		int compTurnScore = 0;
 
-		System.out.printf("Computer's turn score:   %d%s", compTurnScore, "\n");
-		System.out.printf("Computer's total score:  %d%s", compTotal, "\n");
+		System.out.printf("Computer's turn score:  %d%s", compTurnScore, "\n");
+		System.out.printf("Computer's total score: %d%s", compTotal, "\n");
 		
 		boolean hold = false;
 		while(! hold)
 		{
 			String move = Prompt.getString("Press enter for computer turn");
+			System.out.println("");
 
 			if(compTurnScore < 20)
 			{
@@ -194,7 +199,7 @@ public class PigGame
 				if(rollValue != 1)
 				{
 					compTurnScore += dc.getValue();
-					System.out.printf("\nComputer's turn score:%3d%s", compTurnScore, "\n");
+					System.out.printf("\nComputer's turn score:  %d%s", compTurnScore, "\n");
 				}
 				else
 				{
@@ -208,7 +213,7 @@ public class PigGame
 				compTotal += compTurnScore;
 				hold = true;
 			}
-			System.out.printf("Computer's total score:%2d%s", compTotal, "\n");
+			System.out.printf("Computer's total score: %d%s", compTotal, "\n\n");
 		}
 		return compTotal;
 	}
@@ -245,3 +250,29 @@ public class PigGame
 		return compTurnScore;
 	}
 }
+/*
+Computer turn score:  16
+Computer total score: 0
+Press enter for computer turn ->
+
+Computer will ROLL
+  _______
+ |       |
+ | O   O |
+ |   O   |
+ | O   O |
+ |_______|
+
+
+Computer turn score:  21
+Computer total score: 0
+Press enter for computer turn ->
+
+Computer will HOLD
+Computer total score: 21
+
+Your turn score:  0
+Your total score: 37
+(r)oll or (h)old -> r
+*/
+
