@@ -31,12 +31,13 @@ public class MVCipher {
 		
 		boolean allAlphabet = false;
 		boolean lengthThree = false;
+		String key = "";
 		while(! allAlphabet && ! lengthThree)
 		{
 			allAlphabet = true;
 			lengthThree = true;
 			
-			String key = Prompt.getString("Please input a word to use as key (letters only)");
+			key = Prompt.getString("Please input a word to use as key (letters only)");
 			key = key.toUpperCase();
 			
 			for(int i = 0; i < key.length(); i++)
@@ -49,9 +50,7 @@ public class MVCipher {
 		}
 		
 		System.out.println("");
-		/* Prompt for encrypt or decrypt */
-		
-		int encryptOrDecrypt = Prompt.getInt("Encrypt or decrypt (1,2)",1,2);
+		int encryptOrDecrypt = Prompt.getInt("Encrypt or decrypts",1,2);
 		System.out.println("");
 
 		String inputFileName = "";
@@ -63,31 +62,62 @@ public class MVCipher {
 		String outputFileName = Prompt.getString("Name of output file");
 		
 		Scanner inputFile = FileUtils.openToRead(inputFileName);
-		Printwriter outputFile = FileUtils.openToWrite(outputFileName);
+		PrintWriter outputFile = FileUtils.openToWrite(outputFileName);
 		
-		String[]inputLines = reader(inputFile);
-		
-		
-		
-		
-		/* Don't forget to close your output file */
-	}
-	
-	public String[] reader(Scanner inputFile)
-	{
-		String[]inputLines = new String[1];
-		boolean firstRead = false;
 		while(inputFile.hasNextLine())
 		{
-			if(! firstRead)
-				inputLines[0] = inputFile.nextLine();
-			else
-			{
-				String[]placeholder = inputLines;
-				inputLines = new String[placeHolder.length()+1];
-				for(int i = 0; i < inputLines.length
-			}
+			String line = inputFile.nextLine();
+			String encryptedLine = encrypter(line, key);
 		}
 	}
-	
+
+	public String encrypter(String line, String key)
+	{
+		int keyIndex = 0;
+		for(int i = 0; i < line.length(); i++)
+		{
+			if(keyIndex == key.length())
+				keyIndex = 0;
+			
+			String keyValue = "" + key.charAt(keyIndex);
+
+			String encryptedLetter = "";
+
+			if((int)line.charAt(i) >= 65 || (int)line.charAt(i) <= 90)
+				encryptedLetter = upperEncrypt(line.charAt(i), keyValue);
+			else if((int)line.charAt(i) >= 97 || (int)line.charAt(i) <= 122)
+				encryptedLetter = lowerEncrypt(line.charAt(i), keyValue);
+			else
+			{
+				encryptedLetter = "" + line.charAt(i);
+				keyIndex--;
+			}
+			keyIndex++;
+		}
+	}
+
+	public String upperEncrypt(char letter, String keyValue)
+	{
+		int shiftValue = ((int) keyValue.charAt(0)) - ((int) 'A') + 1;
+		for(int i = 1; i <= shiftValue; i++)
+		{
+			if((int)letter + 1 == 90)
+				letter = 'A';
+			else
+				letter = (char) ((int) letter + 1);
+		}
+	}
+
+	public String lowerEncrypt(char letter, String keyValue)
+	{
+		int shiftValue = ((int) keyValue.charAt(0)) - ((int) 'A') + 1;
+		for(int i = 1; i <= shiftValue; i++)
+		{
+			if((int)letter + 1 == 122)
+				letter = 'A';
+			else
+				letter = (char) ((int) letter + 1);
+		}
+	}
+
 }
