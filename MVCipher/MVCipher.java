@@ -13,13 +13,16 @@ import java.io.PrintWriter;
  *	@since	September 20, 2024
  */
 public class MVCipher 
-{		
+{
+	private static final int INDEX_AFTER_UPPER = 91; // index after 'Z'
+	private static final int INDEX_AFTER_LOWER = 123; // index after 'z'
+	private static final int INDEX_BEFORE_UPPER = 64; // index before 'A'
+	private static final int INDEX_BEFORE_LOWER = 96; // index before 'a'
+	
 	/** Constructor */
 	public MVCipher() { }
 	
-	/**
-	 * Main method
-	 */
+	/**	Main method	*/
 	public static void main(String[] args) {
 		MVCipher mvc = new MVCipher();
 		mvc.run();
@@ -34,7 +37,6 @@ public class MVCipher
 	 */
 	public void run() 
 	{
-		//checking: diff (cat Macbeth.txt) (cat decrypted.txt) for the school computer
 		System.out.println("\n Welcome to the MV Cipher machine!\n");
 		
 		boolean allAlphabet = false;
@@ -145,7 +147,7 @@ public class MVCipher
 		int shiftValue = ((int) keyValue.charAt(0)) - ((int) 'A') + 1;
 		for(int i = 1; i <= shiftValue; i++)
 		{
-			if((int)letter - 1 == 64)
+			if((int)letter - 1 == INDEX_BEFORE_UPPER)
 				letter = 'Z';
 			else
 				letter = (char) ((int) letter - 1);
@@ -165,7 +167,7 @@ public class MVCipher
 		int shiftValue = ((int) keyValue.charAt(0)) - ((int) 'A') + 1;
 		for(int i = 1; i <= shiftValue; i++)
 		{
-			if((int)letter - 1 == 96)
+			if((int)letter - 1 == INDEX_BEFORE_LOWER)
 				letter = 'z';
 			else
 				letter = (char) ((int) letter - 1);
@@ -221,7 +223,7 @@ public class MVCipher
 		int shiftValue = ((int) keyValue.charAt(0)) - ((int) 'A') + 1;
 		for(int i = 1; i <= shiftValue; i++)
 		{
-			if((int)letter + 1 == 91)
+			if((int)letter + 1 == INDEX_AFTER_UPPER)
 				letter = 'A';
 			else
 				letter = (char) ((int) letter + 1);
@@ -241,7 +243,7 @@ public class MVCipher
 		int shiftValue = ((int) keyValue.charAt(0)) - ((int) 'A') + 1;
 		for(int i = 1; i <= shiftValue; i++)
 		{
-			if((int)letter + 1 == 123)
+			if((int)letter + 1 == INDEX_AFTER_LOWER)
 				letter = 'a';
 			else
 				letter = (char) ((int) letter + 1);
