@@ -58,7 +58,7 @@ public class MVCipher
 		}
 		
 		System.out.println("");
-		int encryptOrDecrypt = Prompt.getInt("Encrypt or decrypts",1,2);
+		int encryptOrDecrypt = Prompt.getInt("Encrypt or decrypt?",1,2);
 		System.out.println("");
 
 		String inputFileName = "";
@@ -80,6 +80,8 @@ public class MVCipher
 				String encryptedLine = encrypter(line, key);
 				outputFile.println("" + encryptedLine);
 			}
+			System.out.println("\nThe encrypted file " + outputFileName + " has been"
+					+ " created using the keyword -> " + key + "\n");
 		}
 		else
 		{
@@ -89,6 +91,8 @@ public class MVCipher
 				String decryptedLine = decrypter(line, key);
 				outputFile.println("" + decryptedLine);
 			}
+			System.out.println("\nThe decrypted file " + outputFileName + " has been"
+					+ " created using the keyword -> " + key + "\n");
 		}
 		outputFile.close();
 	}
