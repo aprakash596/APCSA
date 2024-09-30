@@ -39,22 +39,22 @@ public class MasterMind
 	
 	public void run()
 	{
-		master = setMasterCode();
-		/*for(int i = 0; i < guesses.length; i++)
+		//master = setMasterCode();
+		for(int i = 0; i < guesses.length; i++)
 		{
-			guesses[i]
-		}*/
-		//printBoard();
+			master.getPeg(i).setLetter(((char)((int)(Math.random()*6)+1)));
+		}
+		printBoard();
 	}
 	
 	/**
 	 * 	sets the master code
 	 * 	@return 	an array for the master code
 	 */
-	public PegArray setMasterCode()
+	/*public PegArray setMasterCode()
 	{
 		
-	}
+	}*/
 
 	/**
 	 *	Print the introduction screen

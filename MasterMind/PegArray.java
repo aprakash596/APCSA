@@ -24,10 +24,6 @@ public class PegArray
 	public PegArray(int numPegs) 
 	{	
 		pegs = new Peg[4];
-		for(int i = 0; i < pegs.length; i++)
-		{
-			pegs[i] = new Peg();
-		}
 	}
 	
 	/**
