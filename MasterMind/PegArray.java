@@ -23,7 +23,11 @@ public class PegArray
 	 */
 	public PegArray(int numPegs) 
 	{	
-		pegs = new Peg[4];
+		pegs = new Peg[numPegs];
+		for(int i = 0; i < numPegs; i++)
+		{
+			pegs[i] = new Peg();
+		}
 	}
 	
 	/**

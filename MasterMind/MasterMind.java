@@ -23,8 +23,9 @@ public class MasterMind
 	 */
 	public MasterMind()
 	{
-		PegArray pa = new PegArray(PEGS_IN_CODE);
-		guesses = new PegArray[10];
+		master = new PegArray(PEGS_IN_CODE);
+		guesses = new PegArray[MAX_GUESSES];
+		reveal = false;
 	}
 	
 	/**
@@ -39,22 +40,40 @@ public class MasterMind
 	
 	public void run()
 	{
-		//master = setMasterCode();
-		for(int i = 0; i < guesses.length; i++)
+		setMasterCode();
+		for(int i = 0; i <= 10; i++)
 		{
-			master.getPeg(i).setLetter(((char)((int)(Math.random()*6)+1)));
+			if(i == 10)
+				reveal = true;
+			else
+				playTurn(i);
 		}
-		printBoard();
+	}
+	
+	public void playTurn(int turnNumber)
+	{
+		
 	}
 	
 	/**
-	 * 	sets the master code
-	 * 	@return 	an array for the master code
+	 * 	Sets master code and empty guesses array.
 	 */
-	/*public PegArray setMasterCode()
+	public void setMasterCode()
 	{
+		for(int i = 0; i < PEGS_IN_CODE; i++)
+		{
+			master.getPeg(i).setLetter((char)((int)(Math.random()*6)+'A'));
+		}
 		
-	}*/
+		for(int i = 0; i < MAX_GUESSES; i++)
+		{
+			guesses[i] = new PegArray(PEGS_IN_CODE);
+			for(int j = 0; j < PEGS_IN_CODE; j++)
+			{
+				guesses[i].getPeg(j).getLetter();
+			}
+		}
+	}
 
 	/**
 	 *	Print the introduction screen
