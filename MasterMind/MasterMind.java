@@ -34,7 +34,8 @@ public class MasterMind
 	public static void main(String[]args)
 	{
 		MasterMind mm = new MasterMind();
-		//mm.printIntroduction();
+		mm.printIntroduction();
+		String escapePressed = Prompt.getString("Hit the Enter key to start the game");
 		mm.run();
 	}
 	
@@ -46,13 +47,45 @@ public class MasterMind
 			if(i == 10)
 				reveal = true;
 			else
-				playTurn(i);
+				playTurn(i + 1);
 		}
 	}
 	
 	public void playTurn(int turnNumber)
 	{
-		
+		printBoard();
+
+		System.out.println("\nGuess " + turnNumber + "\n");
+
+		String guess = "";
+		boolean validGuess = false;
+
+		while(! validGuess)
+		{
+			validGuess = true;
+
+			guess = Prompt.getString("Enter the code using (A,B,C,D,E,F). For example,"
+				+ " ABCD or abcd from left-to-right");
+			guess = guess.toUpperCase();
+
+			if(guess.length() == 4)
+			{
+				for(int i = 0; i < guess.length(); i++)
+				{
+					if(guess.charAt(i) <= 'A' && guess.charAt(i) >= 'F')
+						validGuess = false;
+				}
+			}
+			else
+				validGuess = false;
+			
+			if(!validGuess)
+				System.out.println("ERROR: Bad input, try again.");
+		}
+
+		for(int i = 0; i < PEGS_IN_CODE; i++)
+			guesses[i].getPeg(i).setLetter(guess.charAt(i));
+
 	}
 	
 	/**

@@ -8,6 +8,7 @@
 public class PegArray 
 {
 
+
 	// array of pegs
 	private Peg [] pegs;
 
@@ -16,18 +17,23 @@ public class PegArray
 	// Precondition: these values are valid after getExactMatches() and getPartialMatches()
 	//				are called
 	private int exactMatches, partialMatches;
+
+	// number of pegs in an array
+	private final static int PEGS_IN_CODE = 4;
 		
 	/**
 	 *	Constructor
 	 *	@param numPegs	number of pegs in the array
 	 */
 	public PegArray(int numPegs) 
-	{	
-		pegs = new Peg[numPegs];
-		for(int i = 0; i < numPegs; i++)
+	{
+		pegs = new Peg[PEGS_IN_CODE];
+		for(int i = 0; i < PEGS_IN_CODE; i++)
 		{
 			pegs[i] = new Peg();
 		}
+		exactMatches = 0;
+		partialMatches = 0;
 	}
 	
 	/**
@@ -43,7 +49,15 @@ public class PegArray
 	 *  @param master	The master (code) peg array
 	 *	@return			The number of exact matches
 	 */
-	public int getExactMatches(PegArray master) { return 0; }
+	public int getExactMatches(PegArray master) 
+	{
+		for(int i = 0; i < PEGS_IN_CODE; i++)
+		{
+			if(master.getPeg(i).getLetter() == pegs[i].getLetter())
+				exactMatches++;
+		}
+		return exactMatches;
+	}
 	
 	/**
 	 *  Find partial matches between master (key) peg array and this peg array
@@ -51,7 +65,36 @@ public class PegArray
 	 *  @param master	The master (code) peg array
 	 *	@return			The number of partial matches
 	 */
-	public int getPartialMatches(PegArray master) { return 0; }
+	public int getPartialMatches(PegArray master) 
+	{
+		for(char i = 'A'; i <= 'F'; i++)
+		{
+			partialMatches += checkLetter(master, i);
+		}
+		return partialMatches; 
+	}
+
+	private int checkLetter(PegArray master, char letterToCheck)
+	{
+		int keyCount = 0;
+		int guessCount = 0;
+		for(int i = 0; i < PEGS_IN_CODE; i++)
+		{
+			if(master.getPeg(i).getLetter() == letterToCheck)
+				keyCount++;
+			
+			if(pegs[i].getLetter() == letterToCheck)
+				guessCount++;
+		}
+		if(guessCount >= keyCount)
+			partialMatches = keyCount - exactMatches;
+		else
+			partialMatches = guessCount - exactMatches;
+
+		return partialMatches;
+	}
+
+
 	
 	// Accessor methods
 	// Precondition: getExactMatches() and getPartialMatches() must be called first
