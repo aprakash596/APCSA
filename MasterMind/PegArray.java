@@ -71,6 +71,9 @@ public class PegArray
 		{
 			partialMatches += checkLetter(master, i);
 		}
+		partialMatches -= exactMatches;
+		if(partialMatches < 0)
+			partialMatches = 0;
 		return partialMatches; 
 	}
 
@@ -86,12 +89,11 @@ public class PegArray
 			if(pegs[i].getLetter() == letterToCheck)
 				guessCount++;
 		}
+		
 		if(guessCount >= keyCount)
-			partialMatches = keyCount - exactMatches;
+			return keyCount;
 		else
-			partialMatches = guessCount - exactMatches;
-
-		return partialMatches;
+			return guessCount;
 	}
 
 

@@ -18,6 +18,8 @@ public class MasterMind
 	private final int PEG_LETTERS = 6;		// Number of different letters on pegs
 											// 6 = A through F
 											
+	private boolean win;
+											
 	/**
 	 * 	Constructor
 	 */
@@ -26,6 +28,7 @@ public class MasterMind
 		master = new PegArray(PEGS_IN_CODE);
 		guesses = new PegArray[MAX_GUESSES];
 		reveal = false;
+		// win = false;
 	}
 	
 	/**
@@ -42,19 +45,42 @@ public class MasterMind
 	public void run()
 	{
 		setMasterCode();
-		for(int i = 0; i <= 10; i++)
+		boolean win = false;
+		int winningTurn = 0;
+		for(int i = 0; i <= MAX_GUESSES; i++)
 		{
-			if(i == 10)
+			if(i == MAX_GUESSES || win)
+			{
 				reveal = true;
+				if(win)
+				{
+					winningTurn = i+1;
+					i = MAX_GUESSES + 1;
+				}
+			}
 			else
 				playTurn(i + 1);
 		}
+		
+		if(win)
+		{
+			System.out.println("Nice work! You found the master code " +
+					"in " + winningTurn + " guesses.\n");
+		}
+		else
+		{
+			System.out.println("Oops. You were unable to find the solution" +
+					" in 10 guesses.");
+		}
+		
 	}
 	
 	public void playTurn(int turnNumber)
 	{
 		printBoard();
 
+		for(int i = 0; i < 4; i++)
+			System.out.print("" + master.getPeg(i).getLetter());
 		System.out.println("\nGuess " + turnNumber + "\n");
 
 		String guess = "";
@@ -84,7 +110,16 @@ public class MasterMind
 		}
 
 		for(int i = 0; i < PEGS_IN_CODE; i++)
-			guesses[i].getPeg(i).setLetter(guess.charAt(i));
+			guesses[turnNumber-1].getPeg(i).setLetter(guess.charAt(i));
+		
+		int exactMatches = guesses[turnNumber-1].getExactMatches(master);
+		if(exactMatches == 4)
+		{
+			win = true;
+			System.out.println("hello");
+		}
+		
+		int partialMatches = guesses[turnNumber-1].getPartialMatches(master);
 
 	}
 	
@@ -286,4 +321,3 @@ Enter the code using (A,B,C,D,E,F). For example, ABCD or abcd from left-to-right
 +--------+-------+-------+-------+-------+---------------+
 Oops. You were unable to find the solution in 10 guesses. //no empty line underneath
 */
-
