@@ -106,16 +106,10 @@ public class Wordle
 			
 		if(args[1].length() > 0)
 			testWord = args[1];
-			
-		Wordle wd = new Wordle(showIt, testWord);
-			
-
+		
 		// Determines if args[0] and args[1] are set
 		// args[0] is "show" which means to show the word chosen
 		// args[1] is a word which is used as the chosen word
-
-
-
 
 		Wordle run = new Wordle(showIt, testWord);
 		run.setUpCanvas();
@@ -170,11 +164,44 @@ public class Wordle
 	public String openFileAndChooseWord(String inFileName, String testWord)
 	{
 		String result = "SMART";
+
+		boolean chooseRandom = false;
 		
-		boolean inAllowed = inAllowedWordFile("testWord")
-				
+		if(testWord.length() > 0)
+		{
+			boolean inAllowed = inAllowedWordFile(testWord);
+
+			if(!inAllowed)
+				chooseRandom = true;
+			else
+				result = testWord;
+		}
+		else
+			chooseRandom = true;
+
+		if(chooseRandom)
+		{
+			String[]goalWords = new String[1];
+
+			FileUtils fu = new FileUtils();
+			Scanner goalFile = fu.openToRead(WORDS5);
+
+			while(goalFile.hasNext())
+			{
+				String[]placeholder = goalWords;
+				goalWords = new String[placeholder.length+1];
+
+				for(int i = 0; i < placeholder.length; i++)
+				{
+					goalWords[i] = placeholder[i];
+				}
+				goalWords[goalWords.length-1] = goalFile.next();
+			}
+
+			
+		}
 		
-		return result;
+		return testWord;
 	}
 
 	/** 
