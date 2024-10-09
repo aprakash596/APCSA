@@ -101,15 +101,11 @@ public class Wordle
 		String testWord = new String("");
 		String showIt = new String("");
 		
-		if(args[0].length() > 0 && (args[0]).equals("show"))
+		if(args.length >= 1 && (args[0]).equals("show"))
 			showIt = args[0];
 			
-		if(args[1].length() > 0)
+		if(args.length == 2 && args[1].length() == 5)
 			testWord = args[1];
-		
-		// Determines if args[0] and args[1] are set
-		// args[0] is "show" which means to show the word chosen
-		// args[1] is a word which is used as the chosen word
 
 		Wordle run = new Wordle(showIt, testWord);
 		run.setUpCanvas();
@@ -197,9 +193,12 @@ public class Wordle
 				}
 				goalWords[goalWords.length-1] = goalFile.next();
 			}
-
 			
+			//	(int)(Math.random()*goalWords.length)+1
+			testWord = goalWords[(int)(Math.random()*goalWords.length)];
 		}
+		
+		//	System.out.println("" + testWord);
 		
 		return testWord;
 	}
@@ -271,10 +270,26 @@ public class Wordle
 		// Determine color of guessed letters and draw backgrounds
 	 	// 0 for not checked yet, 1 for no match, 2 for partial, 3 for exact
 		// draw guessed letter backgrounds
-
-
-
-
+		
+		int keyBoardCount = 0; // index of the keyBoardColors
+		int[]exactCount = new int[wordGuess.length]; // number of exact matches for each guess
+		int[]partialMatches = new int[5][26]; // number of partial matches including exact
+		
+		for(int i = 0; i < wordGuess.length; i++)
+		{
+			for(int j = 0; j < word.length; j++)
+			{
+				if(wordGuess[i].charAt(j) == word.charAt(j))
+				{
+					exactCount[i]++;
+					keyBoardColors[keyBoardCount] = 3;
+				}
+				keyBoardCount++;
+			}
+			
+			setPartialMatches(wordGuess[i]);
+		}
+		
 		
 		for(int row = 0; row < 6; row++)
 		{
@@ -325,6 +340,16 @@ public class Wordle
 		
 		// check if won or lost
 		checkIfWonOrLost();
+	}
+	
+	
+	
+	public void setPartialMatches(String currentGuess)
+	{
+		int[]partialMatches = new int[26];
+		
+		 
+		
 	}
 	
 	/** 
