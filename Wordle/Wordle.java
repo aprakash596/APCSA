@@ -270,26 +270,25 @@ public class Wordle
 		// Determine color of guessed letters and draw backgrounds
 	 	// 0 for not checked yet, 1 for no match, 2 for partial, 3 for exact
 		// draw guessed letter backgrounds
-		
-		int keyBoardCount = 0; // index of the keyBoardColors
+
+		int[]guessColors = new int[wordGuess.length * word.length()];
 		int[]exactCount = new int[wordGuess.length]; // number of exact matches for each guess
-		int[]partialMatches = new int[5][26]; // number of partial matches including exact
-		
+		int letterCount = 0;
+
 		for(int i = 0; i < wordGuess.length; i++)
 		{
-			for(int j = 0; j < word.length; j++)
+			
+			for(int j = 0; j < word.length(); j++)
 			{
-				if(wordGuess[i].charAt(j) == word.charAt(j))
+				if(wordGuess[i].length() != 0 && wordGuess[i].charAt(j) == word.charAt(j))
 				{
 					exactCount[i]++;
-					keyBoardColors[keyBoardCount] = 3;
+					guessColors[letterCount] = 3;
 				}
-				keyBoardCount++;
+				letterCount++;
 			}
-			
-			setPartialMatches(wordGuess[i]);
+
 		}
-		
 		
 		for(int row = 0; row < 6; row++)
 		{
@@ -297,7 +296,12 @@ public class Wordle
 			{
 				if(wordGuess[row].length() != 0)											//  THIS METHOD IS INCOMPLETE.
 				{
-					StdDraw.picture(209 + col * 68, 650 - row * 68, "letterFrameDarkGray.png");
+					if(guessColors[(row)*5 + col] == 1)
+						StdDraw.picture(209 + col * 68, 650 - row * 68, "letterFrameDarkGray.png");
+					else if(guessColors[(row)*5 + col] == 3)
+						StdDraw.picture(209 + col * 68, 650 - row * 68, "letterFrameGreen.png");
+					else if(guessColors[(row)*5 + col] == 2)
+						StdDraw.picture(209 + col * 68, 650 - row * 68, "letterFrameYellow.png");
 				}
 				else
 				{
@@ -343,12 +347,31 @@ public class Wordle
 	}
 	
 	
-	
-	public void setPartialMatches(String currentGuess)
+	public void setPartialMatches(String currentGuess, int guessNumber)
 	{
-		int[]partialMatches = new int[26];
+		int[]partialMatches = new int[26]; // refers to a-z counts
 		
-		 
+		for(char i = 'A'; i <= 'Z'; i++)
+		{
+			int wordCount = 0;
+			int guessCount = 0;
+
+			for(int j = 0; j < currentGuess.length(); j++)
+			{
+				if(word.charAt(j) == i)
+					wordCount++;
+				
+				if(currentGuess.charAt(j) == i) 
+					guessCount++;
+			}
+
+			if(guessCount >= wordCount)
+				partialMatches[i-'A'] = wordCount;
+			else
+				partialMatches[i-'A'] = guessCount;
+
+			
+		}
 		
 	}
 	
