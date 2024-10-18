@@ -195,12 +195,12 @@ public class Wordle
 			}
 			
 			//	(int)(Math.random()*goalWords.length)+1
-			testWord = goalWords[(int)(Math.random()*goalWords.length)];
+			result = goalWords[(int)(Math.random()*goalWords.length)];
 		}
 		
 		//	System.out.println("" + testWord);
 		
-		return testWord;
+		return result.toUpperCase();
 	}
 
 	/** 
@@ -269,7 +269,7 @@ public class Wordle
 		
 		// Determine color of guessed letters and draw backgrounds
 	 	// 0 for not checked yet, 1 for no match, 2 for partial, 3 for exact
-		// draw guessed letter backgrounds
+		// draw guessed letter background
 
 		int[]guessColors = new int[wordGuess.length * word.length()];
 		int[]exactCount = new int[wordGuess.length]; // number of exact matches for each guess
@@ -277,17 +277,38 @@ public class Wordle
 
 		for(int i = 0; i < wordGuess.length; i++)
 		{
-			
 			for(int j = 0; j < word.length(); j++)
 			{
-				if(wordGuess[i].length() != 0 && wordGuess[i].charAt(j) == word.charAt(j))
+				//System.out.println("" + wordGuess[i]);
+				if(wordGuess[i].length() != 0)
 				{
-					exactCount[i]++;
-					guessColors[letterCount] = 3;
+					if(wordGuess[i].charAt(j) == word.charAt(j))
+					{
+						exactCount[i]++;
+						guessColors[letterCount] = 3;
+					}
+					else
+						guessColors[letterCount] = 1;
+
+					int[] partialMatches = setPartialMatches(wordGuess[i]);
+					for(int k = 0; k < partialMatches.length; k++)
+					{
+						if(partialMatches[k] == 1)
+						{
+							for(int l = 0; l < wordGuess[i].length(); l++)
+							{
+								if(guessColors[i*5 + j] != 3 && wordGuess[i].charAt(j) == (char)('A' + k))
+									guessColors[i*5 + j] = 2;
+							}
+						}
+						/*else if (partialMatches[k] > 1) 
+						{
+							
+						}*/
+					}
 				}
 				letterCount++;
 			}
-
 		}
 		
 		for(int row = 0; row < 6; row++)
@@ -347,9 +368,9 @@ public class Wordle
 	}
 	
 	
-	public void setPartialMatches(String currentGuess, int guessNumber)
+	public int[] setPartialMatches(String currentGuess)
 	{
-		int[]partialMatches = new int[26]; // refers to a-z counts
+		int[]partialMatches = new int[(int)('Z'-'A'+1)]; // refers to a-z counts
 		
 		for(char i = 'A'; i <= 'Z'; i++)
 		{
@@ -369,10 +390,9 @@ public class Wordle
 				partialMatches[i-'A'] = wordCount;
 			else
 				partialMatches[i-'A'] = guessCount;
-
-			
 		}
 		
+		return partialMatches;
 	}
 	
 	/** 
