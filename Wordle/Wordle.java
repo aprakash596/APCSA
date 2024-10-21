@@ -11,14 +11,16 @@ import javax.swing.JDialog;
 /**
  *	Wordle.java
  *
- *	Provide a description here.
+ *	The player has 6 guesses to figure out a 5 letter word. They
+ * 	may only input actual words and lose if they are unable to guess
+ * 	in 6 tries. Furthermore, the user can reveal the word and choose
+ * 	it.
  *
  *	@author	Scott DeRuiter and David Greenstein and Aarav Prakash
  *	@version	1.0
  *	@since		October 7, 2024
  */ 
  
-// if the word is not in the list when self choosing, will randomly pick
 public class Wordle
 { 
 	/**	This is a complete list of fields for the game */
@@ -87,14 +89,13 @@ public class Wordle
 		readyForKeyInput = activeGame = true;
 		readyForMouseInput = false;
 		keyBoardColors = new int[29];
-		word = openFileAndChooseWord(WORDS5, testWord);		
+		word = openFileAndChooseWord(WORDS5, testWord);	
 	}
 
 	/**
 	 *	The main method, to run the program.  The constructor is called, so that
 	 *	all of the fields are initialized.  The canvas is set up, and the GUI
 	 *	(the game of Wordle) runs.
-	 *	THIS METHOD IS INCOMPLETE.
 	 */
 	public static void main(String[] args)
 	{
@@ -105,9 +106,10 @@ public class Wordle
 			showIt = args[0];
 			
 		if(args.length == 2 && args[1].length() == 5)
-			testWord = args[1];
+			testWord = args[1].toLowerCase();
 
 		Wordle run = new Wordle(showIt, testWord);
+
 		run.setUpCanvas();
 		run.playGame();
 	}
@@ -155,7 +157,6 @@ public class Wordle
 	 *	@param testWord			if this String is found in words5allowed.txt, it
 	 *							will be used to set word.
 	 *	@return					the word chosen as the "goal word".
-	 *	THIS METHOD IS INCOMPLETE.
 	 */
 	public String openFileAndChooseWord(String inFileName, String testWord)
 	{
@@ -179,8 +180,7 @@ public class Wordle
 		{
 			String[]goalWords = new String[1];
 
-			FileUtils fu = new FileUtils();
-			Scanner goalFile = fu.openToRead(WORDS5);
+			Scanner goalFile = FileUtils.openToRead(WORDS5);
 
 			while(goalFile.hasNext())
 			{
@@ -191,14 +191,16 @@ public class Wordle
 				{
 					goalWords[i] = placeholder[i];
 				}
-				goalWords[goalWords.length-1] = goalFile.next();
+				goalWords[goalWords.length-1] = (goalFile.next());
 			}
+
+			goalFile.close();
 			
-			//	(int)(Math.random()*goalWords.length)+1
 			result = goalWords[(int)(Math.random()*goalWords.length)];
 		}
-		
-		//	System.out.println("" + testWord);
+
+		if(show)
+			System.out.println("" + result.toUpperCase());
 		
 		return result.toUpperCase();
 	}
@@ -209,21 +211,23 @@ public class Wordle
 	 *	Returns true if the word is in the file, false otherwise.
 	 *	@param possibleWord       the word to looked for in words5allowed.txt
 	 *	@return                   true if the word is in the text file, false otherwise
-	 *	THIS METHOD IS INCOMPLETE.
 	 */
 	public boolean inAllowedWordFile(String possibleWord)
 	{
 		boolean inAllowed = false;
 		
-		FileUtils fu = new FileUtils();
-		
-		Scanner allowedFile = fu.openToRead(WORDS5_ALLOWED);
+		Scanner allowedFile = FileUtils.openToRead(WORDS5_ALLOWED);
 		
 		while(allowedFile.hasNext())
 		{
-			if(possibleWord.equals(allowedFile.next()))
+			String word = allowedFile.next();
+			if(possibleWord.equalsIgnoreCase(word))
+			{
 				inAllowed = true;
+			}
 		}
+
+		allowedFile.close();
 		
 		return inAllowed;
 	}
@@ -235,25 +239,31 @@ public class Wordle
 	 *	inAllowedWordFile will be called for this task.  If the guess in letters
 	 *	does not exist in the text file, a message is displayed to the user in the
 	 *	form of a JOptionPane with JDialog.
-	 *	THIS METHOD IS INCOMPLETE.
 	 */
 	public void processGuess ( )
 	{
 		letters = letters.toUpperCase();
-		
-		// if guess is in words5allowed.txt then put into guess list
-		int guessNumber = 0;
-		for(int i = 0; i < wordGuess.length; i++)
+
+		if(inAllowedWordFile(letters.toLowerCase()))
 		{
-			if(wordGuess[i].length() == 5)
+			int guessNumber = 0;
+			for(int i = 0; i < wordGuess.length; i++)
 			{
-				guessNumber = i + 1;
+				if(wordGuess[i].length() == 5)
+				{
+					guessNumber = i + 1;
+				}
 			}
+			wordGuess[guessNumber] = letters;
+			letters = "";
 		}
-		wordGuess[guessNumber] = letters.toUpperCase();
-		letters = "";
-		
-		// else if guess is not in words5allowed.txt then print dialog box
+		else
+		{
+			JOptionPane pane = new JOptionPane(letters.toUpperCase() + " is not in word list.");
+			JDialog d = pane.createDialog(null, "INVALID INPUT");
+			d.setLocation(365,250);
+			d.setVisible(true);
+		}
 
 	}
 	
@@ -261,53 +271,88 @@ public class Wordle
 	 *	Draws the entire game panel.  This includes the guessed words, the current
 	 *	word being guessed, and all of the letters in the "keyboard" at the bottom
 	 *	of the gameboard.  The correct colors will need to be chosen for every letter.
-	 *	THIS METHOD IS INCOMPLETE.
 	 */
 	public void drawPanel ( )
 	{
 		StdDraw.clear(StdDraw.WHITE);
-		
-		// Determine color of guessed letters and draw backgrounds
-	 	// 0 for not checked yet, 1 for no match, 2 for partial, 3 for exact
-		// draw guessed letter background
 
 		int[]guessColors = new int[wordGuess.length * word.length()];
 		int[]exactCount = new int[wordGuess.length]; // number of exact matches for each guess
-		int letterCount = 0;
+		int colorCount = 0;
 
 		for(int i = 0; i < wordGuess.length; i++)
 		{
 			for(int j = 0; j < word.length(); j++)
 			{
-				//System.out.println("" + wordGuess[i]);
 				if(wordGuess[i].length() != 0)
 				{
+					//	checks exact matches, does not count partial matches
 					if(wordGuess[i].charAt(j) == word.charAt(j))
 					{
 						exactCount[i]++;
-						guessColors[letterCount] = 3;
+						guessColors[colorCount] = 3;
 					}
 					else
-						guessColors[letterCount] = 1;
+						guessColors[colorCount] = 1;
 
 					int[] partialMatches = setPartialMatches(wordGuess[i]);
-					for(int k = 0; k < partialMatches.length; k++)
+
+					//	sets partial matches, does from left to right
+					for(int k = 0; k < wordGuess[i].length(); k++)
 					{
-						if(partialMatches[k] == 1)
+						for(int l = 0; l < partialMatches.length; l++)
 						{
-							for(int l = 0; l < wordGuess[i].length(); l++)
+							if(partialMatches[l] > 0 && wordGuess[i].charAt(k) == (char)(l + (int) 'A'))
 							{
-								if(guessColors[i*5 + j] != 3 && wordGuess[i].charAt(j) == (char)('A' + k))
-									guessColors[i*5 + j] = 2;
+								partialMatches[l]--;
+								if(guessColors[5*i + k] != 3)
+									guessColors[5*i + k] = 2;
 							}
 						}
-						/*else if (partialMatches[k] > 1) 
+					}
+
+					//	checks partial matches if error in setting from left to right
+					for(int k = 0; k < wordGuess[i].length(); k++)
+					{
+						for(int l = 0; l < wordGuess[i].length(); l++)
 						{
-							
-						}*/
+							int[]partialLetterMatch = setPartialMatches(wordGuess[i]);
+
+							if(k != l && wordGuess[i].charAt(k) == wordGuess[i].charAt(l) 
+								&& partialLetterMatch[wordGuess[i].charAt(k) - 'A'] == 1)
+							{
+								if(guessColors[5*i + k] == 3 && guessColors[5*i + l] != 3)
+									guessColors[5*i + l] = 1;
+								else if(guessColors[5*i + l] == 3 && guessColors[5*i + k] != 3)
+									guessColors[5*i + k] = 1;
+							}
+						}
 					}
 				}
-				letterCount++;
+				colorCount++;
+			}
+		}
+
+		for(int i = 0; i < wordGuess.length; i++)
+		{
+			if(wordGuess[i].length() == 5)
+			{
+				for(int j = 0; j < wordGuess[i].length(); j++)
+				{
+					if(guessColors[5*i + j] > 0)
+					{
+						String letter = "" + wordGuess[i].charAt(j);
+						int place = 0;
+
+						for(String keys : Constants.KEYBOARD)
+						{
+							if(letter.equals(keys) && guessColors[5*i + j] > keyBoardColors[place])
+								keyBoardColors[place] = guessColors[5*i + j];
+
+							place++;
+						}
+					}
+				}
 			}
 		}
 		
@@ -346,8 +391,18 @@ public class Wordle
 			{
 				StdDraw.picture(pair[0], pair[1], "keyBackgroundBig.png");		
 			}						
-			//  This needs to be modified a great deal,
-			//  so that the correct colors show up.
+			else if(keyBoardColors[place] == 3)
+			{
+				StdDraw.picture(pair[0], pair[1], "keyBackgroundGreen.png");
+			}
+			else if(keyBoardColors[place] == 2)
+			{
+				StdDraw.picture(pair[0], pair[1], "keyBackgroundYellow.png");
+			}
+			else if(keyBoardColors[place] == 1)
+			{
+				StdDraw.picture(pair[0], pair[1], "keyBackgroundDarkGray.png");
+			}
 			else
 			{
 				StdDraw.picture(pair[0], pair[1], "keyBackground.png");
@@ -367,7 +422,12 @@ public class Wordle
 		checkIfWonOrLost();
 	}
 	
-	
+	/**
+	 * 	Checks the total number of partial matches between the 
+	 * 	guess and answer for each letter.
+	 * 	@param	currentGuess	the guess of the current turn
+	 * 	@return 	the number of partial matches for each letter
+	 */
 	public int[] setPartialMatches(String currentGuess)
 	{
 		int[]partialMatches = new int[(int)('Z'-'A'+1)]; // refers to a-z counts
@@ -431,7 +491,6 @@ public class Wordle
 	 *	enters the correct word with a guess.  The game is lost when the user does
 	 *	not enter the correct word with the last (6th) guess.  An appropriate message
 	 *	is displayed to the user in the form of a JOptionPane with JDialog for a win or a loss.
-	 *	THIS METHOD IS INCOMPLETE.
 	 */
 	public void checkIfWonOrLost ( )
 	{
@@ -444,7 +503,7 @@ public class Wordle
 			}
 		}
 		
-		// declare the winner by matching the word
+
 		if(lastWord.equals(word))
 		{
 			activeGame = false;
@@ -453,12 +512,14 @@ public class Wordle
 			d.setLocation(365,250);
 			d.setVisible(true);
 		}
-		
-		// else if all guesses are filled then declare loser
-		
-		
-		
-		
+		else if(wordGuess[wordGuess.length-1].length() == 5)
+		{
+			activeGame = false;
+			JOptionPane pane = new JOptionPane(lastWord + " was the word.  Press RESET to begin again");
+			JDialog d = pane.createDialog(null, "Sorry!");
+			d.setLocation(365,250);
+			d.setVisible(true);
+		}
 	}
 	
 	/** 
