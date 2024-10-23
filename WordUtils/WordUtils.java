@@ -61,6 +61,14 @@ public class WordUtils
 			}
 		}
 		
+		if(foundWords[foundWords.length-1] == null)
+		{
+			String[]placeHolder = foundWords;
+			foundWords = new String[foundWords.length-1];
+			for(int i = 0; i < foundWords.length; i++)
+				foundWords[i] = placeHolder[i];
+		}
+		
 		return foundWords;
 	}
 	
@@ -89,7 +97,16 @@ public class WordUtils
 	/**	Print the words found to the screen.
 	 *  @param words	array containing the words to be printed
 	 */
-	public void printWords (String [] wordList) { }
+	public void printWords (String [] wordList) 
+	{ 
+		for(int i = 0; i < wordList.length; i++)
+		{
+			if(i != 0 && i%5 == 0)
+				System.out.print("\n");
+			System.out.printf("%-15s", wordList[i]);
+		}
+		System.out.println("");
+	}
 	
 	/**	Finds the highest scoring word according to a score table.
 	 *
@@ -117,9 +134,10 @@ public class WordUtils
 			{
 				String[]placeHolder = multipleBest;
 				multipleBest = new String[placeHolder.length+1];
-				for(int i = 0; i < placeHolder.length; i++)
-					multipleBest[i] = placeHolder[i];
-				multipleBest.length()
+				for(int j = 0; j < placeHolder.length; j++)
+					multipleBest[j] = placeHolder[j];
+				multipleBest[multipleBest.length-1] = wordList[i];
+			}
 		}
 		
 		if(multipleBest.length > 1)
@@ -141,7 +159,7 @@ public class WordUtils
 		int score = 0;
 		for(int i = 0; i < word.length(); i++)
 		{
-			score += scoreTable[word.charAt(i)-65];
+			score += scoreTable[(int)word.charAt(i) - 97];
 		}
 		
 		return score;
@@ -158,7 +176,7 @@ public class WordUtils
 	
 	public void run() {
 		String letters = "1";
-		while((letters.length() <= 3 && letters.length() >= 12) && isOnlyLetters(letters))
+		while((letters.length() <= 3 || letters.length() >= 12) && ! isOnlyLetters(letters))
 		{
 			letters = Prompt.getString("Please enter a list of letters, from 3 to 12 letters long, without spaces");
 			letters = letters.toLowerCase();
