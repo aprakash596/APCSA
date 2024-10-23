@@ -19,7 +19,7 @@ import javax.swing.JDialog;
  *	@author	Scott DeRuiter and David Greenstein and Aarav Prakash
  *	@version	1.0
  *	@since		October 7, 2024
- */ 
+ */
  
 public class Wordle
 { 
@@ -35,7 +35,7 @@ public class Wordle
 	private String letters;
 	
 	/**	File that contains 5-letter words to find. */
-	private final String WORDS5 = "words5.txt";
+	private final String WORDS5 = "words5allowed.txt";
 	
 	/**	File that contains 5-letter words allowed for user guesses. (bigger file) */
 	private final String WORDS5_ALLOWED = "words5allowed.txt";
