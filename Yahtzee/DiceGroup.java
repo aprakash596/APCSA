@@ -22,10 +22,19 @@ public class DiceGroup {
 								"|_______|" };
 	
 	/*	you complete */
-	public DiceGroup() { }
+	public DiceGroup() 
+	{ 
+		die = new Dice[NUM_DICE];
+	}
 	
 	/**	you complete */
-	public void rollDice() { }
+	public void rollDice() 
+	{ 
+		for(int i = 0; i < NUM_DICE; i++)
+		{
+			die[i].roll();
+		}
+	}
 	
 	/**	Hold the dice in the rawHold and roll the rest.
 	 *	For example: If rawHold is "421", then hold die 1, 2, and 4, and
@@ -34,12 +43,33 @@ public class DiceGroup {
 	 *
 	 *	you complete
 	 */
-	public void rollDice(String rawHold) { }
+	public void rollDice(String rawHold) 
+	{ 
+		for(int i = 0; i < NUM_DICE; i++)
+		{
+			if(rawHold.indexOf("" + i) == -1)
+				die[i].roll();
+		}
+	}
 	
 	/**	getters - you complete */
+
+	public Dice [] getDie()
+	{
+		return die;
+	}
 	
 	/**	@return the total value of the DiceGroup - you complete */
-	public int getTotal() { }
+	public int getTotal() 
+	{
+		int total = 0;
+		for(int i = 0; i < NUM_DICE; i++)
+		{
+			total += die[i].getValue();
+		}
+
+		return total;
+	}
 	
 	/**
 	 *  Prints out the images of the dice
