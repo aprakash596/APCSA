@@ -45,10 +45,10 @@ public class Yahtzee
 		printHeader();
 		
 		player1.setName(Prompt.getString("Player 1, please enter your first name"));
-		
-		player2.setName(Prompt.getString("Player 2, please enter your first name"));
+		System.out.println("");
 
-		Prompt.getString("Let's see who will go first. " + player1.getName() + ", please hit enter to roll the dice");
+		player2.setName(Prompt.getString("Player 2, please enter your first name"));
+		System.out.println("");
 
 		int startingP1 = 0;
 		int startingP2 = 0;
@@ -57,21 +57,19 @@ public class Yahtzee
 		{
 			Prompt.getString("Let's see who will go first. " + player1.getName() + ", please hit enter to roll the dice");
 
-			for(int i = 0; i < NUMBER_OF_DICE; i++)
-			{
-				diceP1.rollDice();
-				startingP1 = diceP1.getTotal();
-			}
+			diceP1.rollDice();
+			startingP1 = diceP1.getTotal();
+			diceP1.printDice();
+			System.out.println("");
 
 			Prompt.getString(player2.getName() + ", it's your turn. Please hit enter to roll the dice");
 
-			for(int i = 0; i < NUMBER_OF_DICE; i++)
-			{
-				diceP2.rollDice();
-				startingP2 = diceP2.getTotal();
-			}
+			diceP2.rollDice();
+			startingP2 = diceP2.getTotal();
+			diceP2.printDice();
+			System.out.println("");
 			
-			System.out.print(player1.getName() + ", you rolled a sum of " + startingP1 + ", and");
+			System.out.print(player1.getName() + ", you rolled a sum of " + startingP1 + ", and ");
 			System.out.println(player2.getName() + ", you rolled a sum of " + startingP2 + ".");
 		}
 
@@ -86,13 +84,44 @@ public class Yahtzee
 		}
 		else
 		{
-			System.out.println(player1.getName() + ", since your sum was higher, you'll roll first");
+			System.out.println(player2.getName() + ", since your sum was higher, you'll roll first");
 			for(int i = 0; i < NUMBER_OF_TURNS; i++)
 			{
 				playTurn(player2,scoreCardP1,diceP1,i+1);
 				playTurn(player1,scoreCardP2,diceP2,i+1);
 			}
 		}
+
+		scoreCardP1.printCardHeader();
+		scoreCardP1.printPlayerScore(player1);
+		scoreCardP2.printPlayerScore(player2);
+		scoreCardP1.printCardFooter();
+
+		int totalP1 = 0;
+		int totalP2 = 0;
+
+		for(int i = 1; i <= 13; i++)	// represents the indices of the choices
+		{
+			totalP1 += scoreCardP1.getScore(i);
+			totalP2 += scoreCardP2.getScore(i);
+		}
+		int winner = whoWon(totalP1, totalP2);
+
+		System.out.println(player1.getName() + "\t\tscore total = " + totalP1);
+		System.out.println(player2.getName() + "\t\tscore total = " + totalP2 + "\n");
+
+		if(winner == 1)
+		{
+			System.out.println("Congratulations " + player1.getName() + 
+				". YOU WON!!!");
+		}
+		else if(winner == 2)
+		{
+			System.out.println("Congratulations " + player2.getName() + 
+				". YOU WON!!!");
+		}
+		else
+			System.out.println("Congratulations. YOU TIED!!!");
 	}
 
 	/**
@@ -106,10 +135,11 @@ public class Yahtzee
 		scoreCard.printCardHeader();
 		scoreCardP1.printPlayerScore(player1);
 		scoreCardP2.printPlayerScore(player2);
+		System.out.println("");
 
-		System.out.println("Round " + round + " of 13 rounds.");
+		System.out.println("Round " + round + " of 13 rounds.\n\n");
 
-		Prompt.getString("Betty, it's your turn to play. Please hit enter to roll the dice");
+		Prompt.getString(player.getName() + ", it's your turn to play. Please hit enter to roll the dice");
 
 		dices.rollDice();
 
@@ -140,10 +170,14 @@ public class Yahtzee
 		scoreCardP2.printPlayerScore(player2);
 		scoreCard.printCardFooter();
 
-		int choice = Prompt.getInt(player.getName() + ", now you need to make a choice. "
-			+ "Pick a valid integer from the list above",1,13);
+		boolean alreadyPicked = true;
+		while(alreadyPicked)
+		{
+			int choice = Prompt.getInt(player.getName() + ", now you need to make a choice. "
+				+ "Pick a valid integer from the list above",1,13);
 
-		scoreCard.changeScore(choice,dices);
+			alreadyPicked = scoreCard.changeScore(choice,dices);
+		}
 	}
 
 

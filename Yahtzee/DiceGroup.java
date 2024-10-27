@@ -25,6 +25,8 @@ public class DiceGroup {
 	public DiceGroup() 
 	{ 
 		die = new Dice[NUM_DICE];
+		for(int i = 0; i < die.length; i++)
+			die[i] = new Dice();
 	}
 	
 	/**	you complete */
@@ -45,10 +47,10 @@ public class DiceGroup {
 	 */
 	public void rollDice(String rawHold) 
 	{ 
-		for(int i = 0; i < NUM_DICE; i++)
+		for(int i = 1; i <= NUM_DICE; i++)
 		{
 			if(rawHold.indexOf("" + i) == -1)
-				die[i].roll();
+				die[i-1].roll();
 		}
 	}
 	
