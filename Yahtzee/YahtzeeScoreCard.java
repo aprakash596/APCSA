@@ -205,20 +205,24 @@ public class YahtzeeScoreCard
 	 *
 	 *	@param dg	The DiceGroup to score
 	 */	
-
-	// 1 2 3 4 5 6
 	public void smallStraight(DiceGroup dg) 
 	{
-		boolean isStraight = false;
 		Dice[]die = dg.getDie();
 		int[]count = new int[HIGHEST_ROLL];
 
 		for(int i = 0; i < die.length; i++)
 			count[die[i].getValue() - 1]++;
 
-		if()
+		int straightCount = 0;
+		for(int i = 0; i < HIGHEST_ROLL; i++)
+		{
+			if(count[i] >= 1)
+				straightCount++;
+			else if(straightCount < 4)
+				straightCount = 0;
+		}
 
-		if(isStraight)
+		if(straightCount >= 4)
 			scoreCard[SCORE_INDICES[10]] = 30;
 		else
 			scoreCard[SCORE_INDICES[10]] = 0;

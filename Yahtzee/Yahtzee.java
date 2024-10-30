@@ -4,11 +4,8 @@
  * 	@author	Aarav Prakash
  * 	@since	October 23, 2024
  */
-
 public class Yahtzee
 {
-
-	private int score1, score2;
 
 	private YahtzeePlayer player1, player2;
 
@@ -16,13 +13,10 @@ public class Yahtzee
 
 	private DiceGroup diceP1, diceP2;
 
-	private final int NUMBER_OF_DICE = 5;
-
 	private final int NUMBER_OF_TURNS = 13;
 
 	public Yahtzee()
 	{
-		score1 = score2 = 0;
 
 		player1 = new YahtzeePlayer();
 		player2 = new YahtzeePlayer();
