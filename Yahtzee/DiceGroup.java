@@ -1,5 +1,6 @@
 /**
- * 	// add later
+ * 	Holds the five die and rolls them.
+ * 	It also prints the dice.
  * 
  * 	@author	Aarav Prakash
  * 	@since	October 23, 2024
@@ -21,7 +22,9 @@ public class DiceGroup {
 								"| O     |",
 								"|_______|" };
 	
-	/*	you complete */
+	/**
+	 *  Initializes the dice array
+	 */
 	public DiceGroup() 
 	{ 
 		die = new Dice[NUM_DICE];
@@ -29,7 +32,9 @@ public class DiceGroup {
 			die[i] = new Dice();
 	}
 	
-	/**	you complete */
+	/**
+	 * 	Rolls all five dice
+	 */
 	public void rollDice() 
 	{ 
 		for(int i = 0; i < NUM_DICE; i++)
@@ -42,8 +47,6 @@ public class DiceGroup {
 	 *	For example: If rawHold is "421", then hold die 1, 2, and 4, and
 	 *	roll 3 and 5.
 	 *	@param rawHold		the string of dice to hold
-	 *
-	 *	you complete
 	 */
 	public void rollDice(String rawHold) 
 	{ 
@@ -54,14 +57,20 @@ public class DiceGroup {
 		}
 	}
 	
-	/**	getters - you complete */
-
+	/**
+	 * 	returns the array of the 5 dice
+	 * 
+	 */
 	public Dice [] getDie()
 	{
 		return die;
 	}
 	
-	/**	@return the total value of the DiceGroup - you complete */
+	/**	
+	 * 	returns the total sum of all of the dice
+	 * 
+	 *	@return the total value of the DiceGroup
+	 */
 	public int getTotal() 
 	{
 		int total = 0;

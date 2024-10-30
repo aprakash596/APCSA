@@ -1,5 +1,9 @@
 /**
- * 	Plays a game of Yahtzee between two players. // make better
+ * 	Plays a game of Yahtzee between two players. The game involves rolling
+ * 	5 die, in which the values can be used to get a score in different
+ * 	categories. The total of the scores in each of the categories for 
+ * 	both of the players are compared, and whoever has the highest total
+ * 	score wins.
  * 
  * 	@author	Aarav Prakash
  * 	@since	October 23, 2024
@@ -14,7 +18,11 @@ public class Yahtzee
 	private DiceGroup diceP1, diceP2;
 
 	private final int NUMBER_OF_TURNS = 13;
-
+	
+	
+	/**
+	 * 	Initializes the player, scorecard, and die
+	 */
 	public Yahtzee()
 	{
 
@@ -34,6 +42,10 @@ public class Yahtzee
 		ye.run();
 	}
 	
+	/**
+	 * 	Sets up the game and loops the turns to play
+	 * 	the entire game.
+	 */
 	public void run()
 	{
 		printHeader();
@@ -119,10 +131,11 @@ public class Yahtzee
 	}
 
 	/**
+	 * Plays a single turn of the match
 	 * 
-	 * @param scoreCard
-	 * @param dices
-	 * @param round
+	 * @param scoreCard		the scorecard of the player whose turn it is
+	 * @param dices		the die of the player whose turn it is
+	 * @param round		the current round of the game
 	 */
 	public void playTurn(YahtzeePlayer player, YahtzeeScoreCard scoreCard, DiceGroup dices, int round)
 	{
@@ -178,7 +191,10 @@ public class Yahtzee
 	/**
 	 * 	Checks who won the game
 	 * 
-	 * 	@return	1 if player 1 wins, 2 is player 2 wins, 0 if it is a tie
+	 * 	@param	scoreP1	the total score of player 1
+	 * 	@param 	scoreP2	the total score of player 2
+	 * 	@return	who won the game, 1 if player 1 wins, 2 is player 2 
+	 * 			wins, 0 if it is a tie
 	 */
 	public int whoWon(int scoreP1, int scoreP2)
 	{
@@ -190,6 +206,9 @@ public class Yahtzee
 			return 0;
 	}
 	
+	/**
+	 * Prints the instructions of the game
+	 */
 	public void printHeader() {
 		System.out.println("\n");
 		System.out.println("+------------------------------------------------------------------------------------+");
