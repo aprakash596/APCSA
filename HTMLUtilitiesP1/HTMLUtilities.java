@@ -2,13 +2,13 @@
  *	Utilities for handling HTML
  *
  *	@author	Aarav Prakash
- *	@since	
+ *	@since	November 1, 2024
  */
 public class HTMLUtilities {
 	
 	// - is also a part of a word if in the middle
 	
-	private final char PUNCTUATION = new char{'.', ',', ';', ':', '(', 
+	private final char[] PUNCTUATION = new char[]{'.', ',', ';', ':', '(', 
 		')', '?', '!', '=', '&', '~', '+','-'};
 
 	/**
@@ -22,8 +22,10 @@ public class HTMLUtilities {
 	public String[] tokenizeHTMLString(String str) {
 		// make the size of the array large to start
 		String[] result = new String[10000];
+
+		int resultIndex = 0;
 		
-		while(str.length > 0)
+		while(str.length() > 0)
 		{
 			String token = "";
 			str = str.trim();
@@ -34,14 +36,14 @@ public class HTMLUtilities {
 				(str.charAt(0) >= 'A' && str.charAt(0) <= 'Z'))
 				token = tokenizeString(str);
 			else if(isPunctuation(str))
-				
-			
-			int notEmptyCount = 0;
-			while(result[notEmptyCount].length() > 0)
-				notEmptyCount++;
-				
-			result[notEmptyCount + 1] = token;
-			
+				token = "" + str.charAt(0);
+			else
+
+
+
+			result[resultIndex] = token;
+
+			resultIndex++;
 			str = str.substring(token.length());
 		}
 		
@@ -57,7 +59,7 @@ public class HTMLUtilities {
 			if(str.charAt(0) == PUNCTUATION[i])
 			{
 				if(PUNCTUATION[i] == '-' && str.length() != 1
-					&& (str.charAt(1) >= '0' && str.charAt(1) <= '9')
+					&& (str.charAt(1) >= '0' && str.charAt(1) <= '9'))
 				punctuation = true;
 			}
 		}
@@ -69,12 +71,14 @@ public class HTMLUtilities {
 	{
 		return str.substring(str.indexOf('<'),str.indexOf('>')+1);
 	}
-	
+
+
+	//	can there only be one hyphen?
 	public String tokenizeString(String str)
 	{
 		String word = "";
 		String lowerStr = str.toLowerCase();
-		for(int i = 0; i < str.length; i++)
+		for(int i = 0; i < str.length(); i++)
 		{
 			if((lowerStr.charAt(i) >= 'a' && lowerStr.charAt(i) <= 'z')
 				|| lowerStr.charAt(i) == '-')
