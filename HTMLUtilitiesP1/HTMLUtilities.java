@@ -2,7 +2,7 @@
  *	Utilities for handling HTML
  *
  *	@author	Aarav Prakash
- *	@since	November 1, 2024
+ *	@since	
  */
 public class HTMLUtilities {
 	
@@ -22,8 +22,10 @@ public class HTMLUtilities {
 	public String[] tokenizeHTMLString(String str) {
 		// make the size of the array large to start
 		String[] result = new String[10000];
-
-		int resultIndex = 0;
+		for(int i = 0; i < result.length; i++)
+			result[i] = "";
+			
+		int notEmptyCount = 0;
 		
 		while(str.length() > 0)
 		{
@@ -36,19 +38,34 @@ public class HTMLUtilities {
 				(str.charAt(0) >= 'A' && str.charAt(0) <= 'Z'))
 				token = tokenizeString(str);
 			else if(isPunctuation(str))
-				token = "" + str.charAt(0);
+				token = "" + token.charAt(0);
 			else
-
-
-
-			result[resultIndex] = token;
-
-			resultIndex++;
+				token = tokenize
+			
+			while(result[notEmptyCount].length() > 0)
+				notEmptyCount++;
+				
+			result[notEmptyCount] = token;
+			
 			str = str.substring(token.length());
+			notEmptyCount = 0;
 		}
 		
-		// return the correctly sized array
+		String[]placeholder = result;
+		result = new String[notEmptyCount];
+		for(int i = 0; i < result.length; i++)
+			result[i] = placeholder[i];
+		
+		
 		return result;
+	}
+	
+	public String tokenizeNumber(String str)
+	{
+		int strIndex = 0;
+		char digit = 
+		
+		while(str.charAt(
 	}
 	
 	public boolean isPunctuation(String str)
@@ -71,9 +88,7 @@ public class HTMLUtilities {
 	{
 		return str.substring(str.indexOf('<'),str.indexOf('>')+1);
 	}
-
-
-	//	can there only be one hyphen?
+	
 	public String tokenizeString(String str)
 	{
 		String word = "";
