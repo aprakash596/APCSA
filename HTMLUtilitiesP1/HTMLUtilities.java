@@ -2,12 +2,12 @@
  *	Utilities for handling HTML
  *
  *	@author	Aarav Prakash
- *	@since	
+ *	@since	November 1, 2024
  */
-public class HTMLUtilities {
+public class HTMLUtilities 
+{
 	
-	// - is also a part of a word if in the middle
-	
+	//	an array containing all of the puncutation
 	private final char[] PUNCTUATION = new char[]{'.', ',', ';', ':', '(', 
 		')', '?', '!', '=', '&', '~', '+','-'};
 
@@ -24,13 +24,15 @@ public class HTMLUtilities {
 		String[] result = new String[10000];
 		for(int i = 0; i < result.length; i++)
 			result[i] = "";
-			
-		int notEmptyCount = 0;
+
+		int resultIndex = 0;
 		
 		while(str.length() > 0)
 		{
+			resultIndex = 0;
 			String token = "";
 			str = str.trim();
+
 			
 			if(str.charAt(0) == '<')
 				token = tokenizeTag(str);
@@ -38,36 +40,65 @@ public class HTMLUtilities {
 				(str.charAt(0) >= 'A' && str.charAt(0) <= 'Z'))
 				token = tokenizeString(str);
 			else if(isPunctuation(str))
-				token = "" + token.charAt(0);
+				token = "" + str.charAt(0);
 			else
-				token = tokenize
-			
-			while(result[notEmptyCount].length() > 0)
-				notEmptyCount++;
-				
-			result[notEmptyCount] = token;
-			
+				token = tokenizeNumber(str);
+
+			while(resultIndex < result.length && result[resultIndex].length() > 0)
+				resultIndex++;
+
+			result[resultIndex] = token;
+
 			str = str.substring(token.length());
-			notEmptyCount = 0;
 		}
 		
-		String[]placeholder = result;
-		result = new String[notEmptyCount];
+		String[]placeHolder = result;
+		result = new String[resultIndex+1];
+
 		for(int i = 0; i < result.length; i++)
-			result[i] = placeholder[i];
-		
-		
+			result[i] = placeHolder[i];
+
 		return result;
 	}
-	
+
+	/**
+	 * This tokenizes the first number within the string
+	 * 
+	 * @param str	the HTML string
+	 * @return	the first number in the string
+	 */
 	public String tokenizeNumber(String str)
 	{
-		int strIndex = 0;
-		char digit = 
-		
-		while(str.charAt(
+		String number = "";
+		int stringIndex = 0;
+
+		if(str.charAt(stringIndex) == '-') 
+		{
+			number += str.charAt(stringIndex);
+			stringIndex++;
+		}
+
+		while(stringIndex < str.length())
+		{
+			char stringChar = str.charAt(stringIndex);
+
+			if((stringChar >= '0' && stringChar <= '9') || stringChar == '.' || 
+				stringChar == 'e')
+				number += "" + stringChar;
+			else
+				stringIndex = str.length();
+
+			stringIndex++;
+		}
+		return number;
 	}
 	
+	/**
+	 * Checks if a string starts with punctuation
+	 * 
+	 * @param str	the HTML string
+	 * @return	if the token at the beginning is punctuation
+	 */
 	public boolean isPunctuation(String str)
 	{
 		boolean punctuation = false;
@@ -77,18 +108,31 @@ public class HTMLUtilities {
 			{
 				if(PUNCTUATION[i] == '-' && str.length() != 1
 					&& (str.charAt(1) >= '0' && str.charAt(1) <= '9'))
-				punctuation = true;
+					punctuation = false;
+				else
+					punctuation = true;
 			}
 		}
-		
 		return punctuation;
 	}
 	
+	/**
+	 * Tokenizes the first tag in the inputted string
+	 * 
+	 * @param str	the HTML string
+	 * @return	the first tag in the string
+	 */
 	public String tokenizeTag(String str)
 	{
 		return str.substring(str.indexOf('<'),str.indexOf('>')+1);
 	}
-	
+
+	/**
+	 * Tokenizes a word from the HTML string
+	 * 
+	 * @param str	the HTML string
+	 * @return	the first tokenized string
+	 */
 	public String tokenizeString(String str)
 	{
 		String word = "";
