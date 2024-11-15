@@ -1,5 +1,8 @@
 /**
- *	Utilities for handling HTML
+ *	Utilities for handling HTML. The goal of this program is to 
+ * 	separate the input HTML file into tokens, including HTML tags, 
+ * 	words, numbers, and punctuation. Furthermore, it excludes comments
+ * 	and accounts for formatting with specific tags.
  *
  *	@author	Aarav Prakash
  *	@since	November 1, 2024
@@ -9,9 +12,6 @@ public class HTMLUtilities
 	//	an array containing all of the puncutation
 	private final char[] PUNCTUATION = new char[]{'.', ',', ';', ':', '(', 
 		')', '?', '!', '=', '&', '~', '+','-'};
-
-	//	will contain strings from multiple lines if needed
-	private String previousLines = "";
 
 	// NONE = not nested in a block, COMMENT = inside a comment block
 	// PREFORMAT = inside a pre-format block
@@ -117,7 +117,7 @@ public class HTMLUtilities
 	}
 
 	/**
-	 * This tokenizes the first number within the string
+	 * This tokenizes the first number within a string
 	 * 
 	 * @param str	the HTML string
 	 * @return	the first number in the string
@@ -149,7 +149,8 @@ public class HTMLUtilities
 	}
 	
 	/**
-	 * Checks if a string starts with punctuation
+	 * Checks if a string starts with punctuation, excluding when the
+	 * punctuation is for a negative number
 	 * 
 	 * @param str	the HTML string
 	 * @return	if the token at the beginning is punctuation
@@ -189,7 +190,7 @@ public class HTMLUtilities
 	 * Tokenizes a word from the HTML string
 	 * 
 	 * @param str	the HTML string
-	 * @return	the first tokenized string
+	 * @return	a tokenized word
 	 */
 	public String tokenizeString(String str)
 	{
