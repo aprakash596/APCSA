@@ -6,10 +6,19 @@
  */
 public class HTMLUtilities 
 {
-	
 	//	an array containing all of the puncutation
 	private final char[] PUNCTUATION = new char[]{'.', ',', ';', ':', '(', 
 		')', '?', '!', '=', '&', '~', '+','-'};
+
+	//	will contain strings from multiple lines if needed
+	private String previousLines = "";
+
+	// NONE = not nested in a block, COMMENT = inside a comment block
+	// PREFORMAT = inside a pre-format block
+	private enum TokenState {NONE, COMMENT, PREFORMAT};
+
+	// the current tokenizer state
+	private TokenState state = TokenState.NONE; 
 
 	/**
 	 *	Break the HTML string into tokens. The array returned is
@@ -19,7 +28,8 @@ public class HTMLUtilities
 	 *	@param str			the HTML string
 	 *	@return				the String array of tokens
 	 */
-	public String[] tokenizeHTMLString(String str) {
+	public String[] tokenizeHTMLString(String str) 
+	{
 		// make the size of the array large to start
 		String[] result = new String[10000];
 		for(int i = 0; i < result.length; i++)
@@ -31,34 +41,79 @@ public class HTMLUtilities
 		{
 			resultIndex = 0;
 			String token = "";
-			str = str.trim();
 
+			if(state != TokenState.PREFORMAT)
+				str = str.trim();
+
+			if(str.indexOf("<!--") == 0)
+				state = TokenState.COMMENT;
+
+			if(state == TokenState.COMMENT && str.indexOf("-->") > -1)
+			{
+				state = TokenState.NONE;
+				str = str.substring(str.indexOf("-->") + 3);
+			}
 			
-			if(str.charAt(0) == '<')
-				token = tokenizeTag(str);
-			else if((str.charAt(0) >= 'a' && str.charAt(0) <= 'z') ||
-				(str.charAt(0) >= 'A' && str.charAt(0) <= 'Z'))
-				token = tokenizeString(str);
-			else if(isPunctuation(str))
-				token = "" + str.charAt(0);
-			else
-				token = tokenizeNumber(str);
+			if(state != TokenState.COMMENT && str.length() > 0)
+			{
+				if(str.charAt(0) == '<')
+				{
+					if(str.indexOf('>') > -1)
+						token = tokenizeTag(str);
+
+					if(token.equals("<pre>"))
+						state = TokenState.PREFORMAT;
+					if(token.equals("</pre>"))
+						state = TokenState.NONE;
+
+				}
+				else if((str.charAt(0) >= 'a' && str.charAt(0) <= 'z') ||
+					(str.charAt(0) >= 'A' && str.charAt(0) <= 'Z'))
+				{
+					token = tokenizeString(str);
+				}
+				else if(isPunctuation(str))
+					token = "" + str.charAt(0);
+				else
+					token = tokenizeNumber(str);
+			}
+
+			if(state == TokenState.PREFORMAT)
+			{
+				token = str;
+			}
 
 			while(resultIndex < result.length && result[resultIndex].length() > 0)
 				resultIndex++;
 
-			result[resultIndex] = token;
+			if(state != TokenState.COMMENT && token.length() != 0)
+			{
+				while(resultIndex < result.length && result[resultIndex].length() > 0)
+					resultIndex++;
 
-			str = str.substring(token.length());
+				result[resultIndex] = token;
+
+				str = str.substring(token.length());
+			}
+			else if(state == TokenState.COMMENT)
+				str = "";
 		}
 		
 		String[]placeHolder = result;
-		result = new String[resultIndex+1];
 
-		for(int i = 0; i < result.length; i++)
+		int count = 0;
+		while(placeHolder[count].length() > 0)
+			count++;
+
+		result = new String[count];
+
+		for(int i = 0; i < count; i++)
 			result[i] = placeHolder[i];
 
-		return result;
+		if(result.length > 0)
+			return result;
+		else
+			return null;
 	}
 
 	/**
@@ -124,7 +179,10 @@ public class HTMLUtilities
 	 */
 	public String tokenizeTag(String str)
 	{
-		return str.substring(str.indexOf('<'),str.indexOf('>')+1);
+		if(str.indexOf("<!--") != str.indexOf('<'))
+			return str.substring(str.indexOf('<'),str.indexOf('>')+1);
+		else
+			return "";
 	}
 
 	/**
