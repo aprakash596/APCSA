@@ -1,0 +1,18 @@
+<html><body>
+<h1>Special tokenizing</h1>
+Some pre-formatted text; most likely code that needs no formatting.
+<pre>
+	public static Scanner openToRead(String fileName) {
+		Scanner input = null;
+		try {
+			input = new Scanner(new File(fileName));
+		} catch (FileNotFoundException e) {
+			System.err.println("ERROR: Cannot open " + fileName + " for reading.");
+			System.exit(-1);
+		}
+		return input;
+	}
+</pre>
+<h3>The End</h3>
+</body>
+</html>
