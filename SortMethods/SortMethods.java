@@ -83,12 +83,8 @@ public class SortMethods {
 	{
 		if(to - from < 2)
 		{
-			if(to > from && arr[to] < arr[from])
-			{
-				int arrTemp = arr[to];
-				arr[to] = arr[from]; 
-				arr[from] = arrTemp;
-			}
+			if(arr[to] < arr[from])
+				swap(arr, from, to);
 		}
 		else
 		{
@@ -101,9 +97,27 @@ public class SortMethods {
 	
 	private void merge(Integer[]arr, int from, int middle, int to, int[]temp)
 	{
-		int i = from, j = middle + 1, k = from;
+		int index = middle + 1;
 		
-		while(i <= middle && j <= to)
+		
+		for(int i = from; i <= middle; i++)
+		{
+			for(int j = index; j <= to; j++)
+			{
+				if(arr[i] < arr[j])
+				{
+					
+					index++;
+				}
+			}
+		}
+		
+		
+		
+		
+		/*int i = from, j = middle + 1, k = to;
+		
+		while(i < middle && j < to)
 		{
 			if(arr[i] < arr[j])
 			{
@@ -126,7 +140,9 @@ public class SortMethods {
 		}
 		
 		for(k = from; k <= to; k++)
+		{
 			arr[k] = temp[k];
+		}*/
 	}
 	
 	/*****************************************************************/
@@ -188,7 +204,7 @@ public class SortMethods {
 		System.out.println("Array after sort:");
 		printArray(arr);
 		System.out.println();
-	
+			
 		for (int a = 0; a < 10; a++)
 			arr[a] = (int)(Math.random() * 100) + 1;
 		System.out.println("\nMerge Sort");
