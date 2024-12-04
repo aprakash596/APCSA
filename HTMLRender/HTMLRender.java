@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  *	HTMLRender
  *	This program renders HTML code into a JFrame window.
@@ -18,10 +20,11 @@
  *		<hX>, </hX> - Start/end of heading with size X = 1, 2, 3, 4, 5, 6
  *		<pre>, </pre> - Preformatted text
  *
- *	@author
- *	@version
+ *	@author	Aarav Prakash
+ *	@since
  */
-public class HTMLRender {
+public class HTMLRender 
+{
 	
 	// the array holding all the tokens of the HTML file
 	private String [] tokens;
@@ -31,9 +34,15 @@ public class HTMLRender {
 	private final char[] PUNCTUATION = new char[]{'.', ',', ';', ':', '(', 
 		')', '?', '!', '=', '&', '~', '+','-'};
 		
-	private enum TagState {REGULAR, BOLD, ITALIC, NOPRINT};
+	private enum TagState {REGULAR, BOLD, ITALIC, NOPRINT, HEADING1, HEADING2,
+        HEADING3, HEADING4, HEADING5, HEADING6, PREFORMAT};
+
+    private final String[]ENDING_TOKENS = new String[]{"</b>","</i>","</h1>",
+        "</h2>","</h3>","</h4>","</h5>","</h6>","</pre>"};
 	
 	private TagState state = TagState.NOPRINT; 
+
+    private int lineCount = 0;
 
 	// SimpleHtmlRenderer fields
 	private SimpleHtmlRenderer render;
@@ -60,7 +69,6 @@ public class HTMLRender {
 	
 	public void run(String[]args) 
 	{
-		Scanner input = null;
 		String fileName = "";
 		if (args.length > 0)
 			fileName = args[0];
@@ -72,62 +80,22 @@ public class HTMLRender {
 		readTokenFile(fileName);
 		removeEmpty();
 		printTokens();
-		
-		
-		/*
-		// Sample renderings from HtmlPrinter class
-		
-		// Print plain text without line feed at end
-		browser.print("First line");
-		
-		// Print line feed
-		browser.println();
-		
-		// Print bold words and plain space without line feed at end
-		browser.printBold("bold words");
-		browser.print(" ");
-		
-		// Print italic words without line feed at end
-		browser.printItalic("italic words");
-		
-		// Print horizontal rule across window (includes line feed before and after)
-		browser.printHorizontalRule();
-		
-		// Print words, then line feed (printBreak)
-		browser.print("A couple of words");
-		browser.printBreak();
-		browser.printBreak();
-		
-		// Print a double quote
-		browser.print("\"");
-		
-		// Print Headings 1 through 6 (Largest to smallest)
-		browser.printHeading1("Heading1");
-		browser.printHeading2("Heading2");
-		browser.printHeading3("Heading3");
-		browser.printHeading4("Heading4");
-		browser.printHeading5("Heading5");
-		browser.printHeading6("Heading6");
-		
-		// Print pre-formatted text (optional)
-		browser.printPreformattedText("Preformat Monospace\tfont");
-		browser.printBreak();
-		browser.print("The end");
-		*/
 	}
 	
 	public void readTokenFile(String fileName)
 	{
-		input = FileUtils.openToRead(fileName);
+		Scanner input = FileUtils.openToRead(fileName);
 		
 		int tokenCount = 0;
 		while (input.hasNext()) {
 			String line = input.nextLine();
 			String []tokenizedLine = util.tokenizeHTMLString(line);
-			for(int i = 0; i < tokenizedLine.length; i++)
-				tokens[tokenCount + i] = tokenizedLine[i];
-			
-			tokenCount += tokenizedLine.length;
+            if(tokenizedLine == null)
+                tokenizedLine = new String[]{""};
+                for(int i = 0; i < tokenizedLine.length; i++)
+				    tokens[tokenCount + i] = tokenizedLine[i];
+
+                tokenCount += tokenizedLine.length;
 		}
 		
 		input.close();
@@ -137,7 +105,7 @@ public class HTMLRender {
 	{
 		String[]placeHolder = tokens;
 		int count = 0;
-		while(placeHolder[count].length() > 0)
+		while(placeHolder[count] != null)
 			count++;
 		tokens = new String[count];
 		for(int i = 0; i < count; i++)
@@ -152,20 +120,199 @@ public class HTMLRender {
 			if(token.indexOf('<') > -1 && token.indexOf('>') > -1)
 			{
 				token = token.toLowerCase();
-				if(token.equals("<html>") && token[i].equalsIgoreCase("<body>"))
+				if(token.equals("<html>") && tokens[i+1].equalsIgnoreCase("<body>"))
 					state = TagState.REGULAR;
-				else if(token.equals("</body>") && token[i].equalsIgoreCase("</html>"))
+				else if(token.equals("</body>") && tokens[i+1].equalsIgnoreCase("</html>"))
 					state = TagState.NOPRINT;
-				else if(tagState != TagState.NOPRINT)
+				else if(state != TagState.NOPRINT)
 				{
-					if(token.equals("<b>")
+					if(token.equals("<p>"))
+					{
+						if(lineCount > 0)
+							browser.println();
+						browser.println();
+						lineCount = 0;
+					}
+					else if(token.equals("</p>"))
+					{
+						browser.println();
+						browser.println();
+						lineCount = 0;
+					}
+					else if(token.equals("<b>"))
 						state = TagState.BOLD;
-					if(token.equals("<\b>") || token.equals("<\i>"))
+					else if(token.equals("<i>"))
+						state = TagState.ITALIC;
+					else if(token.equals("<hr>"))
+						browser.printHorizontalRule();
+					else if(token.indexOf("h") > -1 && token.indexOf("/") == -1)
+					{
+						lineCount = 0;
+						browser.println();
+						browser.println();
+						if(token.equals("<h1>"))
+							state = TagState.HEADING1;
+						else if(token.equals("<h2>"))
+							state = TagState.HEADING2;
+						else if(token.equals("<h3>"))
+							state = TagState.HEADING3;
+						else if(token.equals("<h4>"))
+							state = TagState.HEADING4;
+						else if(token.equals("<h5>"))
+							state = TagState.HEADING5;
+						else if(token.equals("<h6>"))
+							state = TagState.HEADING6;
+					}
+                    else if(token.equals("<pre>"))
+                        state = TagState.PREFORMAT;
+                    else if(token.equals("<br>"))
+					{
+						lineCount = 0;
+                        browser.printBreak();
+					}
+                    else if(token.equals("<q>"))
+                        printer(" \"");
+					else if(token.equals("</q>"))
+						printer("\"");
+                    else if(isRegular(token))
 						state = TagState.REGULAR;
-					if(token.equals("<i>"))
-						state = TagState.ITALIC
 				}
 			}
+            else 
+            {
+                if(token.equals("\n"))
+				{
+					browser.println();
+					lineCount = 0;
+				}
+                else if(isPunctuation(token))
+				{	
+					lineCount++;
+                    printer(token);
+				}
+                else if(state != TagState.PREFORMAT)
+				{
+					if(token.length() != 0 && isOverLimit(token.length()))
+					{
+						printer("\n");
+						lineCount = token.length();
+					}
+					else
+						printer("");
+					
+					printer(token);
+				}
+				else if(state == TagState.PREFORMAT)
+				{
+					printer(token);
+					printer("\n");
+				}
+            }
 		}
 	}
+
+    private boolean isRegular(String token)
+    {
+        for(int i = 0; i < ENDING_TOKENS.length; i++)
+        {
+            if(token.equals(ENDING_TOKENS[i]))
+                return true;
+        }
+        return false;
+    }
+
+    private boolean isPunctuation(String token)
+    {
+        boolean punctuation = false;
+		for(int i = 0; i < PUNCTUATION.length; i++)
+		{
+			if(token.length() != 0 &&token.charAt(0) == PUNCTUATION[i])
+			{
+				if(PUNCTUATION[i] == '-' && token.length() > 1
+					&& (token.charAt(1) >= '0' && token.charAt(1) <= '9'))
+					punctuation = false;
+				else
+					punctuation = true;
+			}
+		}
+		return punctuation;
+    }
+
+    private void printer(String str)
+    {
+		if(str.equals("\n"))
+		{
+			browser.println();
+			lineCount = 0;
+		}
+        if(state == TagState.REGULAR)
+            browser.print(str);
+        else if(state == TagState.BOLD)
+            browser.printBold(str);
+        else if(state == TagState.ITALIC)
+            browser.printItalic(str);
+        else if(state == TagState.HEADING1)
+            browser.printHeading1(str);
+        else if(state == TagState.HEADING2)
+            browser.printHeading2(str);
+        else if(state == TagState.HEADING3)
+            browser.printHeading3(str);
+        else if(state == TagState.HEADING4)
+            browser.printHeading4(str);
+        else if(state == TagState.HEADING5)
+            browser.printHeading5(str);
+        else if(state == TagState.HEADING6)
+            browser.printHeading6(str);
+        else if(state == TagState.PREFORMAT)
+		{
+            browser.printPreformattedText(str);
+			browser.println();
+			lineCount = 0;
+		}
+    }
+
+    private boolean isOverLimit(int tokenLength)
+    {
+		boolean addNewLine;
+
+		int limit = 80;
+        
+		if(state == TagState.HEADING1)
+			limit = 40;
+		else if(state == TagState.HEADING2)
+			limit = 50;
+		else if(state == TagState.HEADING3)
+			limit = 60;
+		else if(state == TagState.HEADING5)
+			limit = 100;
+		else if(state == TagState.HEADING6)
+			limit = 120;
+		
+		if(state != TagState.PREFORMAT)
+		{
+			if(lineCount + tokenLength > limit)
+			{
+				lineCount = tokenLength;
+				addNewLine = true;
+			}
+			else
+			{
+				lineCount += tokenLength;
+				addNewLine = false;
+			}
+		}
+		else
+		{
+			lineCount = 0;
+			addNewLine = true;
+		}
+
+		if(! addNewLine && lineCount != 0)
+		{
+			printer(" ");
+			lineCount++;
+		}
+
+		return addNewLine;
+    }
 }
