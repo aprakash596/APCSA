@@ -21,7 +21,7 @@ import java.util.Scanner;
  *		<pre>, </pre> - Preformatted text
  *
  *	@author	Aarav Prakash
- *	@since
+ *	@since	November 18, 2023
  */
 public class HTMLRender 
 {
@@ -34,14 +34,18 @@ public class HTMLRender
 	private final char[] PUNCTUATION = new char[]{'.', ',', ';', ':', '(', 
 		')', '?', '!', '=', '&', '~', '+','-'};
 		
+	//	states for different printing methods
 	private enum TagState {REGULAR, BOLD, ITALIC, NOPRINT, HEADING1, HEADING2,
         HEADING3, HEADING4, HEADING5, HEADING6, PREFORMAT};
-
+	
+	//	an array of tokens to check if a font state has ended
     private final String[]ENDING_TOKENS = new String[]{"</b>","</i>","</h1>",
         "</h2>","</h3>","</h4>","</h5>","</h6>","</pre>"};
 	
+	//	the program cannot print without having the html and body tag enclose the file
 	private TagState state = TagState.NOPRINT; 
 
+	//	keeps track of the number of characters for wrapping
     private int lineCount = 0;
 
 	// SimpleHtmlRenderer fields
@@ -67,6 +71,9 @@ public class HTMLRender
 		hf.run(args);
 	}
 	
+	/**
+	 * 	Runs the program and all necessary methods to run it
+	 */
 	public void run(String[]args) 
 	{
 		String fileName = "";
@@ -82,6 +89,11 @@ public class HTMLRender
 		printTokens();
 	}
 	
+	/**
+	 * 	Tokenize the HTML file
+	 * 
+	 * 	@param	fileName 	the name of the inputted HTML file
+	 */
 	public void readTokenFile(String fileName)
 	{
 		Scanner input = FileUtils.openToRead(fileName);
@@ -101,6 +113,9 @@ public class HTMLRender
 		input.close();
 	}
 	
+	/**
+	 * 	Removes all empty tokens from the tokenized array
+	 */
 	public void removeEmpty()
 	{
 		String[]placeHolder = tokens;
@@ -112,6 +127,10 @@ public class HTMLRender
 			tokens[i] = placeHolder[i];
 	}
 	
+	/**
+	 * 	Changes the state to utilize the different print methods and
+	 * 	calls the printer to print the non-tag tokens
+	 */
 	public void printTokens()
 	{
 		for(int i = 0; i < tokens.length; i++)
@@ -211,6 +230,14 @@ public class HTMLRender
 		}
 	}
 
+
+	/**
+	 * 	Sets the font state to regular if a tag that ends a special font
+	 * 	is encountered
+	 * 	
+	 * 	@param	token	an HTML tag
+	 * 	@return	if the tag is an ending tag for a special font
+	 */
     private boolean isRegular(String token)
     {
         for(int i = 0; i < ENDING_TOKENS.length; i++)
@@ -221,6 +248,12 @@ public class HTMLRender
         return false;
     }
 
+	/**
+	 * 	Checks if the inputted token is punctuation
+	 * 
+	 * 	@param	token	a non-tag token
+	 * 	@return	if the token is punctuation
+	 */
     private boolean isPunctuation(String token)
     {
         boolean punctuation = false;
@@ -238,6 +271,11 @@ public class HTMLRender
 		return punctuation;
     }
 
+	/**
+	 * 	Prints str based on the current font state
+	 * 	
+	 * 	@param	str		the current non-tag token
+	 */
     private void printer(String str)
     {
 		if(str.equals("\n"))
@@ -271,6 +309,13 @@ public class HTMLRender
 		}
     }
 
+	/**
+	 * 	Checks if the line goes over the specified limit for certain fonts
+	 * 	to wrap the text
+	 * 
+	 * 	@param	tokenLength		the length of the token being printed
+	 * 	@return	if the token goes over the limit
+	 */
     private boolean isOverLimit(int tokenLength)
     {
 		boolean addNewLine;
