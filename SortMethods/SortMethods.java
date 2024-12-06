@@ -81,14 +81,20 @@ public class SortMethods {
 	
 	private void recursiveSort(Integer[]arr, int from, int to, int[]temp)
 	{
-		if(to - from < 2)
+		if(to - from < 1)
 		{
 			if(arr[to] < arr[from])
 				swap(arr, from, to);
 		}
 		else
 		{
-			int middle = (from + to)/2;
+			/*for(int i = from; i <= to; i++)
+			{
+				System.out.print(" " + arr[i]);
+			}
+			System.out.println("");*/
+
+			int middle = from + (to - from)/2;
 			recursiveSort(arr,from,middle,temp);
 			recursiveSort(arr,middle+1,to,temp);
 			merge(arr,from,middle,to,temp);
@@ -97,52 +103,42 @@ public class SortMethods {
 	
 	private void merge(Integer[]arr, int from, int middle, int to, int[]temp)
 	{
-		int index = middle + 1;
-		
-		
-		for(int i = from; i <= middle; i++)
+		for(int i = from; i <= to; i++)
 		{
-			for(int j = index; j <= to; j++)
-			{
-				if(arr[i] < arr[j])
-				{
-					
-					index++;
-				}
-			}
+			temp[i] = arr[i];
 		}
+
+		int i = from, j = middle + 1, k = from;
 		
-		
-		
-		
-		/*int i = from, j = middle + 1, k = to;
-		
-		while(i < middle && j < to)
+		while(i <= middle && j <= to)
 		{
-			if(arr[i] < arr[j])
+			if(temp[i] < temp[j])
 			{
-				temp[k] = arr[i];
+				arr[k] = temp[i];
 				i++;
 			}
 			else
 			{
-				temp[k] = arr[j];
+				arr[k] = temp[j];
 				j++;
 			}
 			k++;
 		}
 		
+		while (i <= middle) 
+		{
+			arr[k] = temp[i];
+			i++;
+			k++;
+   		}
+		
 		while(j <= to)
 		{
-			temp[k] = arr[j];
+			arr[k] = temp[j];
 			j++;
 			k++;
 		}
-		
-		for(k = from; k <= to; k++)
-		{
-			arr[k] = temp[k];
-		}*/
+
 	}
 	
 	/*****************************************************************/
