@@ -2,10 +2,11 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- *	SortMethods - Sorts an array of City based on population
+ *	SortMethods for Population.java 
+ 		- Sorts an array of City based on population
  *
  *	@author Aarav Prakash
- *	@since	November 26, 2024
+ *	@since	December 2, 2024
  */
 public class SortMethods {
 	

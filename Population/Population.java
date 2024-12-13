@@ -3,22 +3,21 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 /**
- *	Population - lists and sorts the populations of various cities in the United States in 
- 	2017
- *
- *	Requires FileUtils and Prompt classes.
+ *	Population - lists and sorts the populations of various cities in the 
+ 	United States in 2017
  *
  *	@author	Aarav Prakash
  *	@since	December 2, 2024
  */
-public class Population {
-	
+public class Population 
+{
 	// List of cities
 	private List<City> cities = new ArrayList<>();
 	
 	// US data file
 	private final String DATA_FILE = "usPopData2017.txt";
 
+	// instances for SortMethods and CityComparatorByName
 	SortMethods sort = new SortMethods();
 	CityComparatorByName nameCompare = new CityComparatorByName();
 
@@ -28,6 +27,10 @@ public class Population {
 		po.run();
 	}
 
+	/**
+	 * 	Runs the methods that are used in Population and asks the user for 
+	 * 	information
+	 */
 	public void run()
 	{
 		printIntroduction();
@@ -66,7 +69,7 @@ public class Population {
 				sort.selectionSort(cities);
 				long endMillisec = System.currentTimeMillis();
 
-				System.out.printf("    %-23s%-23s%-15s%10s\n","State","City","Type","Population");
+				System.out.printf("    %-22s %-22s %-12s %12s\n","State","City","Type","Population");
 				for(int i = 0; i < 50; i++)
 				{
 					index++;
@@ -81,7 +84,7 @@ public class Population {
 				sort.mergeSort(cities);
 				long endMillisec = System.currentTimeMillis();
 
-				System.out.printf("    %-23s%-23s%-15s%10s\n","State","City","Type","Population");
+				System.out.printf("    %-22s %-22s %-12s %12s\n","State","City","Type","Population");
 				for(int i = cities.size(); i > cities.size() - 50; i--)
 				{
 					index++;
@@ -97,7 +100,7 @@ public class Population {
 				nameCompare.insertionSort(cities);
 				long endMillisec = System.currentTimeMillis();
 
-				System.out.printf("    %-23s%-23s%-15s%10s\n","State","City","Type","Population");
+				System.out.printf("    %-22s %-22s %-12s %12s\n","State","City","Type","Population");
 				for(int i = 0; i < 50; i++)
 				{
 					index++;
@@ -113,7 +116,7 @@ public class Population {
 				nameCompare.mergeSort(cities);
 				long endMillisec = System.currentTimeMillis();
 
-				System.out.printf("    %-23s%-23s%-15s%10s\n","State","City","Type","Population");
+				System.out.printf("    %-22s %-22s %-12s %12s\n","State","City","Type","Population");
 				for(int i = 0; i < 50; i++)
 				{
 					index++;
@@ -177,13 +180,17 @@ public class Population {
 		}
 	}
 
+	/**
+	 * Prints the city's information based on the sorted cities array list
+	 * 
+	 * @param index		the current city number to be printed
+	 * @param sorted	the City class from which the information is printed
+	 */
 	public void printer(int index, City sorted)
 	{
-		System.out.printf("%2d: %s", index, sorted.getState(), 
-			sorted.getName(), sorted.getDesignation(), sorted.getPopulation());
+		System.out.printf("%2d: %s", index, sorted.toString());
 		System.out.println("");
 	}
-	
 	
 	/**	Prints the introduction to Population */
 	public void printIntroduction() {

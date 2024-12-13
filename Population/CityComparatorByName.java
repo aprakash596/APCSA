@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * Compares cities by their names
+ * 	Compares cities by their names
  * 
  *  @author Aarav Prakash
  *  @since  December 2, 2024
@@ -11,6 +11,14 @@ import java.util.ArrayList;
 
 public class CityComparatorByName implements Comparator<City>
 {
+
+	/**
+	 * Compares this City with another City by the name and then
+	 * population
+	 * 
+	 * @param city 	the first City to compare
+	 * @param other the other City to compare
+	 */
     public int compare(City city, City other)
     {
         if(city.getName().compareTo(other.getName()) != 0)
@@ -32,6 +40,10 @@ public class CityComparatorByName implements Comparator<City>
 		arr.set(y, temp);
 	}
 
+	/**
+	 *	Insertion Sort algorithm - in ascending order by name
+	 *	@param arr		array of City objects to sort
+	 */
     public void insertionSort(List<City> arr) 
 	{
 		for(int n = 1; n < arr.size(); n++)
@@ -48,7 +60,7 @@ public class CityComparatorByName implements Comparator<City>
 	}
 
     /**
-	 *	Merge Sort algorithm - in ascending order (you implement)
+	 *	Merge Sort algorithm - in descending order by name
 	 *	@param arr		array of Integer objects to sort
 	 */
 	public void mergeSort(List<City> arr) 
@@ -58,6 +70,14 @@ public class CityComparatorByName implements Comparator<City>
 		recursiveSort(arr,0,n-1,temp);
 	}
 	
+	/**
+	 * Does the splits and merges for merge sort
+	 * 
+	 * 	@param arr	an ArrayList of City created from the US City Data
+	 * 	@param from	the starting index for each subset in merge sort
+	 * 	@param to	the ending index for each subset in merge sort
+	 * 	@param temp	a temporary ArrayList of the City class
+	 */
 	private void recursiveSort(List<City> arr, int from, int to, List<City> temp)
 	{
 		if(to - from < 1)
@@ -75,6 +95,14 @@ public class CityComparatorByName implements Comparator<City>
 		}
 	}
 	
+	/**
+	 *	Merges the splits in merge sort
+	 * 
+	 * 	@param arr	an ArrayList of City created from the US City Data
+	 * 	@param from	the starting index for each subset in merge sort
+	 * 	@param to	the ending index for each subset in merge sort
+	 * 	@param temp	a temporary ArrayList of the City class
+	 */
 	private void merge(List<City> arr, int from, int middle, int to, List<City> temp)
 	{
 		for(int i = from; i <= to; i++)
