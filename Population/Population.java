@@ -179,7 +179,7 @@ public class Population {
 
 	public void printer(int index, City sorted)
 	{
-		System.out.printf("%2d: %-23s%-23s%-15s%,10d", index, sorted.getState(), 
+		System.out.printf("%2d: %s", index, sorted.getState(), 
 			sorted.getName(), sorted.getDesignation(), sorted.getPopulation());
 		System.out.println("");
 	}

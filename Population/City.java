@@ -50,21 +50,41 @@ public class City implements Comparable<City> {
 	
 	/**	Accessor methods */
 
+	/**
+	 * 	Returns the name of the city
+	 * 	
+	 * 	@return	the name of the city
+	 */
 	public String getName()
 	{
 		return name;
 	}
 
+	/**
+	 * 	Returns the state of the city
+	 * 	
+	 * 	@return	the state of the city
+	 */
 	public String getState()
 	{
 		return state;
 	}
 
+	/**
+	 * 	Returns the designation of the city
+	 * 	
+	 * 	@return	the state of the city
+	 */
 	public String getDesignation()
 	{
 		return designation;
 	}
 
+	/**
+	 * 	Returns the population of the city
+	 * 
+	 * 	@return the population of the city
+	 */
 	public int getPopulation()
 	{
 		return population;

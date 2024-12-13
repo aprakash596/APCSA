@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- *	SortMethods - Sorts an array of City in ascending order based on population
+ *	SortMethods - Sorts an array of City based on population
  *
  *	@author Aarav Prakash
  *	@since	November 26, 2024
@@ -22,7 +22,7 @@ public class SortMethods {
 	}
 	
 	/**
-	 *	Swaps two Integer objects in array arr
+	 *	Swaps two City objects in array arr
 	 *	@param arr		array of City objects
 	 *	@param x		index of first object to swap
 	 *	@param y		index of second object to swap
@@ -35,8 +35,8 @@ public class SortMethods {
 	}
 	
 	/**
-	 *	Selection Sort algorithm - in ascending order (you implement)
-	 *	@param arr		array of Integer objects to sort
+	 *	Selection Sort algorithm - in ascending order
+	 *	@param arr		array of City objects to sort
 	 */
 	public void selectionSort(List<City> arr) 
 	{
@@ -53,8 +53,8 @@ public class SortMethods {
 	}
 	
 	/**
-	 *	Insertion Sort algorithm - in ascending order (you implement)
-	 *	@param arr		array of Integer objects to sort
+	 *	Insertion Sort algorithm - in ascending order
+	 *	@param arr		array of City objects to sort
 	 */
 	public void insertionSort(List<City> arr) 
 	{
@@ -73,8 +73,8 @@ public class SortMethods {
 	}
 	
 	/**
-	 *	Merge Sort algorithm - in ascending order (you implement)
-	 *	@param arr		array of Integer objects to sort
+	 *	Merge Sort algorithm - in ascending order
+	 *	@param arr		array of City objects to sort
 	 */
 	public void mergeSort(List<City> arr) 
 	{
@@ -83,6 +83,14 @@ public class SortMethods {
 		recursiveSort(arr,0,n-1,temp);
 	}
 	
+	/**
+	 * Does the splits and merges for merge sort
+	 * 
+	 * 	@param arr	an ArrayList of City created from the US City Data
+	 * 	@param from	the starting index for each subset in merge sort
+	 * 	@param to	the ending index for each subset in merge sort
+	 * 	@param temp	a temporary ArrayList of the City class
+	 */
 	private void recursiveSort(List<City> arr, int from, int to, List<City> temp)
 	{
 		if(to - from < 1)
@@ -100,6 +108,14 @@ public class SortMethods {
 		}
 	}
 	
+	/**
+	 *	Merges the splits in merge sort
+	 * 
+	 * 	@param arr	an ArrayList of City created from the US City Data
+	 * 	@param from	the starting index for each subset in merge sort
+	 * 	@param to	the ending index for each subset in merge sort
+	 * 	@param temp	a temporary ArrayList of the City class
+	 */
 	private void merge(List<City> arr, int from, int middle, int to, List<City> temp)
 	{
 		for(int i = from; i <= to; i++)
