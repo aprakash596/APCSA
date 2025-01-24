@@ -1,28 +1,29 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
- *	Provides utilities for word games:
- *	1. finds all words in the dictionary that match a list of letters
- *	2. prints an array of words to the screen in tabular format
- *	3. finds the word from an array of words with the highest score
- *	4. calculates the score of a word according to a table
+ *	WordUtilities - Readies the dictionary file, randomWords.txt, for AnagramMaker
  *
- *	Uses the FileUtils and Prompt classes.
- *	
  *	@author	Aarav Prakash
- *	@since	October 18, 2024
+ *	@since	January 15, 2025
  */
-
-public class WordUtilities
-{
-	private String [] words;		// the dictionary of words
+public class WordUtilities {
+		
+	private List<String> words;				// list of words
 	
-	// File containing dictionary of almost 100,000 words.
-	private final String WORD_FILE = "randomWords.txt";
+	public WordUtilities() {
+		words = new ArrayList<String>();
+	}
 	
-	/* Constructor */
-	public WordUtilities() { }
+	/**
+	 * Accessor method for words
+	 * @return a list of words from the given file
+	 */
+	public List<String> getWords()
+	{
+		return words;
+	}
 
 	/**
 	 *	Determines if a word's characters match a group of letters
@@ -30,7 +31,8 @@ public class WordUtilities
 	 *	@param letters	the letters
 	 *	@return			true if the word's chars match; false otherwise
 	 */
-	private boolean wordMatch(String word, String letters) {
+	private boolean wordMatch(String word, String letters) 
+	{
 		// if the word is longer than letters return false
 		if (word.length() > letters.length()) return false;
 		
@@ -75,145 +77,138 @@ public class WordUtilities
 		sm.mergeSort(words);
 	}
 
-	/**	Load all of the dictionary from a file into words array. */
-	private void loadWords () 
-	{ 
-		Scanner input = FileUtils.openToRead(WORD_FILE);
-		words = new String[1];
-		words[0] = input.next();
-		while(input.hasNext())
-		{
-			String[]placeHolder = words;
-			words = new String[placeHolder.length+1];
-			for(int i = 0; i < placeHolder.length; i++)
-			{
-				words[i] = placeHolder[i];
-			}
-			words[placeHolder.length] = input.next();
-		}
-	}
-	
-	/**	Find all words that can be formed by a list of letters.
-	 *  @param letters	string containing list of letters
-	 *  @return			array of strings with all words found.
+
+	/**
+	 *	Read in the words from fileName
+	 *	@param fileName		name of the file containing words
 	 */
-	public String [] findAllWords (String letters)
-	{
-		String[]foundWords = new String[1];
-		for(int i = 0; i < words.length; i++)
-		{
-			String word = words[i];
-			if(isWordMatch(word, letters))
-			{
-				foundWords[foundWords.length-1] = word;
-				String[]placeHolder = foundWords;
-				foundWords = new String[placeHolder.length+1];
-				for(int j = 0; j < placeHolder.length; j++)
-					foundWords[j] = placeHolder[j];
-			}
-		}
-		
-		if(foundWords[foundWords.length-1] == null)
-		{
-			String[]placeHolder = foundWords;
-			foundWords = new String[foundWords.length-1];
-			for(int i = 0; i < foundWords.length; i++)
-				foundWords[i] = placeHolder[i];
-		}
-		
-		return foundWords;
+	public void readWordsFromFile(String fileName) {
+		Scanner inFile = FileUtils.openToRead(fileName);
+		while (inFile.hasNext())
+			words.add(inFile.next());
+		inFile.close();		
 	}
 	
 	/**
-	 *  Decides if a word matches a group of letters.
-	 *
-	 *  @param word  The word to test.
-	 *  @param letters  A string of letters to compare
-	 *  @return  true if the word matches the letters, false otherwise
+	 *	Uses binary search to find a word in the word List
+	 *	Precondition: words must be sorted in ascending order
+	 *	@param word		the target word to find
+	 *	@return			if found, the index of the word inside words;
+	 *					if not found, a negative number
 	 */
-	 public boolean isWordMatch (String word, String letters) 
-	 {
-		 for(int a = 0; a < word.length(); a++)
-		 {
-			 char c = word.charAt(a);
-			 if(letters.indexOf(c) > -1)
-				 letters = letters.substring(0, letters.indexOf(c))
-							 + letters.substring(letters.indexOf(c) + 1);
-			 else
-		 		 return false;
-		 }
-		
-		 return true;
-	 }
-	
-	/**	Print the words found to the screen.
-	 *  @param words	array containing the words to be printed
-	 */
-	public void printWords (String [] wordList) 
-	{ 
-		for(int i = 0; i < wordList.length; i++)
-		{
-			if(i != 0 && i%5 == 0)
-				System.out.print("\n");
-			System.out.printf("%-15s", wordList[i]);
-		}
-		System.out.println("");
+	public int findWord(String word) {
+		return binarySearch(words, word);
 	}
 	
-	/**	Finds the highest scoring word according to a score table.
-	 *
-	 *  @param word  		An array of words to check
-	 *  @param scoreTable	An array of 26 integer scores in letter order
-	 *  @return   			The word with the highest score
+	/**
+	 *	Binary Search - find the target in the List
+	 *	Preconditions: listOfWords is sorted in ascending order
+	 *	@param listOfWords		List of 0 or more words to check
+	 *	@param target			the word to look for
+	 *	@return					if found, the index of the word inside words;
+	 *							if not found, a negative number
 	 */
-	public String bestWord (String [] wordList, int [] scoreTable)
-	{
-		String best = wordList[0];
-		int bestScore = getScore(wordList[0], scoreTable);
-		String[]multipleBest = new String[1];
+	public int binarySearch(List<String> listOfWords, String target) {
+		// if listOfWords is empty then return not found
+		if (listOfWords.size() == 0) return -1;
 		
-		for(int i = 1; i < wordList.length; i++)
-		{
-			int score = getScore(wordList[i], scoreTable);
-			if(score > bestScore)
-			{
-				best = wordList[i];
-				bestScore = score;
-				multipleBest = new String[1];
-				multipleBest[0] = best;
-			}
-			else if(score == bestScore)
-			{
-				String[]placeHolder = multipleBest;
-				multipleBest = new String[placeHolder.length+1];
-				for(int j = 0; j < placeHolder.length; j++)
-					multipleBest[j] = placeHolder[j];
-				multipleBest[multipleBest.length-1] = wordList[i];
-			}
-		}
+		// otherwise, recursively perform binary search to find target word
+		//return binarySearchRecurse(listOfWords, target, 0, listOfWords.size() - 1);
 		
-		if(multipleBest.length > 1)
-		{
-			best = wordList[(int)(Math.random()*(multipleBest.length-1))];
-		}
-		
-		return best;
+		// otherwise, iteratively perform binary search to find target word
+		return binarySearchIterative(listOfWords, target);
 	}
 	
-	/**	Calculates the score of one word according to a score table.
-	 *
-	 *  @param word			The word to score
-	 *  @param scoreTable	An array of 26 integer scores in letter order
-	 *  @return				The integer score of the word
+	/**
+	 *	Recursive binary search - find the target word in the list between low and
+	 *			high indices
+	 *	Precondition: list of words must be sorted in ascending order
+	 *	@param listOfWords		list of words to search
+	 *	@param target			the word to search for
+	 *	@param low				the low index of range to search
+	 *	@param high				the high index of range to search
+	 *	@return					if found, the index of the word inside words;
+	 *							if not found, a negative number
 	 */
-	public int getScore (String word, int [] scoreTable)
+	public int binarySearchRecurse(List<String> listOfWords, String target,
+										int low, int high) {
+		// if low index is greater than high, target not found and return negative number
+		if(low > high) return -1;
+		
+		// compute middle index
+		int mid = (low + high)/2;
+		
+		// compare the target to the mid index
+		int compare = target.compareTo(listOfWords.get(mid));
+		
+		// if target is equal to mid then return the index of the matching word
+		if(compare == 0) return mid;
+		
+		// if target is less than mid, then check bottom of list recursively
+		if(compare < 0)
+			return binarySearchRecurse(listOfWords, target, low, mid - 1);
+		
+		// otherwise, target is greater than mid so check top of list recursively
+		return binarySearchRecurse(listOfWords, target, mid + 1, high);
+	}
+	
+	/**
+	 *	Iterative binary search - find the target word in the list
+	 *	Precondition: list of words must be sorted in ascending order
+	 *	@param listOfWords		list of words to search
+	 *	@param target			the word to search for
+	 *	@return					if found, the index of the word inside words;
+	 *							if not found, a negative number
+	 */
+	public int binarySearchIterative(List<String> listOfWords, String target) 
 	{
-		int score = 0;
-		for(int i = 0; i < word.length(); i++)
+		int left = 0;
+		int right = listOfWords.size() - 1;
+		while(left <= right)
 		{
-			score += scoreTable[(int)word.charAt(i) - 97];
+			int mid = (left + right)/2;
+			int compare = target.compareTo(listOfWords.get(mid));
+			
+			if(compare == 0)
+				return mid;
+			else if(compare < 0)
+				right = mid - 1;
+			else
+				left = mid + 1;
+		}
+		return -1;
+	}
+	
+	/********************************************************************/
+	/************************* Test program *****************************/
+	/********************************************************************/
+	private final String FILE_NAME = "randomWords.txt";	// list of random words
+
+	public static void main(String[] args) {
+		WordUtilities wu = new WordUtilities();
+		wu.run();
+	}
+	
+	public void run() {
+		// 1. read the file of words
+		readWordsFromFile(FILE_NAME);
+		
+		// 2. sort the words
+		SortMethods sm = new SortMethods();
+		sm.mergeSort(words);
+		
+		// 3. find the words
+		System.out.println("\nTesting findWord method\n-----------------------");
+		String[] wordList = { "hello", "foo", "utilitarian", "frufru", 
+							  "student", "fubsy", "pulchritude", "callipygian",
+							  "whithersoever" };
+		for (int a = 0; a < wordList.length; a++) {
+			System.out.print("\"" + wordList[a] + "\"");
+			int index = findWord(wordList[a]);
+			if (index >= 0) System.out.println(" found, index = " + index);
+			else System.out.println(" NOT found");
 		}
 		
-		return score;
+		System.out.println();
 	}
 }
