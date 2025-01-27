@@ -197,19 +197,29 @@ public class HanoiTower {
 		
 		recursiveSolver(levels, 0, 1, 2);
 	}
-	
-	public void recursiveSolver(int n, int from_rod, int to_rod, int helper_rod)
+
+
+	/**
+	 * Recurse method for solving the hanoi tower in the most efficient
+	 * way possible.
+	 * @param n			the amount of disks
+	 * @param from		the pole that the disk is originally on 
+	 * @param to		the pole that the disk will be moved to
+	 * @param helper	the pole that will help the disk move to 
+	 * 					its intended location
+	 */
+	public void recursiveSolver(int n, int from, int to, int helper)
 	{
 		if(n == 1)
 		{
-			moveDisk(from_rod, to_rod);
+			moveDisk(from, to);
 			printTowers();
 			return;
 		}
-		recursiveSolver(n-1, from_rod, helper_rod, to_rod);
-        moveDisk(from_rod, to_rod);
+		recursiveSolver(n-1, from, helper, to);
+        moveDisk(from, to);
 		printTowers();
-        recursiveSolver(n-1, helper_rod, to_rod, from_rod);
+        recursiveSolver(n-1, helper, to, from);
 	}
 
 	
