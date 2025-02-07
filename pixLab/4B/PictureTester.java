@@ -70,6 +70,8 @@ public class PictureTester
 	  underwater.explore();
   }
   
+  
+  
   /** Method to test the collage method */
   public static void testCollage()
   {
@@ -78,11 +80,27 @@ public class PictureTester
     canvas.explore();
   }
   
-  public static void testPixelate(int size)
+  public static void testEnhance()
+  {
+	  Picture water = new Picture("images/water.jpg");
+	  water.explore();
+	  Picture result = water.enhance(11);
+	  result.explore();
+  }
+  
+  public static void testBlur()
+  {
+	  Picture beach = new Picture("images/beach.jpg");
+	  beach.explore();
+	  Picture result = beach.blur(11);
+	  result.explore();
+  }
+  
+  public static void testPixelate()
   {
 	  Picture swan = new Picture("images/swan.jpg");
 	  swan.explore();
-	  swan.pixelate(size);
+	  swan.pixelate(7);
 	  swan.explore();
   }
   
@@ -107,7 +125,9 @@ public class PictureTester
     //testKeepOnlyGreen();
     //testNegate();			//works
     //testGrayscale();		//works
-    testPixelate(7);
+    //testPixelate();		//works
+    //testBlur();				//works
+    testEnhance();
     //testFixUnderwater();
     //testMirrorVertical();
     //testMirrorTemple();

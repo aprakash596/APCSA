@@ -192,6 +192,98 @@ public class Picture extends SimplePicture
 	  }
   }
   
+	/** Method that blurs the picture
+	 * 	@param size Blur size, greater is more blur
+	 * 	@return Blurred picture
+	 */
+	public Picture blur(int size)
+	{
+		//only even blur areas
+		Pixel[][] pixels = this.getPixels2D();
+		Picture result = new Picture(pixels.length, pixels[0].length);
+		Pixel[][] resultPixels = result.getPixels2D();	
+		
+		for(int i = 0; i < pixels.length; i++)
+		{
+			for(int j = 0; j < pixels[0].length; j++)
+			{
+				int redAverage = 0;
+				int greenAverage = 0;
+				int blueAverage = 0;
+				int amtOfPixels = 0;
+				
+				for(int k = i-(size/2); k <= i + (size/2); k++)
+				{
+					for(int l = j-(size/2); l <= j + (size/2); l++)
+					{
+						if(k > -1 && l > -1 && k < pixels.length && l < pixels[0].length)
+						{
+							redAverage += pixels[k][l].getRed();
+							greenAverage += pixels[k][l].getGreen();
+							blueAverage += pixels[k][l].getBlue();
+							amtOfPixels++;
+						}
+					}
+				}
+				resultPixels[i][j].setRed(redAverage/amtOfPixels);
+				resultPixels[i][j].setGreen(greenAverage/amtOfPixels);
+				resultPixels[i][j].setBlue(blueAverage/amtOfPixels);
+			}
+		}
+		return result;
+	}
+	
+	/** Method that enhances a picture by getting average Color around
+	* a pixel then applies the following formula:
+	*
+	* pixelColor <- 2 * currentValue - averageValue
+	*
+	* size is the area to sample for blur.
+	*
+	* @param size Larger means more area to average around pixel
+	* and longer compute time.
+	* @return enhanced picture
+	*/
+	public Picture enhance(int size)
+	{
+		Pixel[][] pixels = this.getPixels2D();
+		Picture result = new Picture(pixels.length, pixels[0].length);
+		Pixel[][] resultPixels = result.getPixels2D();
+		
+		for(int i = 0; i < pixels.length; i++)
+		{
+			for(int j = 0; j < pixels[0].length; j++)
+			{
+				int redAverage = 0;
+				int greenAverage = 0;
+				int blueAverage = 0;
+				int amtOfPixels = 0;
+				
+				for(int k = i-(size/2); k <= i + (size/2); k++)
+				{
+					for(int l = j-(size/2); l <= j + (size/2); l++)
+					{
+						if(k > -1 && l > -1 && k < pixels.length && l < pixels[0].length)
+						{
+							redAverage += pixels[k][l].getRed();
+							greenAverage += pixels[k][l].getGreen();
+							blueAverage += pixels[k][l].getBlue();
+							amtOfPixels++;
+						}
+					}
+				}
+				redAverage /= amtOfPixels;
+				greenAverage /= amtOfPixels;
+				blueAverage /= amtOfPixels;
+				//int average = (redAverage + greenAverage + blueAverage)/3;
+				resultPixels[i][j].setRed(2*pixels[i][j].getRed()-redAverage);
+				resultPixels[i][j].setGreen(2*pixels[i][j].getGreen()-greenAverage);
+				resultPixels[i][j].setBlue(2*pixels[i][j].getBlue()-blueAverage);
+			}
+		}
+		return result;
+	}
+  
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
     * from left to right */
