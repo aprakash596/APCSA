@@ -11,9 +11,8 @@ import java.util.List; // resolves problem with java.awt.List and java.util.List
  * SimplePicture and allows the student to add functionality to
  * the Picture class.  
  * 
- * will be modifying this one
- * 
- * @author Barbara Ericson ericson@cc.gatech.edu
+ * @author Barbara Ericson ericson@cc.gatech.edu and Aarav Prakash
+ * @since  February 3, 2025
  */
 public class Picture extends SimplePicture 
 {
@@ -145,6 +144,10 @@ public class Picture extends SimplePicture
     }
   }
   
+  /**
+   * Method that makes pictures more pixelated
+   * @param size  the size of the pixelation
+   */
   public void pixelate(int size)
   {
 	  // should run very fast, but blur should pause for a bit
@@ -284,6 +287,10 @@ public class Picture extends SimplePicture
 		return result;
 	}
 
+  /**
+   * Method that swaps the left and right side of the image
+   * @return  the edited picture with the left and right swapped
+   */
   public Picture swapLeftRight()
 	{
 		Pixel[][] pixels = this.getPixels2D();
@@ -303,6 +310,13 @@ public class Picture extends SimplePicture
 		return result;
 	}
 
+    /**
+     * Method that shifts the picture to the right
+     * with a stair step approach
+     * @param shiftCount  the amount a step should be shifted
+     * @param steps the amount of steps the picture should have
+     * @return  the edited picture with the stair steps
+     */
     public Picture stairStep(int shiftCount, int steps)
     {
         Pixel[][] pixels = this.getPixels2D();
@@ -345,6 +359,12 @@ public class Picture extends SimplePicture
         return result;
     }
 
+    /**
+     * Method that creates a distortion along the center
+     * horizontal of the picture
+     * @param maxHeight the amount distortion
+     * @return  the picture with the liquify effect
+     */
     public Picture liquify(int maxHeight)
     {
         Pixel[][] pixels = this.getPixels2D();
@@ -377,6 +397,12 @@ public class Picture extends SimplePicture
         return result;
     }
 
+    /**
+     * Method that creates oscillating distortions in 
+     * a picture
+     * @param amplitude the amount distortion in one oscillation
+     * @return  the picture with the wave effect
+     */
     public Picture wave(int amplitude) 
     {
         Pixel[][] pixels = this.getPixels2D();
@@ -424,7 +450,6 @@ public class Picture extends SimplePicture
     } 
   }
 
-  
   
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
@@ -537,4 +562,4 @@ public class Picture extends SimplePicture
     beach.explore();
   }
   
-} // this } is the end of class Picture, put all new methods before this
+} 

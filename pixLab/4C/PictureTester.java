@@ -62,6 +62,7 @@ public class PictureTester
     temple.explore();
   }
   
+  /** Method to test fixUnderwater */
   public static void testFixUnderwater()
   {
 	  Picture underwater = new Picture("images/water.jpg");
@@ -69,8 +70,6 @@ public class PictureTester
 	  //underwater.fixUnderwater();
 	  underwater.explore();
   }
-  
-  
   
   /** Method to test the collage method */
   public static void testCollage()
@@ -80,6 +79,7 @@ public class PictureTester
     canvas.explore();
   }
   
+  /** Method to test enhance */
   public static void testEnhance()
   {
 	  Picture water = new Picture("images/water.jpg");
@@ -88,6 +88,7 @@ public class PictureTester
 	  result.explore();
   }
   
+  /** Method to test blur */
   public static void testBlur()
   {
 	  Picture beach = new Picture("images/beach.jpg");
@@ -96,6 +97,7 @@ public class PictureTester
 	  result.explore();
   }
 
+  /** Method to test swapLeftRight */
   public static void testSwapLeftRight()
   {
     Picture cycle = new Picture("images/redMotorcycle.jpg");
@@ -104,6 +106,7 @@ public class PictureTester
     result.explore();
   }
 
+  /** Method to test stairStep */
   public static void testStairStep()
   {
     Picture cycle = new Picture("images/redMotorcycle.jpg");
@@ -112,6 +115,7 @@ public class PictureTester
     result.explore();
   }
 
+  /** Method to test liquify */
   public static void testLiquify()
   {
     Picture cycle = new Picture("images/redMotorcycle.jpg");
@@ -120,6 +124,7 @@ public class PictureTester
     result.explore();
   }
 
+  /** Method to test wave */
   public static void testWave()
   {
     Picture cycle = new Picture("images/beach.jpg");
@@ -128,6 +133,7 @@ public class PictureTester
     result.explore();
   }
   
+  /** Method to test pixelate */
   public static void testPixelate()
   {
 	  Picture swan = new Picture("images/swan.jpg");
@@ -163,7 +169,7 @@ public class PictureTester
     //testSwapLeftRight();    //works
     //testStairStep();        //works
     //testLiquify();          //works
-    testWave();
+    testWave();               //works
     //testFixUnderwater();
     //testMirrorVertical();
     //testMirrorTemple();
