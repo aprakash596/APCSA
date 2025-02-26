@@ -11,8 +11,6 @@ import java.util.List;
  * SimplePicture and allows the student to add functionality to
  * the Picture class.  
  * 
- * will be modifying this one
- * 
  * @author Barbara Ericson ericson@cc.gatech.edu and Aarav Prakash
  * @since  February 3, 2025
  */
@@ -556,9 +554,8 @@ public class Picture extends SimplePicture
   
 	/** 
 	 * Method that creates a green screen picture
-	 * @return green screen picture
+	 * @return the green screen picture
 	 */
-	 /*
 	public Picture greenScreen()
 	{
 		// Get background picture
@@ -566,13 +563,177 @@ public class Picture extends SimplePicture
 		Pixel[][] bkgndPixels = bkgnd.getPixels2D();
 		// Get cat picture
 		Picture cat = new Picture("greenScreenImages/kitten1GreenScreen.jpg");
-		Pixel[][] catPixels = cat.getPixels2D();
+
 		// Get mouse picture
 		Picture mouse = new Picture("greenScreenImages/mouse1GreenScreen.jpg");
-		Pixel[][] mousePixels = mouse.getPixels2D();
-		
-	}*/
+
+    Picture smallCat = scaleImage(cat, (int) (cat.getWidth() / 1.5), (int) (cat.getHeight() / 1.5));
+    Picture smallMouse = scaleImage(mouse, mouse.getWidth() / 3, mouse.getHeight());
+
+    Pixel[][] catPixels = smallCat.getPixels2D();
+    Pixel[][] mousePixels = smallMouse.getPixels2D();
+
+    int catStartRow = 350, catStartCol = 520;
+    int mouseStartRow = 345, mouseStartCol = 290;
+
+    overlayImage(bkgndPixels, catPixels, catStartRow, catStartCol);
+    overlayImage(bkgndPixels, mousePixels, mouseStartRow, mouseStartCol);
+
+    return bkgnd;
+	}
 	
+  /**
+   * Helper method that overlays an image (cat or mouse) onto the background.
+   * @param bkgndPixels The background pixel array.
+   * @param overlayPixels The pixels of the image to overlay (cat or mouse).
+   * @param startRow The starting row for placing the overlay image.
+   * @param startCol The starting column for placing the overlay image.
+   */
+  private void overlayImage(Pixel[][] bkgndPixels, Pixel[][] overlayPixels, int startRow, int startCol) 
+  {
+      for (int row = 0; row < overlayPixels.length; row++) 
+      {
+          for (int col = 0; col < overlayPixels[0].length; col++) 
+          {
+              if ((row + startRow) < bkgndPixels.length && (col + startCol) < bkgndPixels[0].length) 
+              {
+                  Pixel overlayPixel = overlayPixels[row][col];
+                  Pixel bgPixel = bkgndPixels[row + startRow][col + startCol];
+
+                  int red = overlayPixel.getRed();
+                  int green = overlayPixel.getGreen();
+                  int blue = overlayPixel.getBlue();
+
+                  if (!(green > 150 && red < 100 && blue < 100)) {
+                      bgPixel.setColor(overlayPixel.getColor());
+                  }
+              }
+          }
+      }
+  }
+
+  /**
+   * Scales an image to a new width and height.
+   * @param original The original image.
+   * @param newWidth The desired width.
+   * @param newHeight The desired height.
+   * @return A new scaled Picture.
+   */
+  public static Picture scaleImage(Picture original, int newWidth, int newHeight) 
+  {
+      Picture scaled = new Picture(newWidth, newHeight);
+      Pixel[][] originalPixels = original.getPixels2D();
+      Pixel[][] scaledPixels = scaled.getPixels2D();
+
+      int originalHeight = originalPixels.length;    
+      int originalWidth = originalPixels[0].length; 
+
+      int scaledHeight = scaledPixels.length;   
+      int scaledWidth = scaledPixels[0].length;    
+
+      for (int row = 0; row < scaledHeight; row++) 
+      {
+          for (int col = 0; col < scaledWidth; col++) 
+          {
+              int srcRow = (int) ((double) row / scaledHeight * originalHeight);
+              int srcCol = (int) ((double) col / scaledWidth * originalWidth);
+
+              srcRow = Math.min(srcRow, originalHeight - 1);
+              srcCol = Math.min(srcCol, originalWidth - 1);
+
+              if (srcRow >= 0 && srcRow < originalHeight && srcCol >= 0 && srcCol < originalWidth) {
+                  scaledPixels[row][col].setColor(originalPixels[srcRow][srcCol].getColor());
+              }
+          }
+      }
+      return scaled;
+  }
+
+
+/** 
+   * Rotate image in radians, clean up "drop-out" pixels 
+   * @param angle  angle of rotation in radians 
+   * @return  Picture that is rotated 
+   */ 
+  public Picture rotate(double angle) 
+  { 
+      Pixel[][] pixels = this.getPixels2D(); 
+      int width = pixels[0].length;
+      int height = pixels.length;
+      
+      int newWidth = (int) (Math.abs(width * Math.cos(angle)) + Math.abs(height * Math.sin(angle)));
+      int newHeight = (int) (Math.abs(width * Math.sin(angle)) + Math.abs(height * Math.cos(angle)));
+      
+      Picture rotatedImage = new Picture(newHeight, newWidth);
+      Pixel[][] newPixels = rotatedImage.getPixels2D();
+      
+      int centerX = width/2;
+      int centerY = height/2;
+      int newCenterX = newWidth/2;
+      int newCenterY = newHeight/2;
+      
+      for (int y = 0; y < height; y++) 
+      {
+          for (int x = 0; x < width; x++) 
+          {
+              int adjustedX = x - centerX;
+              int adjustedY = y - centerY;
+              
+              int newX = (int) (adjustedX * Math.cos(angle) - adjustedY * Math.sin(angle)) + newCenterX;
+              int newY = (int) (adjustedX * Math.sin(angle) + adjustedY * Math.cos(angle)) + newCenterY;
+              
+              if (newX >= 0 && newX < newWidth && newY >= 0 && newY < newHeight)
+                  newPixels[newY][newX].setColor(pixels[y][x].getColor());
+          }
+      }
+      
+      for (int y = 1; y < newHeight - 1; y++) 
+      {
+          for (int x = 1; x < newWidth - 1; x++) 
+          {
+              if (newPixels[y][x].getColor().equals(Color.WHITE)) 
+              {
+                  Color averageColor = averageSurroundingPixels(newPixels, x, y);
+                  newPixels[y][x].setColor(averageColor);
+              }
+          }
+      }
+      
+      return rotatedImage;
+  }
+
+  /**
+   * Averages the colors of surrounding pixels to fill dropout pixels
+   */
+  private Color averageSurroundingPixels(Pixel[][] pixels, int x, int y) 
+  {
+      int red = 0, green = 0, blue = 0, count = 0;
+      
+      for (int i = -1; i <= 1; i++) 
+      {
+          for (int j = -1; j <= 1; j++) 
+          {
+              if (i != 0 || j != 0)
+              {
+                int newX = x + i, newY = y + j;
+                if (newX >= 0 && newX < pixels[0].length && newY >= 0 && newY < pixels.length) 
+                {
+                    Color color = pixels[newY][newX].getColor();
+                    red += color.getRed();
+                    green += color.getGreen();
+                    blue += color.getBlue();
+                    count++;
+                }
+              }
+          }
+      }
+      return new Color(red / count, green / count, blue / count);
+  }
+
+
+
+
+
 	/** Method that creates an edge detected black/white picture
 	 * @param threshold threshold as determined by Pixel’s colorDistance method
 	 * @return edge detected picture

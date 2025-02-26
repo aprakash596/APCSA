@@ -108,7 +108,7 @@ public class PictureTester
   {
     Picture cycle = new Picture("images/redMotorcycle.jpg");
     cycle.explore();
-    Picture result = cycle.stairStep(1,400);
+    Picture result = cycle.stairStep(10,10);
     result.explore();
   }
 
@@ -152,6 +152,20 @@ public class PictureTester
     Picture result = swan.edgeDetectionBelow(10);
     result.explore();
   }
+
+  public static void testGreenScreen()
+  {
+    Picture pic = new Picture("images/beach.jpg");
+    Picture gScreen = pic.greenScreen();
+    gScreen.explore();
+  }
+
+  public static void testRotate()
+  {
+    Picture pic = new Picture("images/beach.jpg");
+    Picture rotated = pic.rotate(Math.PI/6);
+    rotated.explore();
+  }
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -170,7 +184,7 @@ public class PictureTester
     //testBlur();				//works
     //testEnhance();    //works
     //testSwapLeftRight();    //works
-    //testStairStep();        //works
+    testStairStep();        //works
     //testLiquify();          //works
     //testWave();
     //testFixUnderwater();
@@ -182,7 +196,9 @@ public class PictureTester
     //testCollage();
     //testCopy();
     //testEdgeDetection();
-    testEdgeDetectionBelow();
+    //testEdgeDetectionBelow();
+    //testGreenScreen();
+    //testRotate();
     //testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();
