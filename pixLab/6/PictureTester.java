@@ -175,17 +175,17 @@ public class PictureTester
     // and comment out the ones you don't want
     // to run
     //testZeroBlue();
-    //testKeepOnlyBlue();	//works
+    //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
-    //testNegate();			//works
-    //testGrayscale();		//works
-    //testPixelate();		//works
-    //testBlur();				//works
-    //testEnhance();    //works
-    //testSwapLeftRight();    //works
-    testStairStep();        //works
-    //testLiquify();          //works
+    //testNegate();		
+    //testGrayscale();		
+    //testPixelate();
+    //testBlur();
+    //testEnhance(); 
+    //testSwapLeftRight();
+    //testStairStep();        
+    //testLiquify(); 
     //testWave();
     //testFixUnderwater();
     //testMirrorVertical();
@@ -198,7 +198,7 @@ public class PictureTester
     //testEdgeDetection();
     //testEdgeDetectionBelow();
     //testGreenScreen();
-    //testRotate();
+    testRotate();
     //testEdgeDetection2();
     //testChromakey();
     //testEncodeAndDecode();

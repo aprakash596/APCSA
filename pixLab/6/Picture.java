@@ -23,10 +23,10 @@ public class Picture extends SimplePicture
    */
   public Picture ()
   {
-    /* not needed but use it to show students the implicit call to super()
-     * child constructors always call a parent constructor 
-     */
-    super();  
+	/* not needed but use it to show students the implicit call to super()
+	 * child constructors always call a parent constructor 
+	 */
+	super();  
   }
   
   /**
@@ -35,8 +35,8 @@ public class Picture extends SimplePicture
    */
   public Picture(String fileName)
   {
-    // let the parent class handle this fileName
-    super(fileName);
+	// let the parent class handle this fileName
+	super(fileName);
   }
   
   /**
@@ -46,8 +46,8 @@ public class Picture extends SimplePicture
    */
   public Picture(int height, int width)
   {
-    // let the parent class handle this width and height
-    super(width,height);
+	// let the parent class handle this width and height
+	super(width,height);
   }
   
   /**
@@ -57,8 +57,8 @@ public class Picture extends SimplePicture
    */
   public Picture(Picture copyPicture)
   {
-    // let the parent class do the copy
-    super(copyPicture);
+	// let the parent class do the copy
+	super(copyPicture);
   }
   
   /**
@@ -67,7 +67,7 @@ public class Picture extends SimplePicture
    */
   public Picture(BufferedImage image)
   {
-    super(image);
+	super(image);
   }
   
   ////////////////////// methods ///////////////////////////////////////
@@ -79,69 +79,69 @@ public class Picture extends SimplePicture
    */
   public String toString()
   {
-    String output = "Picture, filename " + getFileName() + 
-      " height " + getHeight() 
-      + " width " + getWidth();
-    return output;
-    
+	String output = "Picture, filename " + getFileName() + 
+	  " height " + getHeight() 
+	  + " width " + getWidth();
+	return output;
+	
   }
   
   /** Method to set the blue to 0 */
   public void zeroBlue()
   {
-    Pixel[][] pixels = this.getPixels2D();
-    for (Pixel[] rowArray : pixels)
-    {
-      for (Pixel pixelObj : rowArray)
-      {
-        pixelObj.setBlue(0);
-      }
-    }
+	Pixel[][] pixels = this.getPixels2D();
+	for (Pixel[] rowArray : pixels)
+	{
+	  for (Pixel pixelObj : rowArray)
+	  {
+		pixelObj.setBlue(0);
+	  }
+	}
   }
   
   /** Method to keep only the blue */
   public void keepOnlyBlue()
   {
-    Pixel[][] pixels = this.getPixels2D();
-    for (Pixel[] rowArray : pixels)
-    {
-      for (Pixel pixelObj : rowArray)
-      {
-        pixelObj.setRed(0);
-        pixelObj.setGreen(0);
-      }
-    }
+	Pixel[][] pixels = this.getPixels2D();
+	for (Pixel[] rowArray : pixels)
+	{
+	  for (Pixel pixelObj : rowArray)
+	  {
+		pixelObj.setRed(0);
+		pixelObj.setGreen(0);
+	  }
+	}
   }
   
   /** creates the inverse of the image */
   public void negate()
   {
-    Pixel[][] pixels = this.getPixels2D();
-    for (Pixel[] rowArray : pixels)
-    {
-      for (Pixel pixelObj : rowArray)
-      {
-        pixelObj.setRed(255-pixelObj.getRed());
-        pixelObj.setBlue(255-pixelObj.getBlue());
-        pixelObj.setGreen(255-pixelObj.getGreen());
-      }
-    }
+	Pixel[][] pixels = this.getPixels2D();
+	for (Pixel[] rowArray : pixels)
+	{
+	  for (Pixel pixelObj : rowArray)
+	  {
+		pixelObj.setRed(255-pixelObj.getRed());
+		pixelObj.setBlue(255-pixelObj.getBlue());
+		pixelObj.setGreen(255-pixelObj.getGreen());
+	  }
+	}
   }
   
   /** grayscales the image */
   public void grayscale()
   {
-    Pixel[][] pixels = this.getPixels2D();
-    for (Pixel[] rowArray : pixels)
-    {
-      for (Pixel pixelObj : rowArray)
-      {
+	Pixel[][] pixels = this.getPixels2D();
+	for (Pixel[] rowArray : pixels)
+	{
+	  for (Pixel pixelObj : rowArray)
+	  {
 		int colorAverage = (pixelObj.getRed()+pixelObj.getBlue()+pixelObj.getGreen())/3;
-        pixelObj.setRed(colorAverage);
-        pixelObj.setBlue(colorAverage);
-        pixelObj.setGreen(colorAverage);
-      }
-    }
+		pixelObj.setRed(colorAverage);
+		pixelObj.setBlue(colorAverage);
+		pixelObj.setGreen(colorAverage);
+	  }
+	}
   }
   
   /**
@@ -311,144 +311,144 @@ public class Picture extends SimplePicture
 	}
 
 	/**
-     * Method that shifts the picture to the right
-     * with a stair step approach
-     * @param shiftCount  the amount a step should be shifted
-     * @param steps the amount of steps the picture should have
-     * @return  the edited picture with the stair steps
-     */
-    public Picture stairStep(int shiftCount, int steps)
-    {
-        Pixel[][] pixels = this.getPixels2D();
-        Picture result = new Picture(pixels.length, pixels[0].length);
-        Pixel[][] resultPixels = result.getPixels2D();
+	 * Method that shifts the picture to the right
+	 * with a stair step approach
+	 * @param shiftCount  the amount a step should be shifted
+	 * @param steps the amount of steps the picture should have
+	 * @return  the edited picture with the stair steps
+	 */
+	public Picture stairStep(int shiftCount, int steps)
+	{
+		Pixel[][] pixels = this.getPixels2D();
+		Picture result = new Picture(pixels.length, pixels[0].length);
+		Pixel[][] resultPixels = result.getPixels2D();
 
-        int rowsPerStep = pixels.length / steps;  // Number of rows per step
-        int remainingRows = pixels.length % steps;  // Remaining rows that don't fit evenly
+		int rowsPerStep = pixels.length / steps;  // Number of rows per step
+		int remainingRows = pixels.length % steps;  // Remaining rows that don't fit evenly
 
-        int currentStep = 0;  // Tracks the step
-        int rowOffset = 0;    // Tracks the starting row of the current step
+		int currentStep = 0;  // Tracks the step
+		int rowOffset = 0;    // Tracks the starting row of the current step
 
-        for (int step = 0; step < steps; step++) 
-        {
-            int rowsInCurrentStep;
+		for (int step = 0; step < steps; step++) 
+		{
+			int rowsInCurrentStep;
 
-            if (step < remainingRows)
-                rowsInCurrentStep = rowsPerStep + 1;
-            else
-                rowsInCurrentStep = rowsPerStep;
+			if (step < remainingRows)
+				rowsInCurrentStep = rowsPerStep + 1;
+			else
+				rowsInCurrentStep = rowsPerStep;
 
-            for (int i = rowOffset; i < rowOffset + rowsInCurrentStep; i++) 
-            {
-                int newColumn = (i * shiftCount) % pixels[0].length;
+			for (int i = rowOffset; i < rowOffset + rowsInCurrentStep; i++) 
+			{
+				int newColumn = (i * shiftCount) % pixels[0].length;
 
-                if (newColumn < 0)
-                    newColumn += pixels[0].length;
+				if (newColumn < 0)
+					newColumn += pixels[0].length;
 
-                for (int j = 0; j < pixels[0].length; j++) 
-                {
-                    int shiftedColumn = (j + newColumn) % pixels[0].length;
+				for (int j = 0; j < pixels[0].length; j++) 
+				{
+					int shiftedColumn = (j + newColumn) % pixels[0].length;
 
-                    resultPixels[i][shiftedColumn].setRed(pixels[i][j].getRed());
-                    resultPixels[i][shiftedColumn].setGreen(pixels[i][j].getGreen());
-                    resultPixels[i][shiftedColumn].setBlue(pixels[i][j].getBlue());
-                }
-            }
-            rowOffset += rowsInCurrentStep;
-        }
-        return result;
-    }
+					resultPixels[i][shiftedColumn].setRed(pixels[i][j].getRed());
+					resultPixels[i][shiftedColumn].setGreen(pixels[i][j].getGreen());
+					resultPixels[i][shiftedColumn].setBlue(pixels[i][j].getBlue());
+				}
+			}
+			rowOffset += rowsInCurrentStep;
+		}
+		return result;
+	}
 
-
-	/**
-     * Method that creates a distortion along the center
-     * horizontal of the picture
-     * @param maxHeight the amount distortion
-     * @return  the picture with the liquify effect
-     */
-    public Picture liquify(int maxHeight)
-    {
-        Pixel[][] pixels = this.getPixels2D();
-        Picture result = new Picture(pixels.length, pixels[0].length);
-        Pixel[][] resultPixels = result.getPixels2D();
-
-        int height = pixels.length;
-        int width = pixels[0].length;
-        int midY = height / 2;
-        double sigma = height / 6.0; // standard deviation
-        double A = maxHeight;
-
-        for (int i = 0; i < height; i++) 
-        {
-            for (int j = 0; j < width; j++) 
-                resultPixels[i][j].setColor(pixels[i][j].getColor());
-        }
-
-        for (int i = 0; i < pixels.length; i++) 
-        {
-            int shift = (int) (A * Math.exp(-1 * Math.pow(i - midY, 2) / (2 * sigma * sigma)));
-            
-            for (int j = width - 1; j >= 0; j--) 
-            {
-                int newColumn = (j + shift) % width;
-                resultPixels[i][newColumn].setColor(pixels[i][j].getColor());
-            }
-        }
-        
-        return result;
-    }
 
 	/**
-     * Method that creates oscillating distortions in 
-     * a picture
-     * @param amplitude the amount distortion in one oscillation
-     * @return  the picture with the wave effect
-     */
-    public Picture wave(int amplitude) 
-    {
-        Pixel[][] pixels = this.getPixels2D();
-        Picture result = new Picture(pixels.length, pixels[0].length);
-        Pixel[][] resultPixels = result.getPixels2D();
-        
-        double frequency = 5.0;
-        int height = pixels.length;
-        int width = pixels[0].length;
+	 * Method that creates a distortion along the center
+	 * horizontal of the picture
+	 * @param maxHeight the amount distortion
+	 * @return  the picture with the liquify effect
+	 */
+	public Picture liquify(int maxHeight)
+	{
+		Pixel[][] pixels = this.getPixels2D();
+		Picture result = new Picture(pixels.length, pixels[0].length);
+		Pixel[][] resultPixels = result.getPixels2D();
 
-        for (int i = 0; i < height; i++) {
-            int shift = (int) (amplitude * Math.sin(2 * Math.PI * frequency * i / height)); 
-            
-            for (int j = 0; j < width; j++) 
-            {
-                int newColumn = (j + shift) % width;
-                if (newColumn < 0)
-                    newColumn += width;
-                
-                resultPixels[i][newColumn].setColor(pixels[i][j].getColor());
-            }
-        }
-        
-        return result;
-    }
+		int height = pixels.length;
+		int width = pixels[0].length;
+		int midY = height / 2;
+		double sigma = height / 6.0; // standard deviation
+		double A = maxHeight;
+
+		for (int i = 0; i < height; i++) 
+		{
+			for (int j = 0; j < width; j++) 
+				resultPixels[i][j].setColor(pixels[i][j].getColor());
+		}
+
+		for (int i = 0; i < pixels.length; i++) 
+		{
+			int shift = (int) (A * Math.exp(-1 * Math.pow(i - midY, 2) / (2 * sigma * sigma)));
+			
+			for (int j = width - 1; j >= 0; j--) 
+			{
+				int newColumn = (j + shift) % width;
+				resultPixels[i][newColumn].setColor(pixels[i][j].getColor());
+			}
+		}
+		
+		return result;
+	}
+
+	/**
+	 * Method that creates oscillating distortions in 
+	 * a picture
+	 * @param amplitude the amount distortion in one oscillation
+	 * @return  the picture with the wave effect
+	 */
+	public Picture wave(int amplitude) 
+	{
+		Pixel[][] pixels = this.getPixels2D();
+		Picture result = new Picture(pixels.length, pixels[0].length);
+		Pixel[][] resultPixels = result.getPixels2D();
+		
+		double frequency = 5.0;
+		int height = pixels.length;
+		int width = pixels[0].length;
+
+		for (int i = 0; i < height; i++) {
+			int shift = (int) (amplitude * Math.sin(2 * Math.PI * frequency * i / height)); 
+			
+			for (int j = 0; j < width; j++) 
+			{
+				int newColumn = (j + shift) % width;
+				if (newColumn < 0)
+					newColumn += width;
+				
+				resultPixels[i][newColumn].setColor(pixels[i][j].getColor());
+			}
+		}
+		
+		return result;
+	}
 
 
   /** Method that mirrors the picture around a 
-    * vertical mirror in the center of the picture
-    * from left to right */
+	* vertical mirror in the center of the picture
+	* from left to right */
   public void mirrorVertical()
   {
-    Pixel[][] pixels = this.getPixels2D();
-    Pixel leftPixel = null;
-    Pixel rightPixel = null;
-    int width = pixels[0].length;
-    for (int row = 0; row < pixels.length; row++)
-    {
-      for (int col = 0; col < width / 2; col++)
-      {
-        leftPixel = pixels[row][col];
-        rightPixel = pixels[row][width - 1 - col];
-        rightPixel.setColor(leftPixel.getColor());
-      }
-    } 
+	Pixel[][] pixels = this.getPixels2D();
+	Pixel leftPixel = null;
+	Pixel rightPixel = null;
+	int width = pixels[0].length;
+	for (int row = 0; row < pixels.length; row++)
+	{
+	  for (int col = 0; col < width / 2; col++)
+	  {
+		leftPixel = pixels[row][col];
+		rightPixel = pixels[row][width - 1 - col];
+		rightPixel.setColor(leftPixel.getColor());
+	  }
+	} 
   }
 
   
@@ -456,100 +456,100 @@ public class Picture extends SimplePicture
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
   {
-    int mirrorPoint = 276;
-    Pixel leftPixel = null;
-    Pixel rightPixel = null;
-    int count = 0;
-    Pixel[][] pixels = this.getPixels2D();
-    
-    // loop through the rows
-    for (int row = 27; row < 97; row++)
-    {
-      // loop from 13 to just before the mirror point
-      for (int col = 13; col < mirrorPoint; col++)
-      {
-        
-        leftPixel = pixels[row][col];      
-        rightPixel = pixels[row]                       
-                         [mirrorPoint - col + mirrorPoint];
-        rightPixel.setColor(leftPixel.getColor());
-      }
-    }
+	int mirrorPoint = 276;
+	Pixel leftPixel = null;
+	Pixel rightPixel = null;
+	int count = 0;
+	Pixel[][] pixels = this.getPixels2D();
+	
+	// loop through the rows
+	for (int row = 27; row < 97; row++)
+	{
+	  // loop from 13 to just before the mirror point
+	  for (int col = 13; col < mirrorPoint; col++)
+	  {
+		
+		leftPixel = pixels[row][col];      
+		rightPixel = pixels[row]                       
+						 [mirrorPoint - col + mirrorPoint];
+		rightPixel.setColor(leftPixel.getColor());
+	  }
+	}
   }
   
   /** copy from the passed fromPic to the
-    * specified startRow and startCol in the
-    * current picture
-    * @param fromPic the picture to copy from
-    * @param startRow the start row to copy to
-    * @param startCol the start col to copy to
-    */
+	* specified startRow and startCol in the
+	* current picture
+	* @param fromPic the picture to copy from
+	* @param startRow the start row to copy to
+	* @param startCol the start col to copy to
+	*/
   public void copy(Picture fromPic, 
-                 int startRow, int startCol)
+				 int startRow, int startCol)
   {
-    Pixel fromPixel = null;
-    Pixel toPixel = null;
-    Pixel[][] toPixels = this.getPixels2D();
-    Pixel[][] fromPixels = fromPic.getPixels2D();
-    for (int fromRow = 0, toRow = startRow; 
-         fromRow < fromPixels.length &&
-         toRow < toPixels.length; 
-         fromRow++, toRow++)
-    {
-      for (int fromCol = 0, toCol = startCol; 
-           fromCol < fromPixels[0].length &&
-           toCol < toPixels[0].length;  
-           fromCol++, toCol++)
-      {
-        fromPixel = fromPixels[fromRow][fromCol];
-        toPixel = toPixels[toRow][toCol];
-        toPixel.setColor(fromPixel.getColor());
-      }
-    }   
+	Pixel fromPixel = null;
+	Pixel toPixel = null;
+	Pixel[][] toPixels = this.getPixels2D();
+	Pixel[][] fromPixels = fromPic.getPixels2D();
+	for (int fromRow = 0, toRow = startRow; 
+		 fromRow < fromPixels.length &&
+		 toRow < toPixels.length; 
+		 fromRow++, toRow++)
+	{
+	  for (int fromCol = 0, toCol = startCol; 
+		   fromCol < fromPixels[0].length &&
+		   toCol < toPixels[0].length;  
+		   fromCol++, toCol++)
+	  {
+		fromPixel = fromPixels[fromRow][fromCol];
+		toPixel = toPixels[toRow][toCol];
+		toPixel.setColor(fromPixel.getColor());
+	  }
+	}   
   }
 
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
-    Picture flower1 = new Picture("flower1.jpg");
-    Picture flower2 = new Picture("flower2.jpg");
-    this.copy(flower1,0,0);
-    this.copy(flower2,100,0);
-    this.copy(flower1,200,0);
-    Picture flowerNoBlue = new Picture(flower2);
-    flowerNoBlue.zeroBlue();
-    this.copy(flowerNoBlue,300,0);
-    this.copy(flower1,400,0);
-    this.copy(flower2,500,0);
-    this.mirrorVertical();
-    this.write("collage.jpg");
+	Picture flower1 = new Picture("flower1.jpg");
+	Picture flower2 = new Picture("flower2.jpg");
+	this.copy(flower1,0,0);
+	this.copy(flower2,100,0);
+	this.copy(flower1,200,0);
+	Picture flowerNoBlue = new Picture(flower2);
+	flowerNoBlue.zeroBlue();
+	this.copy(flowerNoBlue,300,0);
+	this.copy(flower1,400,0);
+	this.copy(flower2,500,0);
+	this.mirrorVertical();
+	this.write("collage.jpg");
   }
   
   
   /** Method to show large changes in color 
-    * @param edgeDist the distance for finding edges
-    */
+	* @param edgeDist the distance for finding edges
+	*/
   public void edgeDetection(int edgeDist)
   {
-    Pixel leftPixel = null;
-    Pixel rightPixel = null;
-    Pixel[][] pixels = this.getPixels2D();
-    Color rightColor = null;
-    for (int row = 0; row < pixels.length; row++)
-    {
-      for (int col = 0; 
-           col < pixels[0].length-1; col++)
-      {
-        leftPixel = pixels[row][col];
-        rightPixel = pixels[row][col+1];
-        rightColor = rightPixel.getColor();
-        if (leftPixel.colorDistance(rightColor) > 
-            edgeDist)
-          leftPixel.setColor(Color.BLACK);
-        else
-          leftPixel.setColor(Color.WHITE);
-      }
-    }
+	Pixel leftPixel = null;
+	Pixel rightPixel = null;
+	Pixel[][] pixels = this.getPixels2D();
+	Color rightColor = null;
+	for (int row = 0; row < pixels.length; row++)
+	{
+	  for (int col = 0; 
+		   col < pixels[0].length-1; col++)
+	  {
+		leftPixel = pixels[row][col];
+		rightPixel = pixels[row][col+1];
+		rightColor = rightPixel.getColor();
+		if (leftPixel.colorDistance(rightColor) > 
+			edgeDist)
+		  leftPixel.setColor(Color.BLACK);
+		else
+		  leftPixel.setColor(Color.WHITE);
+	  }
+	}
   }
   
 	/** 
@@ -561,178 +561,176 @@ public class Picture extends SimplePicture
 		// Get background picture
 		Picture bkgnd = new Picture("greenScreenImages/IndoorHouseLibraryBackground.jpg");
 		Pixel[][] bkgndPixels = bkgnd.getPixels2D();
+		
 		// Get cat picture
 		Picture cat = new Picture("greenScreenImages/kitten1GreenScreen.jpg");
 
 		// Get mouse picture
 		Picture mouse = new Picture("greenScreenImages/mouse1GreenScreen.jpg");
 
-    Picture smallCat = scaleImage(cat, (int) (cat.getWidth() / 1.5), (int) (cat.getHeight() / 1.5));
-    Picture smallMouse = scaleImage(mouse, mouse.getWidth() / 3, mouse.getHeight());
+		Picture smallCat = scaleImage(cat, (int) (cat.getWidth() / 1.5), (int) (cat.getHeight() / 1.5));
+		Picture smallMouse = scaleImage(mouse, mouse.getWidth() / 3, mouse.getHeight());
 
-    Pixel[][] catPixels = smallCat.getPixels2D();
-    Pixel[][] mousePixels = smallMouse.getPixels2D();
+		Pixel[][] catPixels = smallCat.getPixels2D();
+		Pixel[][] mousePixels = smallMouse.getPixels2D();
 
-    int catStartRow = 350, catStartCol = 520;
-    int mouseStartRow = 345, mouseStartCol = 290;
+		int catStartRow = 350, catStartCol = 520;
+		int mouseStartRow = 345, mouseStartCol = 290;
 
-    overlayImage(bkgndPixels, catPixels, catStartRow, catStartCol);
-    overlayImage(bkgndPixels, mousePixels, mouseStartRow, mouseStartCol);
+		overlayImage(bkgndPixels, catPixels, catStartRow, catStartCol);
+		overlayImage(bkgndPixels, mousePixels, mouseStartRow, mouseStartCol);
 
-    return bkgnd;
+		return bkgnd;
 	}
 	
-  /**
-   * Helper method that overlays an image (cat or mouse) onto the background.
-   * @param bkgndPixels The background pixel array.
-   * @param overlayPixels The pixels of the image to overlay (cat or mouse).
-   * @param startRow The starting row for placing the overlay image.
-   * @param startCol The starting column for placing the overlay image.
-   */
-  private void overlayImage(Pixel[][] bkgndPixels, Pixel[][] overlayPixels, int startRow, int startCol) 
-  {
-      for (int row = 0; row < overlayPixels.length; row++) 
-      {
-          for (int col = 0; col < overlayPixels[0].length; col++) 
-          {
-              if ((row + startRow) < bkgndPixels.length && (col + startCol) < bkgndPixels[0].length) 
-              {
-                  Pixel overlayPixel = overlayPixels[row][col];
-                  Pixel bgPixel = bkgndPixels[row + startRow][col + startCol];
+	/**
+	* Helper method that overlays an image onto the background
+	* @param bkgndPixels 	the background pixel array
+	* @param overlayPixels 	the pixels of the image to overlay
+	* @param startRow 		the starting row for the image
+	* @param startCol		the starting column for the image
+	*/
+	private void overlayImage(Pixel[][] bkgndPixels, Pixel[][] overlayPixels, int startRow, int startCol) 
+	{
+	  for (int row = 0; row < overlayPixels.length; row++) 
+	  {
+		  for (int col = 0; col < overlayPixels[0].length; col++) 
+		  {
+			  if ((row + startRow) < bkgndPixels.length && (col + startCol) < bkgndPixels[0].length) 
+			  {
+				  Pixel overlayPixel = overlayPixels[row][col];
+				  Pixel bgPixel = bkgndPixels[row + startRow][col + startCol];
 
-                  int red = overlayPixel.getRed();
-                  int green = overlayPixel.getGreen();
-                  int blue = overlayPixel.getBlue();
+				  int red = overlayPixel.getRed();
+				  int green = overlayPixel.getGreen();
+				  int blue = overlayPixel.getBlue();
 
-                  if (!(green > 150 && red < 100 && blue < 100)) {
-                      bgPixel.setColor(overlayPixel.getColor());
-                  }
-              }
-          }
-      }
-  }
+				  if (!(green > 150 && red < 100 && blue < 100)) {
+					  bgPixel.setColor(overlayPixel.getColor());
+				  }
+			  }
+		  }
+	  }
+	}
 
-  /**
-   * Scales an image to a new width and height.
-   * @param original The original image.
-   * @param newWidth The desired width.
-   * @param newHeight The desired height.
-   * @return A new scaled Picture.
-   */
-  public static Picture scaleImage(Picture original, int newWidth, int newHeight) 
-  {
-      Picture scaled = new Picture(newWidth, newHeight);
-      Pixel[][] originalPixels = original.getPixels2D();
-      Pixel[][] scaledPixels = scaled.getPixels2D();
+	/**
+	* Scales an image to a new width and height
+	* @param original 	the original image
+	* @param newWidth 	the desired width
+	* @param newHeight 	the desired height
+	* @return 			a scaled Picture
+	*/
+	public static Picture scaleImage(Picture original, int newWidth, int newHeight) 
+	{
+	  Picture scaled = new Picture(newWidth, newHeight);
+	  Pixel[][] origPixels = original.getPixels2D();
+	  Pixel[][] scaledPixels = scaled.getPixels2D();
 
-      int originalHeight = originalPixels.length;    
-      int originalWidth = originalPixels[0].length; 
+	  int origHeight = origPixels.length;    
+	  int origWidth = origPixels[0].length; 
 
-      int scaledHeight = scaledPixels.length;   
-      int scaledWidth = scaledPixels[0].length;    
+	  int scaledHeight = scaledPixels.length;   
+	  int scaledWidth = scaledPixels[0].length;    
 
-      for (int row = 0; row < scaledHeight; row++) 
-      {
-          for (int col = 0; col < scaledWidth; col++) 
-          {
-              int srcRow = (int) ((double) row / scaledHeight * originalHeight);
-              int srcCol = (int) ((double) col / scaledWidth * originalWidth);
+	  for (int row = 0; row < scaledHeight; row++) 
+	  {
+		  for (int col = 0; col < scaledWidth; col++) 
+		  {
+			  int oldRow = (int) ((double) row / scaledHeight * origHeight);
+			  int oldCol = (int) ((double) col / scaledWidth * origWidth);
 
-              srcRow = Math.min(srcRow, originalHeight - 1);
-              srcCol = Math.min(srcCol, originalWidth - 1);
+			  oldRow = Math.min(oldRow, origHeight - 1);
+			  oldCol = Math.min(oldCol, origWidth - 1);
 
-              if (srcRow >= 0 && srcRow < originalHeight && srcCol >= 0 && srcCol < originalWidth) {
-                  scaledPixels[row][col].setColor(originalPixels[srcRow][srcCol].getColor());
-              }
-          }
-      }
-      return scaled;
-  }
-
-
-/** 
-   * Rotate image in radians, clean up "drop-out" pixels 
-   * @param angle  angle of rotation in radians 
-   * @return  Picture that is rotated 
-   */ 
-  public Picture rotate(double angle) 
-  { 
-      Pixel[][] pixels = this.getPixels2D(); 
-      int width = pixels[0].length;
-      int height = pixels.length;
-      
-      int newWidth = (int) (Math.abs(width * Math.cos(angle)) + Math.abs(height * Math.sin(angle)));
-      int newHeight = (int) (Math.abs(width * Math.sin(angle)) + Math.abs(height * Math.cos(angle)));
-      
-      Picture rotatedImage = new Picture(newHeight, newWidth);
-      Pixel[][] newPixels = rotatedImage.getPixels2D();
-      
-      int centerX = width/2;
-      int centerY = height/2;
-      int newCenterX = newWidth/2;
-      int newCenterY = newHeight/2;
-      
-      for (int y = 0; y < height; y++) 
-      {
-          for (int x = 0; x < width; x++) 
-          {
-              int adjustedX = x - centerX;
-              int adjustedY = y - centerY;
-              
-              int newX = (int) (adjustedX * Math.cos(angle) - adjustedY * Math.sin(angle)) + newCenterX;
-              int newY = (int) (adjustedX * Math.sin(angle) + adjustedY * Math.cos(angle)) + newCenterY;
-              
-              if (newX >= 0 && newX < newWidth && newY >= 0 && newY < newHeight)
-                  newPixels[newY][newX].setColor(pixels[y][x].getColor());
-          }
-      }
-      
-      for (int y = 1; y < newHeight - 1; y++) 
-      {
-          for (int x = 1; x < newWidth - 1; x++) 
-          {
-              if (newPixels[y][x].getColor().equals(Color.WHITE)) 
-              {
-                  Color averageColor = averageSurroundingPixels(newPixels, x, y);
-                  newPixels[y][x].setColor(averageColor);
-              }
-          }
-      }
-      
-      return rotatedImage;
-  }
-
-  /**
-   * Averages the colors of surrounding pixels to fill dropout pixels
-   */
-  private Color averageSurroundingPixels(Pixel[][] pixels, int x, int y) 
-  {
-      int red = 0, green = 0, blue = 0, count = 0;
-      
-      for (int i = -1; i <= 1; i++) 
-      {
-          for (int j = -1; j <= 1; j++) 
-          {
-              if (i != 0 || j != 0)
-              {
-                int newX = x + i, newY = y + j;
-                if (newX >= 0 && newX < pixels[0].length && newY >= 0 && newY < pixels.length) 
-                {
-                    Color color = pixels[newY][newX].getColor();
-                    red += color.getRed();
-                    green += color.getGreen();
-                    blue += color.getBlue();
-                    count++;
-                }
-              }
-          }
-      }
-      return new Color(red / count, green / count, blue / count);
-  }
+			  if (oldRow >= 0 && oldRow < origHeight && oldCol >= 0 && oldCol < origWidth) {
+				  scaledPixels[row][col].setColor(origPixels[oldRow][oldCol].getColor());
+			  }
+		  }
+	  }
+	  return scaled;
+	}
 
 
+	/**
+	* Rotate image in radians, clean up "drop-out" pixels
+	* @param 	angle angle of rotation in radians
+	* @return 	Picture that is rotated
+	*/
+	public Picture rotate(double angle) 
+	{ 
+	  Pixel[][] pixels = this.getPixels2D(); 
+	  int width = pixels[0].length;
+	  int height = pixels.length;
+	  
+	  int newWidth = (int) (Math.abs(width * Math.cos(angle)) + Math.abs(height * Math.sin(angle)));
+	  int newHeight = (int) (Math.abs(width * Math.sin(angle)) + Math.abs(height * Math.cos(angle)));
+	  
+	  Picture rotatedImage = new Picture(newHeight, newWidth);
+	  Pixel[][] newPixels = rotatedImage.getPixels2D();
+	  
+	  int centerX = width/2;
+	  int centerY = height/2;
+	  int newCenterX = newWidth/2;
+	  int newCenterY = newHeight/2;
+	  
+	  for (int y = 0; y < height; y++) 
+	  {
+		  for (int x = 0; x < width; x++) 
+		  {
+			  int adjustedX = x - centerX;
+			  int adjustedY = y - centerY;
+			  
+			  int newX = (int) (adjustedX * Math.cos(angle) - adjustedY * Math.sin(angle)) + newCenterX;
+			  int newY = (int) (adjustedX * Math.sin(angle) + adjustedY * Math.cos(angle)) + newCenterY;
+			  
+			  if (newX >= 0 && newX < newWidth && newY >= 0 && newY < newHeight)
+				  newPixels[newY][newX].setColor(pixels[y][x].getColor());
+		  }
+	  }
+	  
+	  for (int y = 1; y < newHeight - 1; y++) 
+	  {
+		  for (int x = 1; x < newWidth - 1; x++) 
+		  {
+			  if (newPixels[y][x].getColor().equals(Color.WHITE)) 
+			  {
+				  Color averageColor = averageSurroundingPixels(newPixels, x, y);
+				  newPixels[y][x].setColor(averageColor);
+			  }
+		  }
+	  }
+	  
+	  return rotatedImage;
+	}
 
-
+	/**
+	* Averages the colors of surrounding pixels to fill dropout pixels
+	* @return the average color to fill the drop out pixels with
+	*/
+	private Color averageSurroundingPixels(Pixel[][] pixels, int x, int y) 
+	{
+	  int red = 0, green = 0, blue = 0, count = 0;
+	  
+	  for (int i = -1; i <= 1; i++) 
+	  {
+		  for (int j = -1; j <= 1; j++) 
+		  {
+			  if (i != 0 || j != 0)
+			  {
+				int newX = x + i, newY = y + j;
+				if (newX >= 0 && newX < pixels[0].length && newY >= 0 && newY < pixels.length) 
+				{
+					Color color = pixels[newY][newX].getColor();
+					red += color.getRed();
+					green += color.getGreen();
+					blue += color.getBlue();
+					count++;
+				}
+			  }
+		  }
+	  }
+	  return new Color(red/count, green/count, blue/count);
+	}
 
 	/** Method that creates an edge detected black/white picture
 	 * @param threshold threshold as determined by Pixel’s colorDistance method
@@ -769,10 +767,10 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("images/beach.jpg");
-    beach.explore();
-    beach.zeroBlue();
-    beach.explore();
+	Picture beach = new Picture("images/beach.jpg");
+	beach.explore();
+	beach.zeroBlue();
+	beach.explore();
   }
   
 } // this } is the end of class Picture, put all new methods before this
