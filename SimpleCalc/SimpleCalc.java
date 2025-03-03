@@ -3,6 +3,10 @@ import java.util.List;		// used by expression evaluator
 /**
  *	This is a simple version of a basic calculator (bc) that evaluates
  * 	simple expressions using stacks
+ * 	
+ * 	user cannot change the value of e or pi
+ * 	if the user puts something that is bad, then return 0.0
+ * 	variables are case sensitive, pi is different from Pi or PI
  *
  *	@author	Aarav Prakash
  *	@since	February 26, 2025
@@ -15,16 +19,16 @@ public class SimpleCalc {
 	private ArrayStack<String> operatorStack;	// operator stack
 
 	// constructor	
-	public SimpleCalc() {
-		
-	}
+	public SimpleCalc() { }
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		SimpleCalc sc = new SimpleCalc();
 		sc.run();
 	}
 	
-	public void run() {
+	public void run() 
+	{
 		System.out.println("\nWelcome to SimpleCalc!!!");
 		runCalc();
 		System.out.println("\nThanks for using SimpleCalc! Goodbye.\n");
@@ -34,12 +38,25 @@ public class SimpleCalc {
 	 *	Prompt the user for expressions, run the expression evaluator,
 	 *	and display the answer.
 	 */
-	public void runCalc() {
-		
+	public void runCalc() 
+	{
+		String input = "";
+		boolean qIsPressed = false;
+		while(! qIsPressed)
+		{
+			String input = Prompt.getString("");
+			if(input.equals("q"))
+				qIsPressed = true;
+			else
+			{
+				
+			}
+		}
 	}
 	
 	/**	Print help */
-	public void printHelp() {
+	public void printHelp() 
+	{
 		System.out.println("Help:");
 		System.out.println("  h - this message\n  q - quit\n");
 		System.out.println("Expressions can contain:");
@@ -53,9 +70,9 @@ public class SimpleCalc {
 	 *	@param tokens	a List of String tokens making up an arithmetic expression
 	 *	@return			a double value of the evaluated expression
 	 */
-	public double evaluateExpression(List<String> tokens) {
+	public double evaluateExpression(List<String> tokens) 
+	{
 		double value = 0;
-		
 		return value;
 	}
 	
@@ -71,7 +88,8 @@ public class SimpleCalc {
 	 *				op2 is addition or subtraction, then false
 	 *		otherwise true
 	 */
-	private boolean hasPrecedence(String op1, String op2) {
+	private boolean hasPrecedence(String op1, String op2) 
+	{
 		if (op1.equals("^")) return false;
 		if (op2.equals("(") || op2.equals(")")) return false;
 		if ((op1.equals("*") || op1.equals("/") || op1.equals("%")) 
