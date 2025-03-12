@@ -72,7 +72,7 @@ public class SimpleCalc
         }
     }
 
-    /** Print help */
+    /** Prints the help menu */
     public void printHelp() 
     {
         System.out.println("Help:");
@@ -109,7 +109,7 @@ public class SimpleCalc
             } 
             else 
             {
-                while (!operatorStack.isEmpty() && precedence(operatorStack.peek()) >= precedence(token))
+                while (! operatorStack.isEmpty() && precedence(operatorStack.peek()) >= precedence(token))
                     processOperator();
                 
                 operatorStack.push(token);
