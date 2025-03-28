@@ -15,7 +15,7 @@ import java.awt.Color;
  
 public class Boulder extends Actor
 {
-	private static final int THRESHOLD = (int)(Math.random()*200 + 1);
+	private static final int THRESHOLD = 3;
 	private int steps;
 	
 	public Kaboom()
